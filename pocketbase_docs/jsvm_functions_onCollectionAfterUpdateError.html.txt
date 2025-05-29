@@ -1,0 +1,49 @@
+URL: https://pocketbase.io/jsvm/functions/onCollectionAfterUpdateError.html
+
+PocketBase JSVM reference
+onCollectionAfterUpdateError
+Function onCollectionAfterUpdateError
+on
+Collection
+After
+Update
+Error
+(
+handler
+,
+...
+tags
+)
+:
+void
+Parameters
+handler
+:
+(
+(
+e
+)
+=>
+void
+)
+(
+e
+)
+:
+void
+Parameters
+e
+:
+CollectionErrorEvent
+Returns
+void
+Rest
+...
+tags
+:
+string
+[]
+Returns
+void
+Defined in
+types.d.ts:1130

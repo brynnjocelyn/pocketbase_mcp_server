@@ -1,0 +1,48 @@
+URL: https://pocketbase.io/jsvm/functions/onFileDownloadRequest.html
+
+PocketBase JSVM reference
+onFileDownloadRequest
+Function onFileDownloadRequest
+on
+File
+Download
+Request
+(
+handler
+,
+...
+tags
+)
+:
+void
+Parameters
+handler
+:
+(
+(
+e
+)
+=>
+void
+)
+(
+e
+)
+:
+void
+Parameters
+e
+:
+FileDownloadRequestEvent
+Returns
+void
+Rest
+...
+tags
+:
+string
+[]
+Returns
+void
+Defined in
+types.d.ts:1145

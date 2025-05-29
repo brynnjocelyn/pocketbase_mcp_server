@@ -1,0 +1,38 @@
+URL: https://pocketbase.io/jsvm/functions/onBackupCreate.html
+
+PocketBase JSVM reference
+onBackupCreate
+Function onBackupCreate
+on
+Backup
+Create
+(
+handler
+)
+:
+void
+Parameters
+handler
+:
+(
+(
+e
+)
+=>
+void
+)
+(
+e
+)
+:
+void
+Parameters
+e
+:
+BackupEvent
+Returns
+void
+Returns
+void
+Defined in
+types.d.ts:1122

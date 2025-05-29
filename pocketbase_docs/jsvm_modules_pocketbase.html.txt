@@ -1,0 +1,21 @@
+URL: https://pocketbase.io/jsvm/modules/pocketbase.html
+
+PocketBase JSVM reference
+pocketbase
+Namespace pocketbase
+Defined in
+types.d.ts:13987
+Index
+Interfaces
+Config
+Pocket
+Base
+_new
+colored
+Writer
+new
+With
+Config
+Type Aliases
+_scf
+UcGQ

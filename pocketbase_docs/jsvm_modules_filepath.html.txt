@@ -1,0 +1,47 @@
+URL: https://pocketbase.io/jsvm/modules/filepath.html
+
+PocketBase JSVM reference
+filepath
+Namespace filepath
+Package filepath implements utility routines for manipulating filename paths
+in a way compatible with the target operating system-defined file paths.
+The filepath package uses either forward slashes or backslashes,
+depending on the operating system. To process paths such as URLs
+that always use forward slashes regardless of the operating
+system, see the [path] package.
+Defined in
+types.d.ts:2523
+Index
+Interfaces
+Walk
+Func
+abs
+base
+clean
+dir
+eval
+Symlinks
+ext
+from
+Slash
+glob
+has
+Prefix
+is
+Abs
+is
+Local
+join
+localize
+match
+rel
+split
+split
+List
+to
+Slash
+volume
+Name
+walk
+walk
+Dir

@@ -1,0 +1,25 @@
+URL: https://pocketbase.io/jsvm/modules/_mails.html
+
+PocketBase JSVM reference
+$mails
+Namespace $mails
+$mails
+defines helpers to send common
+auth records emails like verification, password reset, etc.
+Defined in
+types.d.ts:738
+Index
+Functions
+send
+Record
+Change
+Email
+send
+RecordOTP
+send
+Record
+Password
+Reset
+send
+Record
+Verification

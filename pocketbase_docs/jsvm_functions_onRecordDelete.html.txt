@@ -1,0 +1,47 @@
+URL: https://pocketbase.io/jsvm/functions/onRecordDelete.html
+
+PocketBase JSVM reference
+onRecordDelete
+Function onRecordDelete
+on
+Record
+Delete
+(
+handler
+,
+...
+tags
+)
+:
+void
+Parameters
+handler
+:
+(
+(
+e
+)
+=>
+void
+)
+(
+e
+)
+:
+void
+Parameters
+e
+:
+RecordEvent
+Returns
+void
+Rest
+...
+tags
+:
+string
+[]
+Returns
+void
+Defined in
+types.d.ts:1186

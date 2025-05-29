@@ -1,0 +1,3 @@
+URL: https://pocketbase.io/jsvm/modules/interfaces/core.CollectionEvent.html
+
+Content not found

@@ -1,0 +1,49 @@
+URL: https://pocketbase.io/jsvm/functions/onRecordAuthRefreshRequest.html
+
+PocketBase JSVM reference
+onRecordAuthRefreshRequest
+Function onRecordAuthRefreshRequest
+on
+Record
+Auth
+Refresh
+Request
+(
+handler
+,
+...
+tags
+)
+:
+void
+Parameters
+handler
+:
+(
+(
+e
+)
+=>
+void
+)
+(
+e
+)
+:
+void
+Parameters
+e
+:
+RecordAuthRefreshRequestEvent
+Returns
+void
+Rest
+...
+tags
+:
+string
+[]
+Returns
+void
+Defined in
+types.d.ts:1175

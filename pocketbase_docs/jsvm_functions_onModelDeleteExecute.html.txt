@@ -1,0 +1,48 @@
+URL: https://pocketbase.io/jsvm/functions/onModelDeleteExecute.html
+
+PocketBase JSVM reference
+onModelDeleteExecute
+Function onModelDeleteExecute
+on
+Model
+Delete
+Execute
+(
+handler
+,
+...
+tags
+)
+:
+void
+Parameters
+handler
+:
+(
+(
+e
+)
+=>
+void
+)
+(
+e
+)
+:
+void
+Parameters
+e
+:
+ModelEvent
+Returns
+void
+Rest
+...
+tags
+:
+string
+[]
+Returns
+void
+Defined in
+types.d.ts:1162

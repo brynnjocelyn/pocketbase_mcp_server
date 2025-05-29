@@ -1,0 +1,76 @@
+URL: https://pocketbase.io/jsvm/classes/DynamicModel.html
+
+PocketBase JSVM reference
+DynamicModel
+Class DynamicModel
+DynamicModel creates a new dynamic model with fields from the provided data shape.
+Note that in order to use 0 as double/float initialization number you have to use negative zero (
+-0
+).
+Example:
+const
+model
+=
+new
+DynamicModel
+({
+name:
+""
+age:
+0
+,
+// int64
+totalSpent:
+-
+0
+,
+// float64
+active:
+false
+,
+roles:      [],
+meta:       {}
+})
+Copy
+Hierarchy
+DynamicModel
+Defined in
+types.d.ts:231
+Index
+Constructors
+constructor
+Constructors
+constructor
+new
+Dynamic
+Model
+(
+shape
+?
+)
+:
+DynamicModel
+Parameters
+Optional
+shape
+:
+{
+[
+key
+:
+string
+]
+:
+any
+;
+}
+[
+key
+:
+string
+]:
+any
+Returns
+DynamicModel
+Defined in
+types.d.ts:232

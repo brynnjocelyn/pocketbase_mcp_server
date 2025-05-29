@@ -1,0 +1,49 @@
+URL: https://pocketbase.io/jsvm/functions/onRecordAfterUpdateSuccess.html
+
+PocketBase JSVM reference
+onRecordAfterUpdateSuccess
+Function onRecordAfterUpdateSuccess
+on
+Record
+After
+Update
+Success
+(
+handler
+,
+...
+tags
+)
+:
+void
+Parameters
+handler
+:
+(
+(
+e
+)
+=>
+void
+)
+(
+e
+)
+:
+void
+Parameters
+e
+:
+RecordEvent
+Returns
+void
+Rest
+...
+tags
+:
+string
+[]
+Returns
+void
+Defined in
+types.d.ts:1174

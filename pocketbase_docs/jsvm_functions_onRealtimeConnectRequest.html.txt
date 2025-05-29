@@ -1,0 +1,39 @@
+URL: https://pocketbase.io/jsvm/functions/onRealtimeConnectRequest.html
+
+PocketBase JSVM reference
+onRealtimeConnectRequest
+Function onRealtimeConnectRequest
+on
+Realtime
+Connect
+Request
+(
+handler
+)
+:
+void
+Parameters
+handler
+:
+(
+(
+e
+)
+=>
+void
+)
+(
+e
+)
+:
+void
+Parameters
+e
+:
+RealtimeConnectRequestEvent
+Returns
+void
+Returns
+void
+Defined in
+types.d.ts:1166

@@ -1,0 +1,39 @@
+URL: https://pocketbase.io/jsvm/functions/onRealtimeSubscribeRequest.html
+
+PocketBase JSVM reference
+onRealtimeSubscribeRequest
+Function onRealtimeSubscribeRequest
+on
+Realtime
+Subscribe
+Request
+(
+handler
+)
+:
+void
+Parameters
+handler
+:
+(
+(
+e
+)
+=>
+void
+)
+(
+e
+)
+:
+void
+Parameters
+e
+:
+RealtimeSubscribeRequestEvent
+Returns
+void
+Returns
+void
+Defined in
+types.d.ts:1168

@@ -1,0 +1,51 @@
+URL: https://pocketbase.io/jsvm/functions/_apis.static.html
+
+PocketBase JSVM reference
+$apis
+static
+Function static
+static
+(
+dir
+,
+indexFallback
+)
+:
+(
+(
+e
+)
+=>
+void
+)
+Route handler to serve static directory content (html, js, css, etc.).
+If a file resource is missing and indexFallback is set, the request
+will be forwarded to the base index.html (useful for SPA).
+Parameters
+dir
+:
+string
+indexFallback
+:
+boolean
+Returns
+(
+(
+e
+)
+=>
+void
+)
+(
+e
+)
+:
+void
+Parameters
+e
+:
+RequestEvent
+Returns
+void
+Defined in
+types.d.ts:1025

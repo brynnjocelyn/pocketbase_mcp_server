@@ -1,0 +1,49 @@
+URL: https://pocketbase.io/jsvm/functions/onRecordAfterCreateError.html
+
+PocketBase JSVM reference
+onRecordAfterCreateError
+Function onRecordAfterCreateError
+on
+Record
+After
+Create
+Error
+(
+handler
+,
+...
+tags
+)
+:
+void
+Parameters
+handler
+:
+(
+(
+e
+)
+=>
+void
+)
+(
+e
+)
+:
+void
+Parameters
+e
+:
+RecordErrorEvent
+Returns
+void
+Rest
+...
+tags
+:
+string
+[]
+Returns
+void
+Defined in
+types.d.ts:1169

@@ -1,0 +1,30 @@
+URL: https://pocketbase.io/jsvm/functions/readerToString.html
+
+PocketBase JSVM reference
+readerToString
+Function readerToString
+reader
+To
+String
+(
+reader
+,
+maxBytes
+?
+)
+:
+string
+This method is superseded by toString.
+Parameters
+reader
+:
+any
+Optional
+maxBytes
+:
+number
+Returns
+string
+Deprecated
+Defined in
+types.d.ts:157

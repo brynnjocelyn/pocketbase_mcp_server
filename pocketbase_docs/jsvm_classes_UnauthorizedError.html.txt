@@ -1,0 +1,157 @@
+URL: https://pocketbase.io/jsvm/classes/UnauthorizedError.html
+
+PocketBase JSVM reference
+UnauthorizedError
+Class UnauthorizedError
+UnauthorizedError returns 401 ApiError.
+Hierarchy
+router
+.
+ApiError
+UnauthorizedError
+Implements
+router
+.
+ApiError
+Defined in
+types.d.ts:983
+Defined in
+types.d.ts:989
+Index
+Constructors
+constructor
+Methods
+error
+is
+raw
+Data
+Properties
+data
+message
+status
+Constructors
+constructor
+new
+Unauthorized
+Error
+(
+message
+?
+,
+data
+?
+)
+:
+UnauthorizedError
+Parameters
+Optional
+message
+:
+string
+Optional
+data
+:
+any
+Returns
+UnauthorizedError
+Inherited from router.ApiError.constructor
+Defined in
+types.d.ts:990
+Methods
+error
+error
+(
+)
+:
+string
+Error makes it compatible with the
+error
+interface.
+Returns
+string
+Inherited from
+ApiError
+.
+error
+Defined in
+types.d.ts:19294
+is
+is
+(
+target
+)
+:
+boolean
+Is reports whether the current ApiError wraps the target.
+Parameters
+target
+:
+Error
+Returns
+boolean
+Inherited from
+ApiError
+.
+is
+Defined in
+types.d.ts:19306
+raw
+Data
+raw
+Data
+(
+)
+:
+any
+RawData returns the unformatted error data (could be an internal error, text, etc.)
+Returns
+any
+Inherited from
+ApiError
+.
+rawData
+Defined in
+types.d.ts:19300
+Properties
+data
+data
+:
+_TygojaDict
+Implementation of
+ApiError
+.
+data
+Inherited from
+ApiError
+.
+data
+Defined in
+types.d.ts:19286
+message
+message
+:
+string
+Implementation of
+ApiError
+.
+message
+Inherited from
+ApiError
+.
+message
+Defined in
+types.d.ts:19287
+status
+status
+:
+number
+Implementation of
+ApiError
+.
+status
+Inherited from
+ApiError
+.
+status
+Defined in
+types.d.ts:19288

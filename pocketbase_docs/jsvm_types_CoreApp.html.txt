@@ -1,0 +1,14 @@
+URL: https://pocketbase.io/jsvm/types/CoreApp.html
+
+PocketBase JSVM reference
+CoreApp
+Type alias CoreApp
+Core
+App
+:
+excludeHooks
+<
+App
+>
+Defined in
+types.d.ts:113

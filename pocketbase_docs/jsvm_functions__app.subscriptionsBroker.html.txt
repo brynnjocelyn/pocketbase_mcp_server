@@ -1,0 +1,17 @@
+URL: https://pocketbase.io/jsvm/functions/_app.subscriptionsBroker.html
+
+PocketBase JSVM reference
+$app
+subscriptionsBroker
+Function subscriptionsBroker
+subscriptions
+Broker
+(
+)
+:
+Broker
+SubscriptionsBroker returns the app realtime subscriptions broker instance.
+Returns
+Broker
+Defined in
+types.d.ts:5610

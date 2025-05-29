@@ -1,0 +1,38 @@
+URL: https://pocketbase.io/jsvm/functions/onMailerSend.html
+
+PocketBase JSVM reference
+onMailerSend
+Function onMailerSend
+on
+Mailer
+Send
+(
+handler
+)
+:
+void
+Parameters
+handler
+:
+(
+(
+e
+)
+=>
+void
+)
+(
+e
+)
+:
+void
+Parameters
+e
+:
+MailerEvent
+Returns
+void
+Returns
+void
+Defined in
+types.d.ts:1152

@@ -1,0 +1,14 @@
+URL: https://pocketbase.io/jsvm/modules/subscriptions.html
+
+PocketBase JSVM reference
+subscriptions
+Namespace subscriptions
+Defined in
+types.d.ts:19804
+Defined in
+types.d.ts:22077
+Index
+Interfaces
+Broker
+Client
+Message

@@ -1,0 +1,37 @@
+URL: https://pocketbase.io/jsvm/modules/cron.html
+
+PocketBase JSVM reference
+cron
+Namespace cron
+Package cron implements a crontab-like service to execute and schedule
+repeative tasks/jobs.
+Example:
+c
+:
+=
+cron.
+New
+()
+c.
+MustAdd
+(
+"dailyReport"
+,
+"0 0 * * *"
+,
+func
+() {
+...
+})
+c.
+Start
+()
+Copy
+Defined in
+types.d.ts:19568
+Defined in
+types.d.ts:22080
+Index
+Interfaces
+Cron
+Job

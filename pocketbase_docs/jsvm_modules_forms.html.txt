@@ -1,0 +1,37 @@
+URL: https://pocketbase.io/jsvm/modules/forms.html
+
+PocketBase JSVM reference
+forms
+Namespace forms
+Defined in
+types.d.ts:13161
+Index
+Interfaces
+Apple
+Client
+Secret
+Create
+Record
+Upsert
+Test
+Email
+Send
+Test
+S3
+Filesystem
+new
+Apple
+Client
+Secret
+Create
+new
+Record
+Upsert
+new
+Test
+Email
+Send
+new
+Test
+S3
+Filesystem

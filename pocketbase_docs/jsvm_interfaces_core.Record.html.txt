@@ -1,0 +1,1609 @@
+URL: https://pocketbase.io/jsvm/interfaces/core.Record.html
+
+PocketBase JSVM reference
+core
+Record
+Interface Record
+Hierarchy
+_szTxNVa
+Record
+Defined in
+types.d.ts:12034
+Defined in
+types.d.ts:12042
+Defined in
+types.d.ts:12051
+Defined in
+types.d.ts:12057
+Defined in
+types.d.ts:12069
+Defined in
+types.d.ts:12075
+Defined in
+types.d.ts:12081
+Defined in
+types.d.ts:12092
+Defined in
+types.d.ts:12100
+Defined in
+types.d.ts:12110
+Defined in
+types.d.ts:12116
+Defined in
+types.d.ts:12122
+Defined in
+types.d.ts:12133
+Defined in
+types.d.ts:12139
+Defined in
+types.d.ts:12148
+Defined in
+types.d.ts:12155
+Defined in
+types.d.ts:12161
+Defined in
+types.d.ts:12175
+Defined in
+types.d.ts:12184
+Defined in
+types.d.ts:12197
+Defined in
+types.d.ts:12206
+Defined in
+types.d.ts:12209
+Defined in
+types.d.ts:12215
+Defined in
+types.d.ts:12221
+Defined in
+types.d.ts:12227
+Defined in
+types.d.ts:12233
+Defined in
+types.d.ts:12239
+Defined in
+types.d.ts:12245
+Defined in
+types.d.ts:12251
+Defined in
+types.d.ts:12257
+Defined in
+types.d.ts:12263
+Defined in
+types.d.ts:12281
+Defined in
+types.d.ts:12287
+Defined in
+types.d.ts:12302
+Defined in
+types.d.ts:12314
+Defined in
+types.d.ts:12326
+Defined in
+types.d.ts:12333
+Defined in
+types.d.ts:12340
+Defined in
+types.d.ts:12346
+Defined in
+types.d.ts:12353
+Defined in
+types.d.ts:12364
+Defined in
+types.d.ts:12372
+Defined in
+types.d.ts:12378
+Defined in
+types.d.ts:12402
+Defined in
+types.d.ts:12408
+Defined in
+types.d.ts:12414
+Defined in
+types.d.ts:12420
+Defined in
+types.d.ts:12426
+Defined in
+types.d.ts:12432
+Defined in
+types.d.ts:12438
+Defined in
+types.d.ts:12444
+Defined in
+types.d.ts:12450
+Defined in
+types.d.ts:12456
+Defined in
+types.d.ts:12462
+Defined in
+types.d.ts:12472
+Defined in
+types.d.ts:12480
+Defined in
+types.d.ts:12705
+Defined in
+types.d.ts:12716
+Defined in
+types.d.ts:12722
+Defined in
+types.d.ts:12728
+Defined in
+types.d.ts:12734
+Defined in
+types.d.ts:12740
+Index
+Methods
+base
+Files
+Path
+clone
+collection
+custom
+Data
+db
+Export
+email
+email
+Visibility
+expand
+expanded
+All
+expanded
+One
+fields
+Data
+find
+File
+Field
+By
+File
+fresh
+get
+get
+Bool
+get
+Date
+Time
+get
+Float
+get
+Geo
+Point
+get
+Int
+get
+Raw
+get
+String
+get
+String
+Slice
+get
+Unsaved
+Files
+get
+Uploaded
+Files
+hide
+hook
+Tags
+ignore
+Email
+Visibility
+ignore
+Unchanged
+Fields
+is
+New
+is
+Superuser
+last
+SavedPK
+load
+mark
+As
+New
+mark
+As
+Not
+New
+marshalJSON
+merge
+Expand
+new
+Auth
+Token
+new
+Email
+Change
+Token
+new
+File
+Token
+new
+Password
+Reset
+Token
+new
+Static
+Auth
+Token
+new
+Verification
+Token
+original
+pk
+post
+Scan
+public
+Export
+refresh
+Token
+Key
+replace
+Modifiers
+set
+set
+Email
+set
+Email
+Visibility
+set
+Expand
+set
+If
+Field
+Exists
+set
+Password
+set
+Random
+Password
+set
+Raw
+set
+Token
+Key
+set
+Verified
+table
+Name
+token
+Key
+unhide
+unmarshalJSON
+unmarshalJSONField
+validate
+Password
+verified
+with
+Custom
+Data
+Properties
+id
+Methods
+base
+Files
+Path
+base
+Files
+Path
+(
+)
+:
+string
+BaseFilesPath returns the storage dir path used by the record.
+Returns
+string
+Defined in
+types.d.ts:12079
+clone
+clone
+(
+)
+:
+core
+.
+Record
+Clone returns a shallow copy of the current record model with all of
+its collection and unknown fields data, expand and flags copied.
+use [Record.Fresh()] instead if you want a copy with only the latest
+collection fields data and everything else reset to the defaults.
+Returns
+core
+.
+Record
+Defined in
+types.d.ts:12108
+collection
+collection
+(
+)
+:
+core
+.
+Collection
+Collection returns the Collection model associated with the current Record model.
+NB! The returned collection is only for read purposes and it shouldn't be modified
+because it could have unintended side-effects on other Record models from the same collection.
+Returns
+core
+.
+Collection
+Defined in
+types.d.ts:12049
+custom
+Data
+custom
+Data
+(
+)
+:
+_TygojaDict
+CustomData returns a shallow copy ONLY of the custom record fields data,
+aka. fields that are neither defined by the collection, nor special system ones.
+Note that custom fields prefixed with "@pbInternal" are always skipped.
+Returns
+_TygojaDict
+Defined in
+types.d.ts:12146
+db
+Export
+db
+Export
+(
+app
+)
+:
+_TygojaDict
+DBExport implements the [DBExporter] interface and returns a key-value
+map with the data to be persisted when saving the Record in the database.
+Parameters
+app
+:
+App
+Returns
+_TygojaDict
+Defined in
+types.d.ts:12338
+email
+email
+(
+)
+:
+string
+Email returns the "email" record field value (usually available with Auth collections).
+Returns
+string
+Defined in
+types.d.ts:12406
+email
+Visibility
+email
+Visibility
+(
+)
+:
+boolean
+Verified returns the "emailVisibility" record field value (usually available with Auth collections).
+Returns
+boolean
+Defined in
+types.d.ts:12418
+expand
+expand
+(
+)
+:
+_TygojaDict
+Expand returns a shallow copy of the current Record model expand data (if any).
+Returns
+_TygojaDict
+Defined in
+types.d.ts:12114
+expanded
+All
+expanded
+All
+(
+relField
+)
+:
+core
+.
+Record
+[]
+ExpandedAll retrieves a slice of relation Records from the already
+loaded expand data of the current model.
+If the requested expand relation is single, this method normalizes
+the return result and will wrap the single model as a slice.
+Returns nil slice if there is no such expand relation loaded.
+Parameters
+relField
+:
+string
+Returns
+core
+.
+Record
+[]
+Defined in
+types.d.ts:12324
+expanded
+One
+expanded
+One
+(
+relField
+)
+:
+core
+.
+Record
+ExpandedOne retrieves a single relation Record from the already
+loaded expand data of the current model.
+If the requested expand relation is multiple, this method returns
+only first available Record from the expanded relation.
+Returns nil if there is no such expand relation loaded.
+Parameters
+relField
+:
+string
+Returns
+core
+.
+Record
+Defined in
+types.d.ts:12312
+fields
+Data
+fields
+Data
+(
+)
+:
+_TygojaDict
+FieldsData returns a shallow copy ONLY of the collection's fields record's data.
+Returns
+_TygojaDict
+Defined in
+types.d.ts:12137
+find
+File
+Field
+By
+File
+find
+File
+Field
+By
+File
+(
+filename
+)
+:
+core
+.
+FileField
+FindFileFieldByFile returns the first file type field for which
+any of the record's data contains the provided filename.
+Parameters
+filename
+:
+string
+Returns
+core
+.
+FileField
+Defined in
+types.d.ts:12331
+fresh
+fresh
+(
+)
+:
+core
+.
+Record
+Fresh returns a shallow copy of the current record model populated
+with its LATEST data state and everything else reset to the defaults
+(aka. no expand, no unknown fields and with default visibility flags).
+Returns
+core
+.
+Record
+Defined in
+types.d.ts:12098
+get
+get
+(
+key
+)
+:
+any
+Get returns a normalized single record model data value for "key".
+Parameters
+key
+:
+string
+Returns
+any
+Defined in
+types.d.ts:12213
+get
+Bool
+get
+Bool
+(
+key
+)
+:
+boolean
+GetBool returns the data value for "key" as a bool.
+Parameters
+key
+:
+string
+Returns
+boolean
+Defined in
+types.d.ts:12225
+get
+Date
+Time
+get
+Date
+Time
+(
+key
+)
+:
+types
+.
+DateTime
+GetDateTime returns the data value for "key" as a DateTime instance.
+Parameters
+key
+:
+string
+Returns
+types
+.
+DateTime
+Defined in
+types.d.ts:12249
+get
+Float
+get
+Float
+(
+key
+)
+:
+number
+GetFloat returns the data value for "key" as a float64.
+Parameters
+key
+:
+string
+Returns
+number
+Defined in
+types.d.ts:12243
+get
+Geo
+Point
+get
+Geo
+Point
+(
+key
+)
+:
+GeoPoint
+GetGeoPoint returns the data value for "key" as a GeoPoint instance.
+Parameters
+key
+:
+string
+Returns
+GeoPoint
+Defined in
+types.d.ts:12255
+get
+Int
+get
+Int
+(
+key
+)
+:
+number
+GetInt returns the data value for "key" as an int.
+Parameters
+key
+:
+string
+Returns
+number
+Defined in
+types.d.ts:12237
+get
+Raw
+get
+Raw
+(
+key
+)
+:
+any
+Parameters
+key
+:
+string
+Returns
+any
+Defined in
+types.d.ts:12207
+get
+String
+get
+String
+(
+key
+)
+:
+string
+GetString returns the data value for "key" as a string.
+Parameters
+key
+:
+string
+Returns
+string
+Defined in
+types.d.ts:12231
+get
+String
+Slice
+get
+String
+Slice
+(
+key
+)
+:
+string
+[]
+GetStringSlice returns the data value for "key" as a slice of non-zero unique strings.
+Parameters
+key
+:
+string
+Returns
+string
+[]
+Defined in
+types.d.ts:12261
+get
+Unsaved
+Files
+get
+Unsaved
+Files
+(
+key
+)
+:
+filesystem
+.
+File
+[]
+GetUnsavedFiles returns the uploaded files for the provided "file" field key,
+(aka. the current [*filesytem.File] values) so that you can apply further
+validations or modifications (including changing the file name or content before persisting).
+Example:
+files
+:
+=
+record.
+GetUnsavedFiles
+(
+"documents"
+)
+for _,
+f
+:
+=
+range files {
+f.Name
+=
+"doc_"
++
+f.Name
+// add a prefix to each file name
+}
+app.
+Save
+(record)
+// the files are pointers so the applied changes will transparently reflect on the record value
+Copy
+Parameters
+key
+:
+string
+Returns
+filesystem
+.
+File
+[]
+Defined in
+types.d.ts:12279
+get
+Uploaded
+Files
+get
+Uploaded
+Files
+(
+key
+)
+:
+filesystem
+.
+File
+[]
+Deprecated: replaced with GetUnsavedFiles.
+Parameters
+key
+:
+string
+Returns
+filesystem
+.
+File
+[]
+Defined in
+types.d.ts:12285
+hide
+hide
+(
+...
+fieldNames
+)
+:
+core
+.
+Record
+Hide hides the specified fields from the public safe serialization of the record.
+Parameters
+Rest
+...
+fieldNames
+:
+string
+[]
+Returns
+core
+.
+Record
+Defined in
+types.d.ts:12344
+hook
+Tags
+hook
+Tags
+(
+)
+:
+string
+[]
+HookTags returns the hook tags associated with the current record.
+Returns
+string
+[]
+Defined in
+types.d.ts:12073
+ignore
+Email
+Visibility
+ignore
+Email
+Visibility
+(
+state
+)
+:
+core
+.
+Record
+IgnoreEmailVisibility toggles the flag to ignore the auth record email visibility check.
+Parameters
+state
+:
+boolean
+Returns
+core
+.
+Record
+Defined in
+types.d.ts:12159
+ignore
+Unchanged
+Fields
+ignore
+Unchanged
+Fields
+(
+state
+)
+:
+core
+.
+Record
+IgnoreUnchangedFields toggles the flag to ignore the unchanged fields
+from the DB export for the UPDATE SQL query.
+This could be used if you want to save only the record fields that you've changed
+without overwrite other untouched fields in case of concurrent update.
+Note that the fields change comparison is based on the current fields against m.Original()
+(aka. if you have performed save on the same Record instance multiple times you may have to refetch it,
+so that m.Original() could reflect the last saved change).
+Parameters
+state
+:
+boolean
+Returns
+core
+.
+Record
+Defined in
+types.d.ts:12173
+is
+New
+is
+New
+(
+)
+:
+boolean
+IsNew indicates what type of db query (insert or update)
+should be used with the model instance.
+Returns
+boolean
+Inherited from _szTxNVa.isNew
+Defined in
+types.d.ts:8576
+is
+Superuser
+is
+Superuser
+(
+)
+:
+boolean
+IsSuperuser returns whether the current record is a superuser, aka.
+whether the record is from the _superusers collection.
+Returns
+boolean
+Defined in
+types.d.ts:12485
+last
+SavedPK
+last
+SavedPK
+(
+)
+:
+any
+LastSavedPK returns the last saved primary key of the model.
+Its value is updated to the latest PK value after MarkAsNotNew() or PostScan() calls.
+Returns
+any
+Inherited from _szTxNVa.lastSavedPK
+Defined in
+types.d.ts:8566
+load
+load
+(
+data
+)
+:
+void
+Load bulk loads the provided data into the current Record model.
+Parameters
+data
+:
+_TygojaDict
+Returns
+void
+Defined in
+types.d.ts:12219
+mark
+As
+New
+mark
+As
+New
+(
+)
+:
+void
+MarkAsNew clears the pk field and marks the current model as "new"
+(aka. forces m.IsNew() to be true).
+Returns
+void
+Inherited from _szTxNVa.markAsNew
+Defined in
+types.d.ts:8583
+mark
+As
+Not
+New
+mark
+As
+Not
+New
+(
+)
+:
+void
+MarkAsNew set the pk field to the Id value and marks the current model
+as NOT "new" (aka. forces m.IsNew() to be false).
+Returns
+void
+Inherited from _szTxNVa.markAsNotNew
+Defined in
+types.d.ts:8590
+marshalJSON
+marshalJSON
+(
+)
+:
+string
+|
+number
+[]
+MarshalJSON implements the [json.Marshaler] interface.
+Only the data exported by
+PublicExport()
+will be serialized.
+Returns
+string
+|
+number
+[]
+Defined in
+types.d.ts:12370
+merge
+Expand
+merge
+Expand
+(
+expand
+)
+:
+void
+MergeExpand merges recursively the provided expand data into
+the current model's expand (if any).
+Note that if an expanded prop with the same key is a slice (old or new expand)
+then both old and new records will be merged into a new slice (aka. a :merge: [b,c] => [a,b,c]).
+Otherwise the "old" expanded record will be replace with the "new" one (aka. a :merge: aNew => aNew).
+Parameters
+expand
+:
+_TygojaDict
+Returns
+void
+Defined in
+types.d.ts:12131
+new
+Auth
+Token
+new
+Auth
+Token
+(
+)
+:
+string
+NewAuthToken generates and returns a new record authentication token.
+Returns
+string
+Defined in
+types.d.ts:12720
+new
+Email
+Change
+Token
+new
+Email
+Change
+Token
+(
+newEmail
+)
+:
+string
+NewEmailChangeToken generates and returns a new auth record change email request token.
+Parameters
+newEmail
+:
+string
+Returns
+string
+Defined in
+types.d.ts:12738
+new
+File
+Token
+new
+File
+Token
+(
+)
+:
+string
+NewFileToken generates and returns a new record private file access token.
+Returns
+string
+Defined in
+types.d.ts:12744
+new
+Password
+Reset
+Token
+new
+Password
+Reset
+Token
+(
+)
+:
+string
+NewPasswordResetToken generates and returns a new auth record password reset request token.
+Returns
+string
+Defined in
+types.d.ts:12732
+new
+Static
+Auth
+Token
+new
+Static
+Auth
+Token
+(
+duration
+)
+:
+string
+NewStaticAuthToken generates and returns a new static record authentication token.
+Static auth tokens are similar to the regular auth tokens, but are
+non-refreshable and support custom duration.
+Zero or negative duration will fallback to the duration from the auth collection settings.
+Parameters
+duration
+:
+Duration
+Returns
+string
+Defined in
+types.d.ts:12714
+new
+Verification
+Token
+new
+Verification
+Token
+(
+)
+:
+string
+NewVerificationToken generates and returns a new record verification token.
+Returns
+string
+Defined in
+types.d.ts:12726
+original
+original
+(
+)
+:
+core
+.
+Record
+Original returns a shallow copy of the current record model populated
+with its ORIGINAL db data state (aka. right after PostScan())
+and everything else reset to the defaults.
+If record was created using NewRecord() the original will be always
+a blank record (until PostScan() is invoked).
+Returns
+core
+.
+Record
+Defined in
+types.d.ts:12090
+pk
+pk
+(
+)
+:
+any
+Returns
+any
+Inherited from _szTxNVa.pk
+Defined in
+types.d.ts:8569
+post
+Scan
+post
+Scan
+(
+)
+:
+void
+PostScan implements the [dbx.PostScanner] interface.
+It essentially refreshes/updates the current Record original state
+as if the model was fetched from the databases for the first time.
+Or in other words, it means that m.Original().FieldsData() will have
+the same values as m.Record().FieldsData().
+Returns
+void
+Inherited from _szTxNVa.postScan
+Defined in
+types.d.ts:12067
+public
+Export
+public
+Export
+(
+)
+:
+_TygojaDict
+PublicExport exports only the record fields that are safe to be public.
+To export unknown data fields you need to set record.WithCustomData(true).
+For auth records, to force the export of the email field you need to set
+record.IgnoreEmailVisibility(true).
+Returns
+_TygojaDict
+Defined in
+types.d.ts:12362
+refresh
+Token
+Key
+refresh
+Token
+Key
+(
+)
+:
+void
+RefreshTokenKey generates and sets a new random auth record "tokenKey".
+Returns
+void
+Defined in
+types.d.ts:12454
+replace
+Modifiers
+replace
+Modifiers
+(
+data
+)
+:
+_TygojaDict
+ReplaceModifiers returns a new map with applied modifier
+values based on the current record and the specified data.
+The resolved modifier keys will be removed.
+Multiple modifiers will be applied one after another,
+while reusing the previous base key value result (ex. 1; -5; +2 => -2).
+Note that because Go doesn't guaranteed the iteration order of maps,
+we would explicitly apply shorter keys first for a more consistent and reproducible behavior.
+Example usage:
+newData
+:
+=
+record.
+ReplaceModifiers
+(data)
+// record: {"field": 10}
+// data:   {"field+": 5}
+// result: {"field": 15}
+Copy
+Parameters
+data
+:
+_TygojaDict
+Returns
+_TygojaDict
+Defined in
+types.d.ts:12400
+set
+set
+(
+key
+,
+value
+)
+:
+void
+Set sets the provided key-value data pair into the current Record model.
+If the record collection has field with name matching the provided "key",
+the value will be further normalized according to the field setter(s).
+Parameters
+key
+:
+string
+value
+:
+any
+Returns
+void
+Defined in
+types.d.ts:12204
+set
+Email
+set
+Email
+(
+email
+)
+:
+void
+SetEmail sets the "email" record field value (usually available with Auth collections).
+Parameters
+email
+:
+string
+Returns
+void
+Defined in
+types.d.ts:12412
+set
+Email
+Visibility
+set
+Email
+Visibility
+(
+visible
+)
+:
+void
+SetEmailVisibility sets the "emailVisibility" record field value (usually available with Auth collections).
+Parameters
+visible
+:
+boolean
+Returns
+void
+Defined in
+types.d.ts:12424
+set
+Expand
+set
+Expand
+(
+expand
+)
+:
+void
+SetExpand replaces the current Record's expand with the provided expand arg data (shallow copied).
+Parameters
+expand
+:
+_TygojaDict
+Returns
+void
+Defined in
+types.d.ts:12120
+set
+If
+Field
+Exists
+set
+If
+Field
+Exists
+(
+key
+,
+value
+)
+:
+core
+.
+Field
+SetIfFieldExists sets the provided key-value data pair into the current Record model
+ONLY if key is existing Collection field name/modifier.
+This method does nothing if key is not a known Collection field name/modifier.
+On success returns the matched Field, otherwise - nil.
+To set any key-value, including custom/unknown fields, use the [Record.Set] method.
+Parameters
+key
+:
+string
+value
+:
+any
+Returns
+core
+.
+Field
+Defined in
+types.d.ts:12195
+set
+Password
+set
+Password
+(
+password
+)
+:
+void
+SetPassword sets the "password" record field value (usually available with Auth collections).
+Parameters
+password
+:
+string
+Returns
+void
+Defined in
+types.d.ts:12460
+set
+Random
+Password
+set
+Random
+Password
+(
+)
+:
+string
+SetRandomPassword sets the "password" auth record field to a random autogenerated value.
+The autogenerated password is ~30 characters and it is set directly as hash,
+aka. the field plain password value validators (length, pattern, etc.) are ignored
+(this is usually used as part of the auto created OTP or OAuth2 user flows).
+Returns
+string
+Defined in
+types.d.ts:12470
+set
+Raw
+set
+Raw
+(
+key
+,
+value
+)
+:
+void
+Set sets the provided key-value data pair into the current Record
+model directly as it is WITHOUT NORMALIZATIONS.
+See also [Record.Set].
+Parameters
+key
+:
+string
+value
+:
+any
+Returns
+void
+Defined in
+types.d.ts:12182
+set
+Token
+Key
+set
+Token
+Key
+(
+key
+)
+:
+void
+SetTokenKey sets the "tokenKey" record field value (usually available with Auth collections).
+Parameters
+key
+:
+string
+Returns
+void
+Defined in
+types.d.ts:12448
+set
+Verified
+set
+Verified
+(
+verified
+)
+:
+void
+SetVerified sets the "verified" record field value (usually available with Auth collections).
+Parameters
+verified
+:
+boolean
+Returns
+void
+Defined in
+types.d.ts:12436
+table
+Name
+table
+Name
+(
+)
+:
+string
+TableName returns the table name associated with the current Record model.
+Returns
+string
+Defined in
+types.d.ts:12055
+token
+Key
+token
+Key
+(
+)
+:
+string
+TokenKey returns the "tokenKey" record field value (usually available with Auth collections).
+Returns
+string
+Defined in
+types.d.ts:12442
+unhide
+unhide
+(
+...
+fieldNames
+)
+:
+core
+.
+Record
+Unhide forces to unhide the specified fields from the public safe serialization
+of the record (even when the collection field itself is marked as hidden).
+Parameters
+Rest
+...
+fieldNames
+:
+string
+[]
+Returns
+core
+.
+Record
+Defined in
+types.d.ts:12351
+unmarshalJSON
+unmarshalJSON
+(
+data
+)
+:
+void
+UnmarshalJSON implements the [json.Unmarshaler] interface.
+Parameters
+data
+:
+string
+|
+number
+[]
+Returns
+void
+Defined in
+types.d.ts:12376
+unmarshalJSONField
+unmarshalJSONField
+(
+key
+,
+result
+)
+:
+void
+Retrieves the "key" json field value and unmarshals it into "result".
+Example
+result
+:
+=
+struct {
+FirstName string
+`json:"first_name"`
+}{}
+err
+:
+=
+m.
+UnmarshalJSONField
+(
+"my_field_name"
+,
+&
+result)
+Copy
+Parameters
+key
+:
+string
+result
+:
+any
+Returns
+void
+Defined in
+types.d.ts:12300
+validate
+Password
+validate
+Password
+(
+password
+)
+:
+boolean
+ValidatePassword validates a plain password against the "password" record field.
+Returns false if the password is incorrect.
+Parameters
+password
+:
+string
+Returns
+boolean
+Defined in
+types.d.ts:12478
+verified
+verified
+(
+)
+:
+boolean
+Verified returns the "verified" record field value (usually available with Auth collections).
+Returns
+boolean
+Defined in
+types.d.ts:12430
+with
+Custom
+Data
+with
+Custom
+Data
+(
+state
+)
+:
+core
+.
+Record
+WithCustomData toggles the export/serialization of custom data fields
+(false by default).
+Parameters
+state
+:
+boolean
+Returns
+core
+.
+Record
+Defined in
+types.d.ts:12153
+Properties
+id
+id
+:
+string
+Id is the primary key of the model.
+It is usually autogenerated by the parent model implementation.
+Inherited from _szTxNVa.id
+Defined in
+types.d.ts:8558

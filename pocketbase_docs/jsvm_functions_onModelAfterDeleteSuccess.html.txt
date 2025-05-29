@@ -1,0 +1,49 @@
+URL: https://pocketbase.io/jsvm/functions/onModelAfterDeleteSuccess.html
+
+PocketBase JSVM reference
+onModelAfterDeleteSuccess
+Function onModelAfterDeleteSuccess
+on
+Model
+After
+Delete
+Success
+(
+handler
+,
+...
+tags
+)
+:
+void
+Parameters
+handler
+:
+(
+(
+e
+)
+=>
+void
+)
+(
+e
+)
+:
+void
+Parameters
+e
+:
+ModelEvent
+Returns
+void
+Rest
+...
+tags
+:
+string
+[]
+Returns
+void
+Defined in
+types.d.ts:1156

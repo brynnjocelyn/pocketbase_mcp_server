@@ -1,0 +1,38 @@
+URL: https://pocketbase.io/jsvm/modules/sql.html
+
+PocketBase JSVM reference
+sql
+Namespace sql
+Package sql provides a generic interface around SQL (or SQL-like)
+databases.
+The sql package must be used in conjunction with a database driver.
+See
+https://golang.org/s/sqldrivers
+for a list of drivers.
+Drivers that do not support context cancellation will not return until
+after the query is completed.
+For usage examples, see the wiki page at
+https://golang.org/s/sqlwiki
+.
+Defined in
+types.d.ts:17225
+Defined in
+types.d.ts:21574
+Index
+Interfaces
+Column
+Type
+Conn
+DB
+DBStats
+Isolation
+Level
+Null
+String
+Result
+Row
+Rows
+Stmt
+Tx
+Tx
+Options

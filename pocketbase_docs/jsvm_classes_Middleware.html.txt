@@ -1,0 +1,75 @@
+URL: https://pocketbase.io/jsvm/classes/Middleware.html
+
+PocketBase JSVM reference
+Middleware
+Class Middleware
+Middleware defines a single request middleware handler.
+This class is usually used when you want to explicitly specify a priority to your custom route middleware.
+Example:
+routerUse
+(
+new
+Middleware
+((
+e
+)
+=>
+{
+console.
+log
+(e.request.url.path)
+return
+e.
+next
+()
+},
+-
+10
+))
+Copy
+Hierarchy
+Middleware
+Defined in
+types.d.ts:568
+Index
+Constructors
+constructor
+Constructors
+constructor
+new
+Middleware
+(
+func
+,
+priority
+?
+,
+id
+?
+)
+:
+Middleware
+Parameters
+func
+:
+string
+|
+(
+(
+e
+)
+=>
+void
+)
+Optional
+priority
+:
+number
+Optional
+id
+:
+string
+Returns
+Middleware
+Defined in
+types.d.ts:569

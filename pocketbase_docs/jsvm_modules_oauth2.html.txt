@@ -1,0 +1,16 @@
+URL: https://pocketbase.io/jsvm/modules/oauth2.html
+
+PocketBase JSVM reference
+oauth2
+Namespace oauth2
+Copyright 2023 The Go Authors. All rights reserved.
+Use of this source code is governed by a BSD-style
+license that can be found in the LICENSE file.
+Defined in
+types.d.ts:22182
+Index
+Interfaces
+Auth
+Code
+Option
+Token

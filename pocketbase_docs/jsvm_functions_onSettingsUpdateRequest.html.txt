@@ -1,0 +1,39 @@
+URL: https://pocketbase.io/jsvm/functions/onSettingsUpdateRequest.html
+
+PocketBase JSVM reference
+onSettingsUpdateRequest
+Function onSettingsUpdateRequest
+on
+Settings
+Update
+Request
+(
+handler
+)
+:
+void
+Parameters
+handler
+:
+(
+(
+e
+)
+=>
+void
+)
+(
+e
+)
+:
+void
+Parameters
+e
+:
+SettingsUpdateRequestEvent
+Returns
+void
+Returns
+void
+Defined in
+types.d.ts:1202

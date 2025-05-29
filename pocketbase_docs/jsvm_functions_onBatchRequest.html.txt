@@ -1,0 +1,38 @@
+URL: https://pocketbase.io/jsvm/functions/onBatchRequest.html
+
+PocketBase JSVM reference
+onBatchRequest
+Function onBatchRequest
+on
+Batch
+Request
+(
+handler
+)
+:
+void
+Parameters
+handler
+:
+(
+(
+e
+)
+=>
+void
+)
+(
+e
+)
+:
+void
+Parameters
+e
+:
+BatchRequestEvent
+Returns
+void
+Returns
+void
+Defined in
+types.d.ts:1124

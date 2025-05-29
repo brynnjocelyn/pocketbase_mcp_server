@@ -1,0 +1,28 @@
+URL: https://pocketbase.io/jsvm/functions/cronRemove.html
+
+PocketBase JSVM reference
+cronRemove
+Function cronRemove
+cron
+Remove
+(
+jobId
+)
+:
+void
+CronRemove removes a single registered cron job by its name.
+Example:
+cronRemove
+(
+"hello"
+)
+Copy
+Note that this method is available only in pb_hooks context.
+Parameters
+jobId
+:
+string
+Returns
+void
+Defined in
+types.d.ts:46

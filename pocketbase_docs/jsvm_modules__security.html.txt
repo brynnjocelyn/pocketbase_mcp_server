@@ -1,0 +1,40 @@
+URL: https://pocketbase.io/jsvm/modules/_security.html
+
+PocketBase JSVM reference
+$security
+Namespace $security
+$security
+defines low level helpers for creating
+and parsing JWTs, random string generation, AES encryption, etc.
+Defined in
+types.d.ts:755
+Index
+Functions
+createJWT
+decrypt
+encrypt
+equal
+hs256
+hs512
+md5
+parseJWT
+parse
+UnverifiedJWT
+pseudorandom
+String
+pseudorandom
+String
+With
+Alphabet
+random
+String
+random
+String
+By
+Regex
+random
+String
+With
+Alphabet
+sha256
+sha512

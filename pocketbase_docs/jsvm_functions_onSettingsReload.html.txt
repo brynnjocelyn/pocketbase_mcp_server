@@ -1,0 +1,38 @@
+URL: https://pocketbase.io/jsvm/functions/onSettingsReload.html
+
+PocketBase JSVM reference
+onSettingsReload
+Function onSettingsReload
+on
+Settings
+Reload
+(
+handler
+)
+:
+void
+Parameters
+handler
+:
+(
+(
+e
+)
+=>
+void
+)
+(
+e
+)
+:
+void
+Parameters
+e
+:
+SettingsReloadEvent
+Returns
+void
+Returns
+void
+Defined in
+types.d.ts:1201

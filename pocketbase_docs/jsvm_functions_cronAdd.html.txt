@@ -1,0 +1,62 @@
+URL: https://pocketbase.io/jsvm/functions/cronAdd.html
+
+PocketBase JSVM reference
+cronAdd
+Function cronAdd
+cron
+Add
+(
+jobId
+,
+cronExpr
+,
+handler
+)
+:
+void
+CronAdd registers a new cron job.
+If a cron job with the specified name already exist, it will be
+replaced with the new one.
+Example:
+// prints "Hello world!" on every 30 minutes
+cronAdd
+(
+"hello"
+,
+"*/30 * * * *"
+, ()
+=>
+{
+console.
+log
+(
+"Hello world!"
+)
+})
+Copy
+Note that this method is available only in pb_hooks context.
+Parameters
+jobId
+:
+string
+cronExpr
+:
+string
+handler
+:
+(
+(
+)
+=>
+void
+)
+(
+)
+:
+void
+Returns
+void
+Returns
+void
+Defined in
+types.d.ts:27

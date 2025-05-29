@@ -1,0 +1,304 @@
+URL: https://pocketbase.io/jsvm/classes/MailerMessage.html
+
+PocketBase JSVM reference
+MailerMessage
+Class MailerMessage
+MailerMessage defines a single email message.
+const
+message
+=
+new
+MailerMessage
+({
+from: {
+address: $app.
+settings
+().meta.senderAddress,
+name:    $app.
+settings
+().meta.senderName,
+},
+to:      [{address:
+"test@example.com"
+}],
+subject:
+"YOUR_SUBJECT..."
+,
+html:
+"YOUR_HTML_BODY..."
+,
+})
+$app.
+newMailClient
+().
+send
+(message)
+Copy
+Hierarchy
+mailer
+.
+Message
+MailerMessage
+Implements
+mailer
+.
+Message
+Defined in
+types.d.ts:479
+Defined in
+types.d.ts:499
+Index
+Constructors
+constructor
+Properties
+attachments
+bcc
+cc
+from
+headers
+html
+inline
+Attachments
+subject
+text
+to
+Constructors
+constructor
+new
+Mailer
+Message
+(
+message
+?
+)
+:
+MailerMessage
+Parameters
+Optional
+message
+:
+Partial
+<
+mailer
+.
+Message
+>
+Returns
+MailerMessage
+Inherited from mailer.Message.constructor
+Defined in
+types.d.ts:500
+Properties
+attachments
+attachments
+:
+_TygojaDict
+Implementation of
+Message
+.
+attachments
+Inherited from
+Message
+.
+attachments
+Defined in
+types.d.ts:20237
+bcc
+bcc
+:
+{
+address
+:
+string
+;
+name
+?:
+string
+;
+}
+[]
+Type declaration
+address
+:
+string
+Optional
+name
+?:
+string
+Implementation of
+Message
+.
+bcc
+Inherited from
+Message
+.
+bcc
+Defined in
+types.d.ts:20231
+cc
+cc
+:
+{
+address
+:
+string
+;
+name
+?:
+string
+;
+}
+[]
+Type declaration
+address
+:
+string
+Optional
+name
+?:
+string
+Implementation of
+Message
+.
+cc
+Inherited from
+Message
+.
+cc
+Defined in
+types.d.ts:20232
+from
+from
+:
+{
+address
+:
+string
+;
+name
+?:
+string
+;
+}
+Type declaration
+address
+:
+string
+Optional
+name
+?:
+string
+Implementation of
+Message
+.
+from
+Inherited from
+Message
+.
+from
+Defined in
+types.d.ts:20229
+headers
+headers
+:
+_TygojaDict
+Implementation of
+Message
+.
+headers
+Inherited from
+Message
+.
+headers
+Defined in
+types.d.ts:20236
+html
+html
+:
+string
+Implementation of
+Message
+.
+html
+Inherited from
+Message
+.
+html
+Defined in
+types.d.ts:20234
+inline
+Attachments
+inline
+Attachments
+:
+_TygojaDict
+Implementation of
+Message
+.
+inlineAttachments
+Inherited from
+Message
+.
+inlineAttachments
+Defined in
+types.d.ts:20238
+subject
+subject
+:
+string
+Implementation of
+Message
+.
+subject
+Inherited from
+Message
+.
+subject
+Defined in
+types.d.ts:20233
+text
+text
+:
+string
+Implementation of
+Message
+.
+text
+Inherited from
+Message
+.
+text
+Defined in
+types.d.ts:20235
+to
+to
+:
+{
+address
+:
+string
+;
+name
+?:
+string
+;
+}
+[]
+Type declaration
+address
+:
+string
+Optional
+name
+?:
+string
+Implementation of
+Message
+.
+to
+Inherited from
+Message
+.
+to
+Defined in
+types.d.ts:20230

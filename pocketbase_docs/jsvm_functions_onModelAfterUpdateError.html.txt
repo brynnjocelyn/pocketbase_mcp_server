@@ -1,0 +1,49 @@
+URL: https://pocketbase.io/jsvm/functions/onModelAfterUpdateError.html
+
+PocketBase JSVM reference
+onModelAfterUpdateError
+Function onModelAfterUpdateError
+on
+Model
+After
+Update
+Error
+(
+handler
+,
+...
+tags
+)
+:
+void
+Parameters
+handler
+:
+(
+(
+e
+)
+=>
+void
+)
+(
+e
+)
+:
+void
+Parameters
+e
+:
+ModelErrorEvent
+Returns
+void
+Rest
+...
+tags
+:
+string
+[]
+Returns
+void
+Defined in
+types.d.ts:1157

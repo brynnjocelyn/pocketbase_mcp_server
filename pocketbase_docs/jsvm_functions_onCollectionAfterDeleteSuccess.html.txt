@@ -1,0 +1,49 @@
+URL: https://pocketbase.io/jsvm/functions/onCollectionAfterDeleteSuccess.html
+
+PocketBase JSVM reference
+onCollectionAfterDeleteSuccess
+Function onCollectionAfterDeleteSuccess
+on
+Collection
+After
+Delete
+Success
+(
+handler
+,
+...
+tags
+)
+:
+void
+Parameters
+handler
+:
+(
+(
+e
+)
+=>
+void
+)
+(
+e
+)
+:
+void
+Parameters
+e
+:
+CollectionEvent
+Returns
+void
+Rest
+...
+tags
+:
+string
+[]
+Returns
+void
+Defined in
+types.d.ts:1129

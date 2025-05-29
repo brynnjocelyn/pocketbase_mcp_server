@@ -1,0 +1,42 @@
+URL: https://pocketbase.io/jsvm/types/excludeHooks.html
+
+PocketBase JSVM reference
+excludeHooks
+Type alias excludeHooks<Type>
+exclude
+Hooks
+<
+Type
+>
+:
+{
+[
+Property
+in
+keyof
+Type
+as
+Exclude
+<
+Property
+,
+`
+on
+${
+string
+}
+`
+|
+"cron"
+>
+]
+:
+Type
+[
+Property
+]
+}
+Type Parameters
+Type
+Defined in
+types.d.ts:108

@@ -1,0 +1,39 @@
+URL: https://pocketbase.io/jsvm/modules/_apis.html
+
+PocketBase JSVM reference
+$apis
+Namespace $apis
+$apis
+defines commonly used PocketBase api helpers and middlewares.
+Defined in
+types.d.ts:1018
+Index
+Functions
+body
+Limit
+enrich
+Record
+enrich
+Records
+gzip
+record
+Auth
+Response
+require
+Auth
+require
+Guest
+Only
+require
+Superuser
+Auth
+require
+Superuser
+Or
+Owner
+Auth
+skip
+Success
+Activity
+Log
+static

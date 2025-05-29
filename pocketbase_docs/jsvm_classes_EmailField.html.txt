@@ -1,0 +1,512 @@
+URL: https://pocketbase.io/jsvm/classes/EmailField.html
+
+PocketBase JSVM reference
+EmailField
+Class EmailField
+EmailField defines "email" type field for storing a single email string address.
+The respective zero record field value is empty string.
+Hierarchy
+core
+.
+EmailField
+EmailField
+Implements
+core
+.
+EmailField
+Defined in
+types.d.ts:379
+Defined in
+types.d.ts:385
+Index
+Constructors
+constructor
+Methods
+column
+Type
+get
+Hidden
+get
+Id
+get
+Name
+get
+System
+prepare
+Value
+set
+Hidden
+set
+Id
+set
+Name
+set
+System
+type
+validate
+Settings
+validate
+Value
+Properties
+except
+Domains
+hidden
+id
+name
+only
+Domains
+presentable
+required
+system
+Constructors
+constructor
+new
+Email
+Field
+(
+data
+?
+)
+:
+EmailField
+Parameters
+Optional
+data
+:
+Partial
+<
+core
+.
+EmailField
+>
+Returns
+EmailField
+Inherited from core.EmailField.constructor
+Defined in
+types.d.ts:386
+Methods
+column
+Type
+column
+Type
+(
+app
+)
+:
+string
+ColumnType implements [Field.ColumnType] interface method.
+Parameters
+app
+:
+App
+Returns
+string
+Inherited from
+EmailField
+.
+columnType
+Defined in
+types.d.ts:9913
+get
+Hidden
+get
+Hidden
+(
+)
+:
+boolean
+GetHidden implements [Field.GetHidden] interface method.
+Returns
+boolean
+Inherited from
+EmailField
+.
+getHidden
+Defined in
+types.d.ts:9901
+get
+Id
+get
+Id
+(
+)
+:
+string
+GetId implements [Field.GetId] interface method.
+Returns
+string
+Inherited from
+EmailField
+.
+getId
+Defined in
+types.d.ts:9865
+get
+Name
+get
+Name
+(
+)
+:
+string
+GetName implements [Field.GetName] interface method.
+Returns
+string
+Inherited from
+EmailField
+.
+getName
+Defined in
+types.d.ts:9877
+get
+System
+get
+System
+(
+)
+:
+boolean
+GetSystem implements [Field.GetSystem] interface method.
+Returns
+boolean
+Inherited from
+EmailField
+.
+getSystem
+Defined in
+types.d.ts:9889
+prepare
+Value
+prepare
+Value
+(
+record
+,
+raw
+)
+:
+any
+PrepareValue implements [Field.PrepareValue] interface method.
+Parameters
+record
+:
+core
+.
+Record
+raw
+:
+any
+Returns
+any
+Inherited from
+EmailField
+.
+prepareValue
+Defined in
+types.d.ts:9919
+set
+Hidden
+set
+Hidden
+(
+hidden
+)
+:
+void
+SetHidden implements [Field.SetHidden] interface method.
+Parameters
+hidden
+:
+boolean
+Returns
+void
+Inherited from
+EmailField
+.
+setHidden
+Defined in
+types.d.ts:9907
+set
+Id
+set
+Id
+(
+id
+)
+:
+void
+SetId implements [Field.SetId] interface method.
+Parameters
+id
+:
+string
+Returns
+void
+Inherited from
+EmailField
+.
+setId
+Defined in
+types.d.ts:9871
+set
+Name
+set
+Name
+(
+name
+)
+:
+void
+SetName implements [Field.SetName] interface method.
+Parameters
+name
+:
+string
+Returns
+void
+Inherited from
+EmailField
+.
+setName
+Defined in
+types.d.ts:9883
+set
+System
+set
+System
+(
+system
+)
+:
+void
+SetSystem implements [Field.SetSystem] interface method.
+Parameters
+system
+:
+boolean
+Returns
+void
+Inherited from
+EmailField
+.
+setSystem
+Defined in
+types.d.ts:9895
+type
+type
+(
+)
+:
+string
+Type implements [Field.Type] interface method.
+Returns
+string
+Inherited from
+EmailField
+.
+type
+Defined in
+types.d.ts:9859
+validate
+Settings
+validate
+Settings
+(
+ctx
+,
+app
+,
+collection
+)
+:
+void
+ValidateSettings implements [Field.ValidateSettings] interface method.
+Parameters
+ctx
+:
+context
+.
+Context
+app
+:
+App
+collection
+:
+core
+.
+Collection
+Returns
+void
+Inherited from
+EmailField
+.
+validateSettings
+Defined in
+types.d.ts:9931
+validate
+Value
+validate
+Value
+(
+ctx
+,
+app
+,
+record
+)
+:
+void
+ValidateValue implements [Field.ValidateValue] interface method.
+Parameters
+ctx
+:
+context
+.
+Context
+app
+:
+App
+record
+:
+core
+.
+Record
+Returns
+void
+Inherited from
+EmailField
+.
+validateValue
+Defined in
+types.d.ts:9925
+Properties
+except
+Domains
+except
+Domains
+:
+string
+[]
+ExceptDomains will require the email domain to NOT be included in the listed ones.
+This validator can be set only if OnlyDomains is empty.
+Implementation of
+EmailField
+.
+exceptDomains
+Inherited from
+EmailField
+.
+exceptDomains
+Defined in
+types.d.ts:9843
+hidden
+hidden
+:
+boolean
+Hidden hides the field from the API response.
+Implementation of
+EmailField
+.
+hidden
+Inherited from
+EmailField
+.
+hidden
+Defined in
+types.d.ts:9832
+id
+id
+:
+string
+Id is the unique stable field identifier.
+It is automatically generated from the name when adding to a collection FieldsList.
+Implementation of
+EmailField
+.
+id
+Inherited from
+EmailField
+.
+id
+Defined in
+types.d.ts:9824
+name
+name
+:
+string
+Name (required) is the unique name of the field.
+Implementation of
+EmailField
+.
+name
+Inherited from
+EmailField
+.
+name
+Defined in
+types.d.ts:9818
+only
+Domains
+only
+Domains
+:
+string
+[]
+OnlyDomains will require the email domain to be included in the listed ones.
+This validator can be set only if ExceptDomains is empty.
+Implementation of
+EmailField
+.
+onlyDomains
+Inherited from
+EmailField
+.
+onlyDomains
+Defined in
+types.d.ts:9849
+presentable
+presentable
+:
+boolean
+Presentable hints the Dashboard UI to use the underlying
+field record value in the relation preview label.
+Implementation of
+EmailField
+.
+presentable
+Inherited from
+EmailField
+.
+presentable
+Defined in
+types.d.ts:9837
+required
+required
+:
+boolean
+Required will require the field value to be non-empty email string.
+Implementation of
+EmailField
+.
+required
+Inherited from
+EmailField
+.
+required
+Defined in
+types.d.ts:9853
+system
+system
+:
+boolean
+System prevents the renaming and removal of the field.
+Implementation of
+EmailField
+.
+system
+Inherited from
+EmailField
+.
+system
+Defined in
+types.d.ts:9828

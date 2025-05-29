@@ -1,0 +1,1092 @@
+URL: https://pocketbase.io/jsvm/classes/Collection.html
+
+PocketBase JSVM reference
+Collection
+Class Collection
+Collection model class.
+const
+collection
+=
+new
+Collection
+({
+type:
+"base"
+,
+name:
+"article"
+,
+listRule:
+"@request.auth.id != '' || status = 'public'"
+,
+viewRule:
+"@request.auth.id != '' || status = 'public'"
+,
+deleteRule:
+"@request.auth.id != ''"
+,
+fields: [
+{
+name:
+"title"
+,
+type:
+"text"
+,
+required:
+true
+,
+min:
+6
+,
+max:
+100
+,
+},
+{
+name:
+"description"
+,
+type:
+"text"
+,
+},
+]
+})
+Copy
+Hierarchy
+core
+.
+Collection
+Collection
+Implements
+core
+.
+Collection
+Defined in
+types.d.ts:284
+Defined in
+types.d.ts:315
+Index
+Constructors
+constructor
+Methods
+add
+Index
+base
+Files
+Path
+db
+Export
+get
+Index
+integrity
+Checks
+is
+Auth
+is
+Base
+is
+New
+is
+View
+last
+SavedPK
+mark
+As
+New
+mark
+As
+Not
+New
+marshalJSON
+pk
+post
+Scan
+remove
+Index
+string
+table
+Name
+unmarshalJSON
+Properties
+auth
+Alert
+auth
+Rule?
+auth
+Token
+confirm
+Email
+Change
+Template
+create
+Rule?
+created
+delete
+Rule?
+email
+Change
+Token
+fields
+file
+Token
+id
+indexes
+list
+Rule?
+manage
+Rule?
+mfa
+name
+oauth2
+otp
+password
+Auth
+password
+Reset
+Token
+raw
+Options
+reset
+Password
+Template
+system
+type
+update
+Rule?
+updated
+verification
+Template
+verification
+Token
+view
+Query
+view
+Rule?
+Constructors
+constructor
+new
+Collection
+(
+data
+?
+)
+:
+Collection
+Parameters
+Optional
+data
+:
+Partial
+<
+Collection
+>
+Returns
+Collection
+Inherited from core.Collection.constructor
+Defined in
+types.d.ts:316
+Methods
+add
+Index
+add
+Index
+(
+name
+,
+unique
+,
+columnsExpr
+,
+optWhereExpr
+)
+:
+void
+AddIndex adds a new index into the current collection.
+If the collection has an existing index matching the new name it will be replaced with the new one.
+Parameters
+name
+:
+string
+unique
+:
+boolean
+columnsExpr
+:
+string
+optWhereExpr
+:
+string
+Returns
+void
+Inherited from
+Collection
+.
+addIndex
+Defined in
+types.d.ts:7986
+base
+Files
+Path
+base
+Files
+Path
+(
+)
+:
+string
+BaseFilesPath returns the storage dir path used by the collection.
+Returns
+string
+Inherited from
+Collection
+.
+baseFilesPath
+Defined in
+types.d.ts:7911
+db
+Export
+db
+Export
+(
+app
+)
+:
+_TygojaDict
+DBExport prepares and exports the current collection data for db persistence.
+Parameters
+app
+:
+App
+Returns
+_TygojaDict
+Inherited from
+Collection
+.
+dbExport
+Defined in
+types.d.ts:7972
+get
+Index
+get
+Index
+(
+name
+)
+:
+string
+GetIndex returns s single Collection index expression by its name.
+Parameters
+name
+:
+string
+Returns
+string
+Inherited from
+Collection
+.
+getIndex
+Defined in
+types.d.ts:7978
+integrity
+Checks
+integrity
+Checks
+(
+enable
+)
+:
+void
+IntegrityChecks toggles the current collection integrity checks (ex. checking references on delete).
+Parameters
+enable
+:
+boolean
+Returns
+void
+Inherited from
+Collection
+.
+integrityChecks
+Defined in
+types.d.ts:7935
+is
+Auth
+is
+Auth
+(
+)
+:
+boolean
+IsAuth checks if the current collection has "auth" type.
+Returns
+boolean
+Inherited from
+Collection
+.
+isAuth
+Defined in
+types.d.ts:7923
+is
+Base
+is
+Base
+(
+)
+:
+boolean
+IsBase checks if the current collection has "base" type.
+Returns
+boolean
+Inherited from
+Collection
+.
+isBase
+Defined in
+types.d.ts:7917
+is
+New
+is
+New
+(
+)
+:
+boolean
+IsNew indicates what type of db query (insert or update)
+should be used with the model instance.
+Returns
+boolean
+Inherited from
+Collection
+.
+isNew
+Defined in
+types.d.ts:8576
+is
+View
+is
+View
+(
+)
+:
+boolean
+IsView checks if the current collection has "view" type.
+Returns
+boolean
+Inherited from
+Collection
+.
+isView
+Defined in
+types.d.ts:7929
+last
+SavedPK
+last
+SavedPK
+(
+)
+:
+any
+LastSavedPK returns the last saved primary key of the model.
+Its value is updated to the latest PK value after MarkAsNotNew() or PostScan() calls.
+Returns
+any
+Inherited from
+Collection
+.
+lastSavedPK
+Defined in
+types.d.ts:8566
+mark
+As
+New
+mark
+As
+New
+(
+)
+:
+void
+MarkAsNew clears the pk field and marks the current model as "new"
+(aka. forces m.IsNew() to be true).
+Returns
+void
+Inherited from
+Collection
+.
+markAsNew
+Defined in
+types.d.ts:8583
+mark
+As
+Not
+New
+mark
+As
+Not
+New
+(
+)
+:
+void
+MarkAsNew set the pk field to the Id value and marks the current model
+as NOT "new" (aka. forces m.IsNew() to be false).
+Returns
+void
+Inherited from
+Collection
+.
+markAsNotNew
+Defined in
+types.d.ts:8590
+marshalJSON
+marshalJSON
+(
+)
+:
+string
+|
+number
+[]
+MarshalJSON implements the [json.Marshaler] interface.
+Note that non-type related fields are ignored from the serialization
+(ex. for "view" colections the "auth" fields are skipped).
+Returns
+string
+|
+number
+[]
+Inherited from
+Collection
+.
+marshalJSON
+Defined in
+types.d.ts:7960
+pk
+pk
+(
+)
+:
+any
+Returns
+any
+Inherited from
+Collection
+.
+pk
+Defined in
+types.d.ts:8569
+post
+Scan
+post
+Scan
+(
+)
+:
+void
+PostScan implements the [dbx.PostScanner] interface to auto unmarshal
+the raw serialized options into the concrete type specific fields.
+Returns
+void
+Inherited from
+Collection
+.
+postScan
+Defined in
+types.d.ts:7942
+remove
+Index
+remove
+Index
+(
+name
+)
+:
+void
+RemoveIndex removes a single index with the specified name from the current collection.
+Parameters
+name
+:
+string
+Returns
+void
+Inherited from
+Collection
+.
+removeIndex
+Defined in
+types.d.ts:7992
+string
+string
+(
+)
+:
+string
+String returns a string representation of the current collection.
+Returns
+string
+Inherited from
+Collection
+.
+string
+Defined in
+types.d.ts:7966
+table
+Name
+table
+Name
+(
+)
+:
+string
+TableName returns the Collection model SQL table name.
+Returns
+string
+Inherited from
+Collection
+.
+tableName
+Defined in
+types.d.ts:7905
+unmarshalJSON
+unmarshalJSON
+(
+b
+)
+:
+void
+UnmarshalJSON implements the [json.Unmarshaler] interface.
+For new/"blank" Collection models it replaces the model with a factory
+instance and then unmarshal the provided data one on top of it.
+Parameters
+b
+:
+string
+|
+number
+[]
+Returns
+void
+Inherited from
+Collection
+.
+unmarshalJSON
+Defined in
+types.d.ts:7951
+Properties
+auth
+Alert
+auth
+Alert
+:
+AuthAlertConfig
+AuthAlert defines options related to the auth alerts on new device login.
+Implementation of
+Collection
+.
+authAlert
+Inherited from
+Collection
+.
+authAlert
+Defined in
+types.d.ts:8023
+Optional
+auth
+Rule
+auth
+Rule
+?:
+string
+AuthRule could be used to specify additional record constraints
+applied after record authentication and right before returning the
+auth token response to the client.
+For example, to allow only verified users you could set it to
+"verified = true".
+Set it to empty string to allow any Auth collection record to authenticate.
+Set it to nil to disallow authentication altogether for the collection
+(that includes password, OAuth2, etc.).
+Implementation of
+Collection
+.
+authRule
+Inherited from
+Collection
+.
+authRule
+Defined in
+types.d.ts:8011
+auth
+Token
+auth
+Token
+:
+TokenConfig
+Various token configurations
+Implementation of
+Collection
+.
+authToken
+Inherited from
+Collection
+.
+authToken
+Defined in
+types.d.ts:8045
+confirm
+Email
+Change
+Template
+confirm
+Email
+Change
+Template
+:
+EmailTemplate
+Implementation of
+Collection
+.
+confirmEmailChangeTemplate
+Inherited from
+Collection
+.
+confirmEmailChangeTemplate
+Defined in
+types.d.ts:8056
+Optional
+create
+Rule
+create
+Rule
+?:
+string
+Implementation of
+Collection
+.
+createRule
+Inherited from
+Collection
+.
+createRule
+Defined in
+types.d.ts:7838
+created
+created
+:
+types
+.
+DateTime
+Implementation of
+Collection
+.
+created
+Inherited from
+Collection
+.
+created
+Defined in
+types.d.ts:7851
+Optional
+delete
+Rule
+delete
+Rule
+?:
+string
+Implementation of
+Collection
+.
+deleteRule
+Inherited from
+Collection
+.
+deleteRule
+Defined in
+types.d.ts:7840
+email
+Change
+Token
+email
+Change
+Token
+:
+TokenConfig
+Implementation of
+Collection
+.
+emailChangeToken
+Inherited from
+Collection
+.
+emailChangeToken
+Defined in
+types.d.ts:8047
+fields
+fields
+:
+core
+.
+FieldsList
+Implementation of
+Collection
+.
+fields
+Inherited from
+Collection
+.
+fields
+Defined in
+types.d.ts:7849
+file
+Token
+file
+Token
+:
+TokenConfig
+Implementation of
+Collection
+.
+fileToken
+Inherited from
+Collection
+.
+fileToken
+Defined in
+types.d.ts:8049
+id
+id
+:
+string
+Id is the primary key of the model.
+It is usually autogenerated by the parent model implementation.
+Implementation of
+Collection
+.
+id
+Inherited from
+Collection
+.
+id
+Defined in
+types.d.ts:8558
+indexes
+indexes
+:
+JSONArray
+<
+string
+>
+Implementation of
+Collection
+.
+indexes
+Inherited from
+Collection
+.
+indexes
+Defined in
+types.d.ts:7850
+Optional
+list
+Rule
+list
+Rule
+?:
+string
+Implementation of
+Collection
+.
+listRule
+Inherited from
+Collection
+.
+listRule
+Defined in
+types.d.ts:7836
+Optional
+manage
+Rule
+manage
+Rule
+?:
+string
+ManageRule gives admin-like permissions to allow fully managing
+the auth record(s), eg. changing the password without requiring
+to enter the old one, directly updating the verified state and email, etc.
+This rule is executed in addition to the Create and Update API rules.
+Implementation of
+Collection
+.
+manageRule
+Inherited from
+Collection
+.
+manageRule
+Defined in
+types.d.ts:8019
+mfa
+mfa
+:
+MFAConfig
+MFA defines options related to the Multi-factor authentication (MFA).
+Implementation of
+Collection
+.
+mfa
+Inherited from
+Collection
+.
+mfa
+Defined in
+types.d.ts:8036
+name
+name
+:
+string
+Implementation of
+Collection
+.
+name
+Inherited from
+Collection
+.
+name
+Defined in
+types.d.ts:7847
+oauth2
+oauth2
+:
+OAuth2Config
+OAuth2 specifies whether OAuth2 auth is enabled for the collection
+and which OAuth2 providers are allowed.
+Implementation of
+Collection
+.
+oauth2
+Inherited from
+Collection
+.
+oauth2
+Defined in
+types.d.ts:8028
+otp
+otp
+:
+OTPConfig
+OTP defines options related to the One-time password authentication (OTP).
+Implementation of
+Collection
+.
+otp
+Inherited from
+Collection
+.
+otp
+Defined in
+types.d.ts:8040
+password
+Auth
+password
+Auth
+:
+PasswordAuthConfig
+PasswordAuth defines options related to the collection password authentication.
+Implementation of
+Collection
+.
+passwordAuth
+Inherited from
+Collection
+.
+passwordAuth
+Defined in
+types.d.ts:8032
+password
+Reset
+Token
+password
+Reset
+Token
+:
+TokenConfig
+Implementation of
+Collection
+.
+passwordResetToken
+Inherited from
+Collection
+.
+passwordResetToken
+Defined in
+types.d.ts:8046
+raw
+Options
+raw
+Options
+:
+JSONRaw
+RawOptions represents the raw serialized collection option loaded from the DB.
+NB! This field shouldn't be modified manually. It is automatically updated
+with the collection type specific option before save.
+Implementation of
+Collection
+.
+rawOptions
+Inherited from
+Collection
+.
+rawOptions
+Defined in
+types.d.ts:7846
+reset
+Password
+Template
+reset
+Password
+Template
+:
+EmailTemplate
+Implementation of
+Collection
+.
+resetPasswordTemplate
+Inherited from
+Collection
+.
+resetPasswordTemplate
+Defined in
+types.d.ts:8055
+system
+system
+:
+boolean
+System prevents the collection rename, deletion and rules change.
+It is used primarily for internal purposes for collections like "_superusers", "_externalAuths", etc.
+Implementation of
+Collection
+.
+system
+Inherited from
+Collection
+.
+system
+Defined in
+types.d.ts:7857
+type
+type
+:
+"base"
+|
+"view"
+|
+"auth"
+Implementation of
+Collection
+.
+type
+Overrides
+Collection
+.
+type
+Defined in
+types.d.ts:285
+Optional
+update
+Rule
+update
+Rule
+?:
+string
+Implementation of
+Collection
+.
+updateRule
+Inherited from
+Collection
+.
+updateRule
+Defined in
+types.d.ts:7839
+updated
+updated
+:
+types
+.
+DateTime
+Implementation of
+Collection
+.
+updated
+Inherited from
+Collection
+.
+updated
+Defined in
+types.d.ts:7852
+verification
+Template
+verification
+Template
+:
+EmailTemplate
+Default email templates
+Implementation of
+Collection
+.
+verificationTemplate
+Inherited from
+Collection
+.
+verificationTemplate
+Defined in
+types.d.ts:8054
+verification
+Token
+verification
+Token
+:
+TokenConfig
+Implementation of
+Collection
+.
+verificationToken
+Inherited from
+Collection
+.
+verificationToken
+Defined in
+types.d.ts:8048
+view
+Query
+view
+Query
+:
+string
+Implementation of
+Collection
+.
+viewQuery
+Inherited from
+Collection
+.
+viewQuery
+Defined in
+types.d.ts:8239
+Optional
+view
+Rule
+view
+Rule
+?:
+string
+Implementation of
+Collection
+.
+viewRule
+Inherited from
+Collection
+.
+viewRule
+Defined in
+types.d.ts:7837

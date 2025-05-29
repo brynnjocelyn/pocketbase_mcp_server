@@ -1,0 +1,49 @@
+URL: https://pocketbase.io/jsvm/functions/onMailerRecordVerificationSend.html
+
+PocketBase JSVM reference
+onMailerRecordVerificationSend
+Function onMailerRecordVerificationSend
+on
+Mailer
+Record
+Verification
+Send
+(
+handler
+,
+...
+tags
+)
+:
+void
+Parameters
+handler
+:
+(
+(
+e
+)
+=>
+void
+)
+(
+e
+)
+:
+void
+Parameters
+e
+:
+MailerRecordEvent
+Returns
+void
+Rest
+...
+tags
+:
+string
+[]
+Returns
+void
+Defined in
+types.d.ts:1151

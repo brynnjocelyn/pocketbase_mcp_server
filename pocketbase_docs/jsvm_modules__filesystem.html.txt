@@ -1,0 +1,23 @@
+URL: https://pocketbase.io/jsvm/modules/_filesystem.html
+
+PocketBase JSVM reference
+$filesystem
+Namespace $filesystem
+$filesystem
+defines common helpers for working
+with the PocketBase filesystem abstraction.
+Defined in
+types.d.ts:796
+Index
+Functions
+file
+From
+Bytes
+file
+From
+Multipart
+file
+From
+Path
+file
+FromURL

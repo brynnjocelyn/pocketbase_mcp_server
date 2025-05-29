@@ -1,0 +1,3 @@
+URL: https://pocketbase.io/jsvm/types/functions/onRecordAfterCreateSuccess.html
+
+Content not found

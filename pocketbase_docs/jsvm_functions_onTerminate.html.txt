@@ -1,0 +1,37 @@
+URL: https://pocketbase.io/jsvm/functions/onTerminate.html
+
+PocketBase JSVM reference
+onTerminate
+Function onTerminate
+on
+Terminate
+(
+handler
+)
+:
+void
+Parameters
+handler
+:
+(
+(
+e
+)
+=>
+void
+)
+(
+e
+)
+:
+void
+Parameters
+e
+:
+TerminateEvent
+Returns
+void
+Returns
+void
+Defined in
+types.d.ts:1203

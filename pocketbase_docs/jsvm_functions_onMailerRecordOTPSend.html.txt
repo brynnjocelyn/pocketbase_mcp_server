@@ -1,0 +1,47 @@
+URL: https://pocketbase.io/jsvm/functions/onMailerRecordOTPSend.html
+
+PocketBase JSVM reference
+onMailerRecordOTPSend
+Function onMailerRecordOTPSend
+on
+Mailer
+RecordOTPSend
+(
+handler
+,
+...
+tags
+)
+:
+void
+Parameters
+handler
+:
+(
+(
+e
+)
+=>
+void
+)
+(
+e
+)
+:
+void
+Parameters
+e
+:
+MailerRecordEvent
+Returns
+void
+Rest
+...
+tags
+:
+string
+[]
+Returns
+void
+Defined in
+types.d.ts:1149

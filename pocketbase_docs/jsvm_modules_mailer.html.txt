@@ -1,0 +1,11 @@
+URL: https://pocketbase.io/jsvm/modules/mailer.html
+
+PocketBase JSVM reference
+mailer
+Namespace mailer
+Defined in
+types.d.ts:20224
+Index
+Interfaces
+Mailer
+Message

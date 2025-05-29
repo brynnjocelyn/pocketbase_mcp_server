@@ -1,0 +1,12 @@
+URL: https://pocketbase.io/jsvm/types/_TygojaAny.html
+
+PocketBase JSVM reference
+_TygojaAny
+Type alias _TygojaAny
+_
+Tygoja
+Any
+:
+any
+Defined in
+types.d.ts:1205

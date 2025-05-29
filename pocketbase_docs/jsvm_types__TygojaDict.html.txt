@@ -1,0 +1,36 @@
+URL: https://pocketbase.io/jsvm/types/_TygojaDict.html
+
+PocketBase JSVM reference
+_TygojaDict
+Type alias _TygojaDict
+_
+Tygoja
+Dict
+:
+{
+[
+key
+:
+string
+|
+number
+|
+symbol
+]
+:
+any
+;
+}
+Type declaration
+[
+key
+:
+string
+|
+number
+|
+symbol
+]:
+any
+Defined in
+types.d.ts:1204

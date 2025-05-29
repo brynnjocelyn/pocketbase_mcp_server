@@ -1,0 +1,39 @@
+URL: https://pocketbase.io/jsvm/functions/onCollectionsImportRequest.html
+
+PocketBase JSVM reference
+onCollectionsImportRequest
+Function onCollectionsImportRequest
+on
+Collections
+Import
+Request
+(
+handler
+)
+:
+void
+Parameters
+handler
+:
+(
+(
+e
+)
+=>
+void
+)
+(
+e
+)
+:
+void
+Parameters
+e
+:
+CollectionsImportRequestEvent
+Returns
+void
+Returns
+void
+Defined in
+types.d.ts:1143

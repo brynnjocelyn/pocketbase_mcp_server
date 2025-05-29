@@ -1,0 +1,365 @@
+URL: https://pocketbase.io/jsvm/classes/Cookie.html
+
+PocketBase JSVM reference
+Cookie
+Class Cookie
+A Cookie represents an HTTP cookie as sent in the Set-Cookie header of an
+HTTP response.
+Example:
+routerAdd
+(
+"POST"
+,
+"/example"
+, (
+c
+)
+=>
+{
+c.
+setCookie
+(
+new
+Cookie
+({
+name:
+"example_name"
+,
+value:
+"example_value"
+,
+path:
+"/"
+,
+domain:
+"example.com"
+,
+maxAge:
+10
+,
+secure:
+true
+,
+httpOnly:
+true
+,
+sameSite:
+3
+,
+}))
+return
+c.
+redirect
+(
+200
+,
+"/"
+);
+})
+Copy
+Hierarchy
+http
+.
+Cookie
+Cookie
+Implements
+http
+.
+Cookie
+Defined in
+types.d.ts:643
+Defined in
+types.d.ts:669
+Index
+Constructors
+constructor
+Methods
+string
+valid
+Properties
+domain
+expires
+http
+Only
+max
+Age
+name
+partitioned
+path
+quoted
+raw
+raw
+Expires
+same
+Site
+secure
+unparsed
+value
+Constructors
+constructor
+new
+Cookie
+(
+options
+?
+)
+:
+Cookie
+Parameters
+Optional
+options
+:
+Partial
+<
+http
+.
+Cookie
+>
+Returns
+Cookie
+Inherited from http.Cookie.constructor
+Defined in
+types.d.ts:670
+Methods
+string
+string
+(
+)
+:
+string
+String returns the serialization of the cookie for use in a [Cookie]
+header (if only Name and Value are set) or a Set-Cookie response
+header (if other fields are set).
+If c is nil or c.Name is invalid, the empty string is returned.
+Returns
+string
+Inherited from
+Cookie
+.
+string
+Defined in
+types.d.ts:21812
+valid
+valid
+(
+)
+:
+void
+Valid reports whether the cookie is valid.
+Returns
+void
+Inherited from
+Cookie
+.
+valid
+Defined in
+types.d.ts:21818
+Properties
+domain
+domain
+:
+string
+Implementation of
+Cookie
+.
+domain
+Inherited from
+Cookie
+.
+domain
+Defined in
+types.d.ts:21789
+expires
+expires
+:
+Time
+Implementation of
+Cookie
+.
+expires
+Inherited from
+Cookie
+.
+expires
+Defined in
+types.d.ts:21790
+http
+Only
+http
+Only
+:
+boolean
+Implementation of
+Cookie
+.
+httpOnly
+Inherited from
+Cookie
+.
+httpOnly
+Defined in
+types.d.ts:21799
+max
+Age
+max
+Age
+:
+number
+MaxAge=0 means no 'Max-Age' attribute specified.
+MaxAge<0 means delete cookie now, equivalently 'Max-Age: 0'
+MaxAge>0 means Max-Age attribute present and given in seconds
+Implementation of
+Cookie
+.
+maxAge
+Inherited from
+Cookie
+.
+maxAge
+Defined in
+types.d.ts:21797
+name
+name
+:
+string
+Implementation of
+Cookie
+.
+name
+Inherited from
+Cookie
+.
+name
+Defined in
+types.d.ts:21785
+partitioned
+partitioned
+:
+boolean
+Implementation of
+Cookie
+.
+partitioned
+Inherited from
+Cookie
+.
+partitioned
+Defined in
+types.d.ts:21801
+path
+path
+:
+string
+Implementation of
+Cookie
+.
+path
+Inherited from
+Cookie
+.
+path
+Defined in
+types.d.ts:21788
+quoted
+quoted
+:
+boolean
+Implementation of
+Cookie
+.
+quoted
+Inherited from
+Cookie
+.
+quoted
+Defined in
+types.d.ts:21787
+raw
+raw
+:
+string
+Implementation of
+Cookie
+.
+raw
+Inherited from
+Cookie
+.
+raw
+Defined in
+types.d.ts:21802
+raw
+Expires
+raw
+Expires
+:
+string
+Implementation of
+Cookie
+.
+rawExpires
+Inherited from
+Cookie
+.
+rawExpires
+Defined in
+types.d.ts:21791
+same
+Site
+same
+Site
+:
+SameSite
+Implementation of
+Cookie
+.
+sameSite
+Inherited from
+Cookie
+.
+sameSite
+Defined in
+types.d.ts:21800
+secure
+secure
+:
+boolean
+Implementation of
+Cookie
+.
+secure
+Inherited from
+Cookie
+.
+secure
+Defined in
+types.d.ts:21798
+unparsed
+unparsed
+:
+string
+[]
+Implementation of
+Cookie
+.
+unparsed
+Inherited from
+Cookie
+.
+unparsed
+Defined in
+types.d.ts:21803
+value
+value
+:
+string
+Implementation of
+Cookie
+.
+value
+Inherited from
+Cookie
+.
+value
+Defined in
+types.d.ts:21786

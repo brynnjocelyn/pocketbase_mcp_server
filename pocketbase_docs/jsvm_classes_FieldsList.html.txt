@@ -1,0 +1,481 @@
+URL: https://pocketbase.io/jsvm/classes/FieldsList.html
+
+PocketBase JSVM reference
+FieldsList
+Class FieldsList
+FieldsList model class, usually used to define the Collection.fields.
+Hierarchy
+core
+.
+FieldsList
+FieldsList
+Implements
+core
+.
+FieldsList
+Defined in
+types.d.ts:319
+Defined in
+types.d.ts:325
+Index
+Constructors
+constructor
+Methods
+add
+add
+At
+add
+MarshaledJSON
+add
+MarshaledJSONAt
+as
+Map
+clone
+field
+Names
+get
+By
+Id
+get
+By
+Name
+marshalJSON
+remove
+By
+Id
+remove
+By
+Name
+scan
+string
+unmarshalJSON
+value
+Constructors
+constructor
+new
+Fields
+List
+(
+data
+?
+)
+:
+FieldsList
+Parameters
+Optional
+data
+:
+Partial
+<
+core
+.
+FieldsList
+>
+Returns
+FieldsList
+Inherited from core.FieldsList.constructor
+Defined in
+types.d.ts:326
+Methods
+add
+add
+(
+...
+fields
+)
+:
+void
+Add adds one or more fields to the current list.
+By default this method will try to REPLACE existing fields with
+the new ones by their id or by their name if the new field doesn't have an explicit id.
+If no matching existing field is found, it will APPEND the field to the end of the list.
+In all cases, if any of the new fields don't have an explicit id it will auto generate a default one for them
+(the id value doesn't really matter and it is mostly used as a stable identifier in case of a field rename).
+Parameters
+Rest
+...
+fields
+:
+core
+.
+Field
+[]
+Returns
+void
+Inherited from
+FieldsList
+.
+add
+Defined in
+types.d.ts:11442
+add
+At
+add
+At
+(
+pos
+,
+...
+fields
+)
+:
+void
+AddAt is the same as Add but insert/move the fields at the specific position.
+If pos < 0, then this method acts the same as calling Add.
+If pos > FieldsList total items, then the specified fields are inserted/moved at the end of the list.
+Parameters
+pos
+:
+number
+Rest
+...
+fields
+:
+core
+.
+Field
+[]
+Returns
+void
+Inherited from
+FieldsList
+.
+addAt
+Defined in
+types.d.ts:11452
+add
+MarshaledJSON
+add
+MarshaledJSON
+(
+rawJSON
+)
+:
+void
+AddMarshaledJSON parses the provided raw json data and adds the
+found fields into the current list (following the same rule as the Add method).
+The rawJSON argument could be one of:
+-
+serialized array
+of
+field objects
+-
+single field object.
+Copy
+Example:
+l.
+AddMarshaledJSON
+([]byte{
+`{"type":"text", name: "test"}`
+})
+l.
+AddMarshaledJSON
+([]byte{
+`[{"type":"text", name: "test1"}, {"type":"text", name: "test2"}]`
+})
+Copy
+Parameters
+rawJSON
+:
+string
+|
+number
+[]
+Returns
+void
+Inherited from
+FieldsList
+.
+addMarshaledJSON
+Defined in
+types.d.ts:11472
+add
+MarshaledJSONAt
+add
+MarshaledJSONAt
+(
+pos
+,
+rawJSON
+)
+:
+void
+AddMarshaledJSONAt is the same as AddMarshaledJSON but insert/move the fields at the specific position.
+If pos < 0, then this method acts the same as calling AddMarshaledJSON.
+If pos > FieldsList total items, then the specified fields are inserted/moved at the end of the list.
+Parameters
+pos
+:
+number
+rawJSON
+:
+string
+|
+number
+[]
+Returns
+void
+Inherited from
+FieldsList
+.
+addMarshaledJSONAt
+Defined in
+types.d.ts:11482
+as
+Map
+as
+Map
+(
+)
+:
+_TygojaDict
+AsMap returns a map with all registered list field.
+The returned map is indexed with each field name.
+Returns
+_TygojaDict
+Inherited from
+FieldsList
+.
+asMap
+Defined in
+types.d.ts:11400
+clone
+clone
+(
+)
+:
+core
+.
+FieldsList
+Clone creates a deep clone of the current list.
+Returns
+core
+.
+FieldsList
+Inherited from
+FieldsList
+.
+clone
+Defined in
+types.d.ts:11387
+field
+Names
+field
+Names
+(
+)
+:
+string
+[]
+FieldNames returns a slice with the name of all list fields.
+Returns
+string
+[]
+Inherited from
+FieldsList
+.
+fieldNames
+Defined in
+types.d.ts:11393
+get
+By
+Id
+get
+By
+Id
+(
+fieldId
+)
+:
+core
+.
+Field
+GetById returns a single field by its id.
+Parameters
+fieldId
+:
+string
+Returns
+core
+.
+Field
+Inherited from
+FieldsList
+.
+getById
+Defined in
+types.d.ts:11406
+get
+By
+Name
+get
+By
+Name
+(
+fieldName
+)
+:
+core
+.
+Field
+GetByName returns a single field by its name.
+Parameters
+fieldName
+:
+string
+Returns
+core
+.
+Field
+Inherited from
+FieldsList
+.
+getByName
+Defined in
+types.d.ts:11412
+marshalJSON
+marshalJSON
+(
+)
+:
+string
+|
+number
+[]
+MarshalJSON implements the [json.Marshaler] interface.
+Returns
+string
+|
+number
+[]
+Inherited from
+FieldsList
+.
+marshalJSON
+Defined in
+types.d.ts:11511
+remove
+By
+Id
+remove
+By
+Id
+(
+fieldId
+)
+:
+void
+RemoveById removes a single field by its id.
+This method does nothing if field with the specified id doesn't exist.
+Parameters
+fieldId
+:
+string
+Returns
+void
+Inherited from
+FieldsList
+.
+removeById
+Defined in
+types.d.ts:11420
+remove
+By
+Name
+remove
+By
+Name
+(
+fieldName
+)
+:
+void
+RemoveByName removes a single field by its name.
+This method does nothing if field with the specified name doesn't exist.
+Parameters
+fieldName
+:
+string
+Returns
+void
+Inherited from
+FieldsList
+.
+removeByName
+Defined in
+types.d.ts:11428
+scan
+scan
+(
+value
+)
+:
+void
+Scan implements [sql.Scanner] interface to scan the provided value
+into the current FieldsList instance.
+Parameters
+value
+:
+any
+Returns
+void
+Inherited from
+FieldsList
+.
+scan
+Defined in
+types.d.ts:11524
+string
+string
+(
+)
+:
+string
+String returns the string representation of the current list.
+Returns
+string
+Inherited from
+FieldsList
+.
+string
+Defined in
+types.d.ts:11488
+unmarshalJSON
+unmarshalJSON
+(
+data
+)
+:
+void
+UnmarshalJSON implements [json.Unmarshaler] and
+loads the provided json data into the current FieldsList.
+Parameters
+data
+:
+string
+|
+number
+[]
+Returns
+void
+Inherited from
+FieldsList
+.
+unmarshalJSON
+Defined in
+types.d.ts:11505
+value
+value
+(
+)
+:
+any
+Value implements the [driver.Valuer] interface.
+Returns
+any
+Inherited from
+FieldsList
+.
+value
+Defined in
+types.d.ts:11517

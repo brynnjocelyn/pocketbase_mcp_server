@@ -1,0 +1,877 @@
+URL: https://pocketbase.io/jsvm/interfaces/core.RequestEvent.html
+
+PocketBase JSVM reference
+core
+RequestEvent
+Interface RequestEvent
+RequestEvent defines the PocketBase router handler event.
+Hierarchy
+_sgjRjyv
+RequestEvent
+Defined in
+types.d.ts:8693
+Defined in
+types.d.ts:8697
+Defined in
+types.d.ts:8711
+Defined in
+types.d.ts:8717
+Index
+Methods
+bad
+Request
+Error
+bind
+Body
+blob
+error
+fileFS
+find
+Uploaded
+Files
+flush
+forbidden
+Error
+get
+get
+All
+has
+Superuser
+Auth
+html
+internal
+Server
+Error
+isTLS
+json
+next
+no
+Content
+not
+Found
+Error
+realIP
+redirect
+remoteIP
+request
+Info
+set
+set
+All
+set
+Cookie
+status
+stream
+string
+too
+Many
+Requests
+Error
+unauthorized
+Error
+written
+xml
+Properties
+app
+auth?
+request?
+response
+Methods
+bad
+Request
+Error
+bad
+Request
+Error
+(
+message
+,
+errData
+)
+:
+router
+.
+ApiError
+Parameters
+message
+:
+string
+errData
+:
+any
+Returns
+router
+.
+ApiError
+Inherited from _sgjRjyv.badRequestError
+Defined in
+types.d.ts:19471
+bind
+Body
+bind
+Body
+(
+dst
+)
+:
+void
+BindBody unmarshal the request body into the provided dst.
+dst must be either a struct pointer or map[string]any.
+The rules how the body will be scanned depends on the request Content-Type.
+Currently the following Content-Types are supported:
+-
+application
+/
+json
+-
+text
+/
+xml, application
+/
+xml
+-
+multipart
+/
+form
+-
+data, application
+/
+x
+-
+www
+-
+form
+-
+urlencoded
+Copy
+Respectively the following struct tags are supported (again, which one will be used depends on the Content-Type):
+-
+"json"
+(json body)
+-
+uses the builtin Go json
+package
+for unmarshaling.
+-
+"xml"
+(xml body)
+-
+uses the builtin Go xml
+package
+for unmarshaling.
+-
+"form"
+(form data)
+-
+utilizes the custom [router.UnmarshalRequestData] method.
+Copy
+NB! When dst is a struct make sure that it doesn't have public fields
+that shouldn't be bindable and it is advisible such fields to be unexported
+or have a separate struct just for the binding. For example:
+data
+:
+=
+struct{
+somethingPrivate string
+Title string
+`json:"title" form:"title"`
+Total int
+`json:"total" form:"total"`
+}
+err
+:
+=
+e.
+BindBody
+(
+&
+data)
+Copy
+Parameters
+dst
+:
+any
+Returns
+void
+Inherited from _sgjRjyv.bindBody
+Defined in
+types.d.ts:19524
+blob
+blob
+(
+status
+,
+contentType
+,
+b
+)
+:
+void
+Blob writes a blob (bytes slice) response.
+Parameters
+status
+:
+number
+contentType
+:
+string
+b
+:
+string
+|
+number
+[]
+Returns
+void
+Inherited from _sgjRjyv.blob
+Defined in
+types.d.ts:19444
+error
+error
+(
+status
+,
+message
+,
+errData
+)
+:
+router
+.
+ApiError
+Parameters
+status
+:
+number
+message
+:
+string
+errData
+:
+any
+Returns
+router
+.
+ApiError
+Inherited from _sgjRjyv.error
+Defined in
+types.d.ts:19468
+fileFS
+fileFS
+(
+fsys
+,
+filename
+)
+:
+void
+FileFS serves the specified filename from fsys.
+It is similar to [echo.FileFS] for consistency with earlier versions.
+Parameters
+fsys
+:
+FS
+filename
+:
+string
+Returns
+void
+Inherited from _sgjRjyv.fileFS
+Defined in
+types.d.ts:19452
+find
+Uploaded
+Files
+find
+Uploaded
+Files
+(
+key
+)
+:
+filesystem
+.
+File
+[]
+FindUploadedFiles extracts all form files of "key" from a http request
+and returns a slice with filesystem.File instances (if any).
+Parameters
+key
+:
+string
+Returns
+filesystem
+.
+File
+[]
+Inherited from _sgjRjyv.findUploadedFiles
+Defined in
+types.d.ts:19379
+flush
+flush
+(
+)
+:
+void
+Flush flushes buffered data to the current response.
+Returns [http.ErrNotSupported] if e.Response doesn't implement the [http.Flusher] interface
+(all router package handlers receives a ResponseWritter that implements it unless explicitly replaced with a custom one).
+Returns
+void
+Inherited from _sgjRjyv.flush
+Defined in
+types.d.ts:19344
+forbidden
+Error
+forbidden
+Error
+(
+message
+,
+errData
+)
+:
+router
+.
+ApiError
+Parameters
+message
+:
+string
+errData
+:
+any
+Returns
+router
+.
+ApiError
+Inherited from _sgjRjyv.forbiddenError
+Defined in
+types.d.ts:19477
+get
+get
+(
+key
+)
+:
+any
+Get retrieves single value from the current event data store.
+Parameters
+key
+:
+string
+Returns
+any
+Inherited from _sgjRjyv.get
+Defined in
+types.d.ts:19385
+get
+All
+get
+All
+(
+)
+:
+_TygojaDict
+GetAll returns a copy of the current event data store.
+Returns
+_TygojaDict
+Inherited from _sgjRjyv.getAll
+Defined in
+types.d.ts:19391
+has
+Superuser
+Auth
+has
+Superuser
+Auth
+(
+)
+:
+boolean
+HasSuperuserAuth checks whether the current RequestEvent has superuser authentication loaded.
+Returns
+boolean
+Defined in
+types.d.ts:8715
+html
+html
+(
+status
+,
+data
+)
+:
+void
+HTML writes an HTML response.
+Parameters
+status
+:
+number
+data
+:
+string
+Returns
+void
+Inherited from _sgjRjyv.html
+Defined in
+types.d.ts:19415
+internal
+Server
+Error
+internal
+Server
+Error
+(
+message
+,
+errData
+)
+:
+router
+.
+ApiError
+Parameters
+message
+:
+string
+errData
+:
+any
+Returns
+router
+.
+ApiError
+Inherited from _sgjRjyv.internalServerError
+Defined in
+types.d.ts:19486
+isTLS
+isTLS
+(
+)
+:
+boolean
+IsTLS reports whether the connection on which the request was received is TLS.
+Returns
+boolean
+Inherited from _sgjRjyv.isTLS
+Defined in
+types.d.ts:19350
+json
+json
+(
+status
+,
+data
+)
+:
+void
+JSON writes a JSON response.
+It also provides a generic response data fields picker if the "fields" query parameter is set.
+For example, if you are requesting
+?fields=a,b
+for
+e.JSON(200, map[string]int{ "a":1, "b":2, "c":3 })
+,
+it should result in a JSON response like:
+{"a":1, "b": 2}
+.
+Parameters
+status
+:
+number
+data
+:
+any
+Returns
+void
+Inherited from _sgjRjyv.json
+Defined in
+types.d.ts:19425
+next
+next
+(
+)
+:
+void
+Next calls the next hook handler.
+Returns
+void
+Inherited from _sgjRjyv.next
+Defined in
+types.d.ts:17146
+no
+Content
+no
+Content
+(
+status
+)
+:
+void
+NoContent writes a response with no body (ex. 204).
+Parameters
+status
+:
+number
+Returns
+void
+Inherited from _sgjRjyv.noContent
+Defined in
+types.d.ts:19458
+not
+Found
+Error
+not
+Found
+Error
+(
+message
+,
+errData
+)
+:
+router
+.
+ApiError
+Parameters
+message
+:
+string
+errData
+:
+any
+Returns
+router
+.
+ApiError
+Inherited from _sgjRjyv.notFoundError
+Defined in
+types.d.ts:19474
+realIP
+realIP
+(
+)
+:
+string
+RealIP returns the "real" IP address from the configured trusted proxy headers.
+If Settings.TrustedProxy is not configured or the found IP is empty,
+it fallbacks to e.RemoteIP().
+NB!
+Be careful when used in a security critical context as it relies on
+the trusted proxy to be properly configured and your app to be accessible only through it.
+If you are not sure, use e.RemoteIP().
+Returns
+string
+Defined in
+types.d.ts:8709
+redirect
+redirect
+(
+status
+,
+url
+)
+:
+void
+Redirect writes a redirect response to the specified url.
+The status code must be in between 300 – 399 range.
+Parameters
+status
+:
+number
+url
+:
+string
+Returns
+void
+Inherited from _sgjRjyv.redirect
+Defined in
+types.d.ts:19465
+remoteIP
+remoteIP
+(
+)
+:
+string
+RemoteIP returns the IP address of the client that sent the request.
+IPv6 addresses are returned expanded.
+For example, "2001:db8::1" becomes "2001:0db8:0000:0000:0000:0000:0000:0001".
+Note that if you are behind reverse proxy(ies), this method returns
+the IP of the last connecting proxy.
+Returns
+string
+Inherited from _sgjRjyv.remoteIP
+Defined in
+types.d.ts:19372
+request
+Info
+request
+Info
+(
+)
+:
+RequestInfo
+RequestInfo parses the current request into RequestInfo instance.
+Note that the returned result is cached to avoid copying the request data multiple times
+but the auth state and other common store items are always refreshed in case they were changed by another handler.
+Returns
+RequestInfo
+Defined in
+types.d.ts:8724
+set
+set
+(
+key
+,
+value
+)
+:
+void
+Set saves single value into the current event data store.
+Parameters
+key
+:
+string
+value
+:
+any
+Returns
+void
+Inherited from _sgjRjyv.set
+Defined in
+types.d.ts:19397
+set
+All
+set
+All
+(
+m
+)
+:
+void
+SetAll saves all items from m into the current event data store.
+Parameters
+m
+:
+_TygojaDict
+Returns
+void
+Inherited from _sgjRjyv.setAll
+Defined in
+types.d.ts:19403
+set
+Cookie
+set
+Cookie
+(
+cookie
+)
+:
+void
+SetCookie is an alias for [http.SetCookie].
+SetCookie adds a Set-Cookie header to the current response's headers.
+The provided cookie must have a valid Name.
+Invalid cookies may be silently dropped.
+Parameters
+cookie
+:
+http
+.
+Cookie
+Returns
+void
+Inherited from _sgjRjyv.setCookie
+Defined in
+types.d.ts:19360
+status
+status
+(
+)
+:
+number
+Status reports the status code of the current response.
+This method always returns 0 if e.Response doesn't implement the StatusTracker interface
+(all router package handlers receives a ResponseWritter that implements it unless explicitly replaced with a custom one).
+Returns
+number
+Inherited from _sgjRjyv.status
+Defined in
+types.d.ts:19335
+stream
+stream
+(
+status
+,
+contentType
+,
+reader
+)
+:
+void
+Stream streams the specified reader into the response.
+Parameters
+status
+:
+number
+contentType
+:
+string
+reader
+:
+io
+.
+Reader
+Returns
+void
+Inherited from _sgjRjyv.stream
+Defined in
+types.d.ts:19438
+string
+string
+(
+status
+,
+data
+)
+:
+void
+String writes a plain string response.
+Parameters
+status
+:
+number
+data
+:
+string
+Returns
+void
+Inherited from _sgjRjyv.string
+Defined in
+types.d.ts:19409
+too
+Many
+Requests
+Error
+too
+Many
+Requests
+Error
+(
+message
+,
+errData
+)
+:
+router
+.
+ApiError
+Parameters
+message
+:
+string
+errData
+:
+any
+Returns
+router
+.
+ApiError
+Inherited from _sgjRjyv.tooManyRequestsError
+Defined in
+types.d.ts:19483
+unauthorized
+Error
+unauthorized
+Error
+(
+message
+,
+errData
+)
+:
+router
+.
+ApiError
+Parameters
+message
+:
+string
+errData
+:
+any
+Returns
+router
+.
+ApiError
+Inherited from _sgjRjyv.unauthorizedError
+Defined in
+types.d.ts:19480
+written
+written
+(
+)
+:
+boolean
+Written reports whether the current response has already been written.
+This method always returns false if e.ResponseWritter doesn't implement the WriteTracker interface
+(all router package handlers receives a ResponseWritter that implements it unless explicitly replaced with a custom one).
+Returns
+boolean
+Inherited from _sgjRjyv.written
+Defined in
+types.d.ts:19326
+xml
+xml
+(
+status
+,
+data
+)
+:
+void
+XML writes an XML response.
+It automatically prepends the generic [xml.Header] string to the response.
+Parameters
+status
+:
+number
+data
+:
+any
+Returns
+void
+Inherited from _sgjRjyv.xml
+Defined in
+types.d.ts:19432
+Properties
+app
+app
+:
+App
+Defined in
+types.d.ts:8694
+Optional
+auth
+auth
+?:
+core
+.
+Record
+Defined in
+types.d.ts:8695
+Optional
+request
+request
+?:
+Request
+Inherited from _sgjRjyv.request
+Defined in
+types.d.ts:19317
+response
+response
+:
+ResponseWriter
+Inherited from _sgjRjyv.response
+Defined in
+types.d.ts:19316

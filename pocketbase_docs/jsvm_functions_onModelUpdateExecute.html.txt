@@ -1,0 +1,48 @@
+URL: https://pocketbase.io/jsvm/functions/onModelUpdateExecute.html
+
+PocketBase JSVM reference
+onModelUpdateExecute
+Function onModelUpdateExecute
+on
+Model
+Update
+Execute
+(
+handler
+,
+...
+tags
+)
+:
+void
+Parameters
+handler
+:
+(
+(
+e
+)
+=>
+void
+)
+(
+e
+)
+:
+void
+Parameters
+e
+:
+ModelEvent
+Returns
+void
+Rest
+...
+tags
+:
+string
+[]
+Returns
+void
+Defined in
+types.d.ts:1164

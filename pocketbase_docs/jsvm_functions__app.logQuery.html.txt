@@ -1,0 +1,17 @@
+URL: https://pocketbase.io/jsvm/functions/_app.logQuery.html
+
+PocketBase JSVM reference
+$app
+logQuery
+Function logQuery
+log
+Query
+(
+)
+:
+SelectQuery
+LogQuery returns a new Log select query.
+Returns
+SelectQuery
+Defined in
+types.d.ts:5888

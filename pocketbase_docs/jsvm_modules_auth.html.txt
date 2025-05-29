@@ -1,0 +1,12 @@
+URL: https://pocketbase.io/jsvm/modules/auth.html
+
+PocketBase JSVM reference
+auth
+Namespace auth
+Defined in
+types.d.ts:19653
+Index
+Interfaces
+Auth
+User
+Provider

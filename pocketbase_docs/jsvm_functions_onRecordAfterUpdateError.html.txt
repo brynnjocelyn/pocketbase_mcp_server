@@ -1,0 +1,49 @@
+URL: https://pocketbase.io/jsvm/functions/onRecordAfterUpdateError.html
+
+PocketBase JSVM reference
+onRecordAfterUpdateError
+Function onRecordAfterUpdateError
+on
+Record
+After
+Update
+Error
+(
+handler
+,
+...
+tags
+)
+:
+void
+Parameters
+handler
+:
+(
+(
+e
+)
+=>
+void
+)
+(
+e
+)
+:
+void
+Parameters
+e
+:
+RecordErrorEvent
+Returns
+void
+Rest
+...
+tags
+:
+string
+[]
+Returns
+void
+Defined in
+types.d.ts:1173

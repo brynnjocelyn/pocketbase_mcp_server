@@ -1,0 +1,15 @@
+URL: https://pocketbase.io/jsvm/modules/url.html
+
+PocketBase JSVM reference
+url
+Namespace url
+Package url parses URLs and implements query escaping.
+Defined in
+types.d.ts:21292
+Defined in
+types.d.ts:22440
+Index
+Interfaces
+URL
+Userinfo
+Values

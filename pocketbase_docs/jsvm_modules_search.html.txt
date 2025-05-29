@@ -1,0 +1,14 @@
+URL: https://pocketbase.io/jsvm/modules/search.html
+
+PocketBase JSVM reference
+search
+Namespace search
+Defined in
+types.d.ts:19236
+Defined in
+types.d.ts:22061
+Index
+Interfaces
+Resolver
+Result
+Result

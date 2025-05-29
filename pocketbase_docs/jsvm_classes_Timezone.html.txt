@@ -1,0 +1,79 @@
+URL: https://pocketbase.io/jsvm/classes/Timezone.html
+
+PocketBase JSVM reference
+Timezone
+Class Timezone
+Timezone returns the timezone location with the given name.
+The name is expected to be a location name corresponding to a file
+in the IANA Time Zone database, such as "America/New_York".
+If the name is "Local", LoadLocation returns Local.
+If the name is "", invalid or "UTC", returns UTC.
+The constructor is equivalent to calling the Go
+time.LoadLocation(name)
+method.
+Example:
+const
+zone
+=
+new
+Timezone
+(
+"America/New_York"
+)
+$app.
+cron
+().
+setTimezone
+(zone)
+Copy
+Hierarchy
+Location
+Timezone
+Implements
+Location
+Defined in
+types.d.ts:576
+Defined in
+types.d.ts:598
+Index
+Constructors
+constructor
+Methods
+string
+Constructors
+constructor
+new
+Timezone
+(
+name
+?
+)
+:
+Timezone
+Parameters
+Optional
+name
+:
+string
+Returns
+Timezone
+Inherited from time.Location.constructor
+Defined in
+types.d.ts:599
+Methods
+string
+string
+(
+)
+:
+string
+String returns a descriptive name for the time zone information,
+corresponding to the name argument to [LoadLocation] or [FixedZone].
+Returns
+string
+Inherited from
+Location
+.
+string
+Defined in
+types.d.ts:21101

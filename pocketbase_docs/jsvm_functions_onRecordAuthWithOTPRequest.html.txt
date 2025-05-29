@@ -1,0 +1,48 @@
+URL: https://pocketbase.io/jsvm/functions/onRecordAuthWithOTPRequest.html
+
+PocketBase JSVM reference
+onRecordAuthWithOTPRequest
+Function onRecordAuthWithOTPRequest
+on
+Record
+Auth
+WithOTPRequest
+(
+handler
+,
+...
+tags
+)
+:
+void
+Parameters
+handler
+:
+(
+(
+e
+)
+=>
+void
+)
+(
+e
+)
+:
+void
+Parameters
+e
+:
+RecordAuthWithOTPRequestEvent
+Returns
+void
+Rest
+...
+tags
+:
+string
+[]
+Returns
+void
+Defined in
+types.d.ts:1178

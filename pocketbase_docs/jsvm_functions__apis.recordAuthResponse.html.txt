@@ -1,0 +1,47 @@
+URL: https://pocketbase.io/jsvm/functions/_apis.recordAuthResponse.html
+
+PocketBase JSVM reference
+$apis
+recordAuthResponse
+Function recordAuthResponse
+record
+Auth
+Response
+(
+e
+,
+authRecord
+,
+authMethod
+,
+meta
+?
+)
+:
+void
+RecordAuthResponse writes standardized json record auth response
+into the specified request event.
+The authMethod argument specify the name of the current authentication method (eg. password, oauth2, etc.)
+that it is used primarily as an auth identifier during MFA and for login alerts.
+Set authMethod to empty string if you want to ignore the MFA checks and the login alerts
+(can be also adjusted additionally via the onRecordAuthRequest hook).
+Parameters
+e
+:
+RequestEvent
+authRecord
+:
+core
+.
+Record
+authMethod
+:
+string
+Optional
+meta
+:
+any
+Returns
+void
+Defined in
+types.d.ts:1047

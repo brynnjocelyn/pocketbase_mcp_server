@@ -1,0 +1,94 @@
+URL: https://pocketbase.io/jsvm/classes/TestS3FilesystemForm.html
+
+PocketBase JSVM reference
+TestS3FilesystemForm
+Class TestS3FilesystemForm
+TestS3Filesystem defines a S3 filesystem connection test.
+Hierarchy
+TestS3Filesystem
+TestS3FilesystemForm
+Implements
+TestS3Filesystem
+Defined in
+types.d.ts:930
+Defined in
+types.d.ts:935
+Index
+Constructors
+constructor
+Methods
+submit
+validate
+Properties
+filesystem
+Constructors
+constructor
+new
+Test
+S3
+Filesystem
+Form
+(
+app
+)
+:
+TestS3FilesystemForm
+Parameters
+app
+:
+excludeHooks
+<
+App
+>
+Returns
+TestS3FilesystemForm
+Inherited from forms.TestS3Filesystem.constructor
+Defined in
+types.d.ts:936
+Methods
+submit
+submit
+(
+)
+:
+void
+Submit validates and performs a S3 filesystem connection test.
+Returns
+void
+Inherited from
+TestS3Filesystem
+.
+submit
+Defined in
+types.d.ts:13344
+validate
+validate
+(
+)
+:
+void
+Validate makes the form validatable by implementing [validation.Validatable] interface.
+Returns
+void
+Inherited from
+TestS3Filesystem
+.
+validate
+Defined in
+types.d.ts:13338
+Properties
+filesystem
+filesystem
+:
+string
+The name of the filesystem - storage or backups
+Implementation of
+TestS3Filesystem
+.
+filesystem
+Inherited from
+TestS3Filesystem
+.
+filesystem
+Defined in
+types.d.ts:13326

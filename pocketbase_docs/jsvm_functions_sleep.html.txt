@@ -1,0 +1,28 @@
+URL: https://pocketbase.io/jsvm/functions/sleep.html
+
+PocketBase JSVM reference
+sleep
+Function sleep
+sleep
+(
+milliseconds
+)
+:
+void
+sleep pauses the current goroutine for at least the specified user duration (in ms).
+A zero or negative duration returns immediately.
+Example:
+sleep
+(
+250
+)
+// sleeps for 250ms
+Copy
+Parameters
+milliseconds
+:
+number
+Returns
+void
+Defined in
+types.d.ts:193

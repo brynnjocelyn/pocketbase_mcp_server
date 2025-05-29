@@ -1,0 +1,39 @@
+URL: https://pocketbase.io/jsvm/functions/onCollectionsListRequest.html
+
+PocketBase JSVM reference
+onCollectionsListRequest
+Function onCollectionsListRequest
+on
+Collections
+List
+Request
+(
+handler
+)
+:
+void
+Parameters
+handler
+:
+(
+(
+e
+)
+=>
+void
+)
+(
+e
+)
+:
+void
+Parameters
+e
+:
+CollectionsListRequestEvent
+Returns
+void
+Returns
+void
+Defined in
+types.d.ts:1144

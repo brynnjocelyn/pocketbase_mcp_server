@@ -1,0 +1,5 @@
+node_modules/
+dist/
+.pocketbase-mcp.json
+pb_data/
+*.log

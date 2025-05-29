@@ -1,0 +1,49 @@
+URL: https://pocketbase.io/jsvm/functions/arrayOf.html
+
+PocketBase JSVM reference
+arrayOf
+Function arrayOf
+array
+Of
+<
+T
+>
+(
+model
+)
+:
+T
+[]
+arrayOf creates a placeholder array of the specified models.
+Usually used to populate DB result into an array of models.
+Example:
+const
+records
+=
+arrayOf
+(
+new
+Record)
+$app.
+recordQuery
+(
+"articles"
+).
+limit
+(
+10
+).
+all
+(records)
+Copy
+Type Parameters
+T
+Parameters
+model
+:
+T
+Returns
+T
+[]
+Defined in
+types.d.ts:209

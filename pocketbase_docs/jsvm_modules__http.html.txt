@@ -1,0 +1,12 @@
+URL: https://pocketbase.io/jsvm/modules/_http.html
+
+PocketBase JSVM reference
+$http
+Namespace $http
+$http
+defines common methods for working with HTTP requests.
+Defined in
+types.d.ts:1065
+Index
+Functions
+send

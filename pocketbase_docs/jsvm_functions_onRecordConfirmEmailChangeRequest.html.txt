@@ -1,0 +1,50 @@
+URL: https://pocketbase.io/jsvm/functions/onRecordConfirmEmailChangeRequest.html
+
+PocketBase JSVM reference
+onRecordConfirmEmailChangeRequest
+Function onRecordConfirmEmailChangeRequest
+on
+Record
+Confirm
+Email
+Change
+Request
+(
+handler
+,
+...
+tags
+)
+:
+void
+Parameters
+handler
+:
+(
+(
+e
+)
+=>
+void
+)
+(
+e
+)
+:
+void
+Parameters
+e
+:
+RecordConfirmEmailChangeRequestEvent
+Returns
+void
+Rest
+...
+tags
+:
+string
+[]
+Returns
+void
+Defined in
+types.d.ts:1180

@@ -1,0 +1,49 @@
+URL: https://pocketbase.io/jsvm/functions/onRecordAfterDeleteError.html
+
+PocketBase JSVM reference
+onRecordAfterDeleteError
+Function onRecordAfterDeleteError
+on
+Record
+After
+Delete
+Error
+(
+handler
+,
+...
+tags
+)
+:
+void
+Parameters
+handler
+:
+(
+(
+e
+)
+=>
+void
+)
+(
+e
+)
+:
+void
+Parameters
+e
+:
+RecordErrorEvent
+Returns
+void
+Rest
+...
+tags
+:
+string
+[]
+Returns
+void
+Defined in
+types.d.ts:1171

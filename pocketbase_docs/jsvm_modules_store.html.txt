@@ -1,0 +1,12 @@
+URL: https://pocketbase.io/jsvm/modules/store.html
+
+PocketBase JSVM reference
+store
+Namespace store
+Defined in
+types.d.ts:16912
+Defined in
+types.d.ts:21286
+Index
+Interfaces
+Store

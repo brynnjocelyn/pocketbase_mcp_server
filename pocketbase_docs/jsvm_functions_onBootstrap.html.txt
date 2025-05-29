@@ -1,0 +1,37 @@
+URL: https://pocketbase.io/jsvm/functions/onBootstrap.html
+
+PocketBase JSVM reference
+onBootstrap
+Function onBootstrap
+on
+Bootstrap
+(
+handler
+)
+:
+void
+Parameters
+handler
+:
+(
+(
+e
+)
+=>
+void
+)
+(
+e
+)
+:
+void
+Parameters
+e
+:
+BootstrapEvent
+Returns
+void
+Returns
+void
+Defined in
+types.d.ts:1125

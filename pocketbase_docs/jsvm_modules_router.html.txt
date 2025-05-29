@@ -1,0 +1,20 @@
+URL: https://pocketbase.io/jsvm/modules/router.html
+
+PocketBase JSVM reference
+router
+Namespace router
+Defined in
+types.d.ts:19279
+Defined in
+types.d.ts:22064
+Index
+Interfaces
+Api
+Error
+Event
+Router
+Router
+Group
+Type Aliases
+_sJEbvdc
+_swVWjOY

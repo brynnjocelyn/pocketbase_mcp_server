@@ -1,0 +1,123 @@
+URL: https://pocketbase.io/jsvm/classes/TestEmailSendForm.html
+
+PocketBase JSVM reference
+TestEmailSendForm
+Class TestEmailSendForm
+TestEmailSend is a email template test request form.
+Hierarchy
+TestEmailSend
+TestEmailSendForm
+Implements
+TestEmailSend
+Defined in
+types.d.ts:921
+Defined in
+types.d.ts:926
+Index
+Constructors
+constructor
+Methods
+submit
+validate
+Properties
+collection
+email
+template
+Constructors
+constructor
+new
+Test
+Email
+Send
+Form
+(
+app
+)
+:
+TestEmailSendForm
+Parameters
+app
+:
+excludeHooks
+<
+App
+>
+Returns
+TestEmailSendForm
+Inherited from forms.TestEmailSend.constructor
+Defined in
+types.d.ts:927
+Methods
+submit
+submit
+(
+)
+:
+void
+Submit validates and sends a test email to the form.Email address.
+Returns
+void
+Inherited from
+TestEmailSend
+.
+submit
+Defined in
+types.d.ts:13317
+validate
+validate
+(
+)
+:
+void
+Validate makes the form validatable by implementing [validation.Validatable] interface.
+Returns
+void
+Inherited from
+TestEmailSend
+.
+validate
+Defined in
+types.d.ts:13311
+Properties
+collection
+collection
+:
+string
+Implementation of
+TestEmailSend
+.
+collection
+Inherited from
+TestEmailSend
+.
+collection
+Defined in
+types.d.ts:13299
+email
+email
+:
+string
+Implementation of
+TestEmailSend
+.
+email
+Inherited from
+TestEmailSend
+.
+email
+Defined in
+types.d.ts:13297
+template
+template
+:
+string
+Implementation of
+TestEmailSend
+.
+template
+Inherited from
+TestEmailSend
+.
+template
+Defined in
+types.d.ts:13298

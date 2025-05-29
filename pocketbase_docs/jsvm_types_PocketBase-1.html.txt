@@ -1,0 +1,16 @@
+URL: https://pocketbase.io/jsvm/types/PocketBase-1.html
+
+PocketBase JSVM reference
+PocketBase
+Type alias PocketBase
+Pocket
+Base
+:
+excludeHooks
+<
+pocketbase
+.
+PocketBase
+>
+Defined in
+types.d.ts:116

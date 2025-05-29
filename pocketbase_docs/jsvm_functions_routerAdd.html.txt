@@ -1,0 +1,95 @@
+URL: https://pocketbase.io/jsvm/functions/routerAdd.html
+
+PocketBase JSVM reference
+routerAdd
+Function routerAdd
+router
+Add
+(
+method
+,
+path
+,
+handler
+,
+...
+middlewares
+)
+:
+void
+RouterAdd registers a new route definition.
+Example:
+routerAdd
+(
+"GET"
+,
+"/hello"
+, (
+e
+)
+=>
+{
+return
+e.
+json
+(
+200
+, {
+"message"
+:
+"Hello!"
+})
+}, $apis.
+requireAuth
+())
+Copy
+Note that this method is available only in pb_hooks context.
+Parameters
+method
+:
+string
+path
+:
+string
+handler
+:
+(
+(
+e
+)
+=>
+void
+)
+(
+e
+)
+:
+void
+Parameters
+e
+:
+RequestEvent
+Returns
+void
+Rest
+...
+middlewares
+:
+(
+string
+|
+(
+(
+e
+)
+=>
+void
+)
+|
+Middleware
+)
+[]
+Returns
+void
+Defined in
+types.d.ts:67

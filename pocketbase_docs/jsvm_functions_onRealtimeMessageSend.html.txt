@@ -1,0 +1,39 @@
+URL: https://pocketbase.io/jsvm/functions/onRealtimeMessageSend.html
+
+PocketBase JSVM reference
+onRealtimeMessageSend
+Function onRealtimeMessageSend
+on
+Realtime
+Message
+Send
+(
+handler
+)
+:
+void
+Parameters
+handler
+:
+(
+(
+e
+)
+=>
+void
+)
+(
+e
+)
+:
+void
+Parameters
+e
+:
+RealtimeMessageEvent
+Returns
+void
+Returns
+void
+Defined in
+types.d.ts:1167

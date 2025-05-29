@@ -1,0 +1,629 @@
+URL: https://pocketbase.io/jsvm/classes/SelectField.html
+
+PocketBase JSVM reference
+SelectField
+Class SelectField
+SelectField defines "select" type field for storing single or
+multiple string values from a predefined list.
+Requires the Values option to be set.
+If MaxSelect is not set or <= 1, then the field value is expected to be a single Values element.
+If MaxSelect is > 1, then the field value is expected to be a subset of Values slice.
+The respective zero record field value is either empty string (single) or empty string slice (multiple).
+The following additional setter keys are available:
+-
+"fieldName+"
+-
+append one or more values to the existing record one. For
+example
+:
+record.
+Set
+(
+"roles+"
+, []string{
+"new1"
+,
+"new2"
+})
+// []string{"old1", "old2", "new1", "new2"}
+-
+"+fieldName"
+-
+prepend one or more values to the existing record one. For
+example
+:
+record.
+Set
+(
+"+roles"
+, []string{
+"new1"
+,
+"new2"
+})
+// []string{"new1", "new2", "old1", "old2"}
+-
+"fieldName-"
+-
+subtract one or more values from the existing record one. For
+example
+:
+record.
+Set
+(
+"roles-"
+,
+"old1"
+)
+// []string{"old2"}
+Copy
+Hierarchy
+core
+.
+SelectField
+SelectField
+Implements
+core
+.
+SelectField
+Defined in
+types.d.ts:449
+Defined in
+types.d.ts:455
+Index
+Constructors
+constructor
+Methods
+column
+Type
+driver
+Value
+find
+Setter
+get
+Hidden
+get
+Id
+get
+Name
+get
+System
+is
+Multiple
+prepare
+Value
+set
+Hidden
+set
+Id
+set
+Name
+set
+System
+type
+validate
+Settings
+validate
+Value
+Properties
+hidden
+id
+max
+Select
+name
+presentable
+required
+system
+values
+Constructors
+constructor
+new
+Select
+Field
+(
+data
+?
+)
+:
+SelectField
+Parameters
+Optional
+data
+:
+Partial
+<
+core
+.
+SelectField
+>
+Returns
+SelectField
+Inherited from core.SelectField.constructor
+Defined in
+types.d.ts:456
+Methods
+column
+Type
+column
+Type
+(
+app
+)
+:
+string
+ColumnType implements [Field.ColumnType] interface method.
+Parameters
+app
+:
+App
+Returns
+string
+Inherited from
+SelectField
+.
+columnType
+Defined in
+types.d.ts:11046
+driver
+Value
+driver
+Value
+(
+record
+)
+:
+any
+DriverValue implements the [DriverValuer] interface.
+Parameters
+record
+:
+core
+.
+Record
+Returns
+any
+Inherited from
+SelectField
+.
+driverValue
+Defined in
+types.d.ts:11058
+find
+Setter
+find
+Setter
+(
+key
+)
+:
+SetterFunc
+FindSetter implements the [SetterFinder] interface.
+Parameters
+key
+:
+string
+Returns
+SetterFunc
+Inherited from
+SelectField
+.
+findSetter
+Defined in
+types.d.ts:11076
+get
+Hidden
+get
+Hidden
+(
+)
+:
+boolean
+GetHidden implements [Field.GetHidden] interface method.
+Returns
+boolean
+Inherited from
+SelectField
+.
+getHidden
+Defined in
+types.d.ts:11027
+get
+Id
+get
+Id
+(
+)
+:
+string
+GetId implements [Field.GetId] interface method.
+Returns
+string
+Inherited from
+SelectField
+.
+getId
+Defined in
+types.d.ts:10991
+get
+Name
+get
+Name
+(
+)
+:
+string
+GetName implements [Field.GetName] interface method.
+Returns
+string
+Inherited from
+SelectField
+.
+getName
+Defined in
+types.d.ts:11003
+get
+System
+get
+System
+(
+)
+:
+boolean
+GetSystem implements [Field.GetSystem] interface method.
+Returns
+boolean
+Inherited from
+SelectField
+.
+getSystem
+Defined in
+types.d.ts:11015
+is
+Multiple
+is
+Multiple
+(
+)
+:
+boolean
+IsMultiple implements [MultiValuer] interface and checks whether the
+current field options support multiple values.
+Returns
+boolean
+Inherited from
+SelectField
+.
+isMultiple
+Defined in
+types.d.ts:11040
+prepare
+Value
+prepare
+Value
+(
+record
+,
+raw
+)
+:
+any
+PrepareValue implements [Field.PrepareValue] interface method.
+Parameters
+record
+:
+core
+.
+Record
+raw
+:
+any
+Returns
+any
+Inherited from
+SelectField
+.
+prepareValue
+Defined in
+types.d.ts:11052
+set
+Hidden
+set
+Hidden
+(
+hidden
+)
+:
+void
+SetHidden implements [Field.SetHidden] interface method.
+Parameters
+hidden
+:
+boolean
+Returns
+void
+Inherited from
+SelectField
+.
+setHidden
+Defined in
+types.d.ts:11033
+set
+Id
+set
+Id
+(
+id
+)
+:
+void
+SetId implements [Field.SetId] interface method.
+Parameters
+id
+:
+string
+Returns
+void
+Inherited from
+SelectField
+.
+setId
+Defined in
+types.d.ts:10997
+set
+Name
+set
+Name
+(
+name
+)
+:
+void
+SetName implements [Field.SetName] interface method.
+Parameters
+name
+:
+string
+Returns
+void
+Inherited from
+SelectField
+.
+setName
+Defined in
+types.d.ts:11009
+set
+System
+set
+System
+(
+system
+)
+:
+void
+SetSystem implements [Field.SetSystem] interface method.
+Parameters
+system
+:
+boolean
+Returns
+void
+Inherited from
+SelectField
+.
+setSystem
+Defined in
+types.d.ts:11021
+type
+type
+(
+)
+:
+string
+Type implements [Field.Type] interface method.
+Returns
+string
+Inherited from
+SelectField
+.
+type
+Defined in
+types.d.ts:10985
+validate
+Settings
+validate
+Settings
+(
+ctx
+,
+app
+,
+collection
+)
+:
+void
+ValidateSettings implements [Field.ValidateSettings] interface method.
+Parameters
+ctx
+:
+context
+.
+Context
+app
+:
+App
+collection
+:
+core
+.
+Collection
+Returns
+void
+Inherited from
+SelectField
+.
+validateSettings
+Defined in
+types.d.ts:11070
+validate
+Value
+validate
+Value
+(
+ctx
+,
+app
+,
+record
+)
+:
+void
+ValidateValue implements [Field.ValidateValue] interface method.
+Parameters
+ctx
+:
+context
+.
+Context
+app
+:
+App
+record
+:
+core
+.
+Record
+Returns
+void
+Inherited from
+SelectField
+.
+validateValue
+Defined in
+types.d.ts:11064
+Properties
+hidden
+hidden
+:
+boolean
+Hidden hides the field from the API response.
+Implementation of
+SelectField
+.
+hidden
+Inherited from
+SelectField
+.
+hidden
+Defined in
+types.d.ts:10960
+id
+id
+:
+string
+Id is the unique stable field identifier.
+It is automatically generated from the name when adding to a collection FieldsList.
+Implementation of
+SelectField
+.
+id
+Inherited from
+SelectField
+.
+id
+Defined in
+types.d.ts:10952
+max
+Select
+max
+Select
+:
+number
+MaxSelect specifies the max allowed selected values.
+For multiple select the value must be > 1, otherwise fallbacks to single (default).
+Implementation of
+SelectField
+.
+maxSelect
+Inherited from
+SelectField
+.
+maxSelect
+Defined in
+types.d.ts:10975
+name
+name
+:
+string
+Name (required) is the unique name of the field.
+Implementation of
+SelectField
+.
+name
+Inherited from
+SelectField
+.
+name
+Defined in
+types.d.ts:10946
+presentable
+presentable
+:
+boolean
+Presentable hints the Dashboard UI to use the underlying
+field record value in the relation preview label.
+Implementation of
+SelectField
+.
+presentable
+Inherited from
+SelectField
+.
+presentable
+Defined in
+types.d.ts:10965
+required
+required
+:
+boolean
+Required will require the field value to be non-empty.
+Implementation of
+SelectField
+.
+required
+Inherited from
+SelectField
+.
+required
+Defined in
+types.d.ts:10979
+system
+system
+:
+boolean
+System prevents the renaming and removal of the field.
+Implementation of
+SelectField
+.
+system
+Inherited from
+SelectField
+.
+system
+Defined in
+types.d.ts:10956
+values
+values
+:
+string
+[]
+Values specifies the list of accepted values.
+Implementation of
+SelectField
+.
+values
+Inherited from
+SelectField
+.
+values
+Defined in
+types.d.ts:10969

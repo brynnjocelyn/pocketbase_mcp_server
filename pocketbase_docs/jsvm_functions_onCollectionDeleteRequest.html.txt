@@ -1,0 +1,39 @@
+URL: https://pocketbase.io/jsvm/functions/onCollectionDeleteRequest.html
+
+PocketBase JSVM reference
+onCollectionDeleteRequest
+Function onCollectionDeleteRequest
+on
+Collection
+Delete
+Request
+(
+handler
+)
+:
+void
+Parameters
+handler
+:
+(
+(
+e
+)
+=>
+void
+)
+(
+e
+)
+:
+void
+Parameters
+e
+:
+CollectionRequestEvent
+Returns
+void
+Returns
+void
+Defined in
+types.d.ts:1137

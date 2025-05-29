@@ -1,0 +1,43 @@
+URL: https://pocketbase.io/jsvm/modules/_template.html
+
+PocketBase JSVM reference
+$template
+Namespace $template
+$template
+is a global helper to load and cache HTML templates on the fly.
+The templates uses the standard Go
+html/template
+and
+text/template
+package syntax.
+Example:
+const
+html
+=
+$template.
+loadFiles
+(
+"views/layout.html"
+,
+"views/content.html"
+,
+).
+render
+({
+"name"
+:
+"John"
+})
+Copy
+Note that this method is available only in pb_hooks context.
+Defined in
+types.d.ts:149
+Index
+Functions
+add
+Funcs
+loadFS
+load
+Files
+load
+String

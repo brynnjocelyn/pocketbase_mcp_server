@@ -1,0 +1,231 @@
+URL: https://pocketbase.io/jsvm/modules/os.html
+
+PocketBase JSVM reference
+os
+Namespace os
+Package os provides a platform-independent interface to operating system
+functionality. The design is Unix-like, although the error handling is
+Go-like; failing calls return values of type error rather than error numbers.
+Often, more information is available within the error. For example,
+if a call that takes a file name fails, such as [Open] or [Stat], the error
+will include the failing file name when printed and will be of type
+[*PathError], which may be unpacked for more information.
+The os interface is intended to be uniform across all operating systems.
+Features not generally available appear in the system-specific package syscall.
+Here is a simple example, opening a file and reading some of it.
+file,
+err
+:
+=
+os.
+Open
+(
+"file.go"
+)
+// For read access.
+if
+err
+!=
+nil {
+log.
+Fatal
+(err)
+}
+Copy
+If the open fails, the error string will be self-explanatory, like
+open file.go: no such file or directory
+Copy
+The file's data can then be read into a slice of bytes. Read and
+Write take their byte counts from the length of the argument slice.
+data
+:
+=
+make
+([]byte,
+100
+)
+count,
+err
+:
+=
+file.
+Read
+(data)
+if
+err
+!=
+nil {
+log.
+Fatal
+(err)
+}
+fmt.
+Printf
+(
+"read %d bytes: %q
+\n
+"
+, count, data[:count])
+Copy
+Concurrency
+The methods of [File] correspond to file system operations. All are
+safe for concurrent use. The maximum number of concurrent
+operations on a File may be limited by the OS or the system. The
+number should be high, but exceeding it may degrade performance or
+cause other issues.
+Defined in
+types.d.ts:1254
+Index
+Interfaces
+Dir
+Entry
+File
+File
+Info
+File
+Mode
+Link
+Error
+Path
+Error
+Proc
+Attr
+Process
+Process
+State
+Signal
+Syscall
+Error
+chdir
+chmod
+chown
+chtimes
+clearenv
+copyFS
+create
+create
+Temp
+dirFS
+dir
+Info
+environ
+executable
+exit
+expand
+expand
+Env
+file
+file
+Stat
+file
+Without
+Read
+From
+file
+Without
+Write
+To
+find
+Process
+getegid
+getenv
+geteuid
+getgid
+getgroups
+getpagesize
+getpid
+getppid
+getuid
+getwd
+hostname
+is
+Exist
+is
+Not
+Exist
+is
+Path
+Separator
+is
+Permission
+is
+Timeout
+lchown
+link
+lookup
+Env
+lstat
+mkdir
+mkdir
+All
+mkdir
+Temp
+new
+File
+new
+File
+Kind
+new
+Syscall
+Error
+no
+Read
+From
+no
+Write
+To
+open
+open
+File
+pipe
+process
+Mode
+process
+Status
+raw
+Conn
+read
+Dir
+read
+File
+readdir
+Mode
+readlink
+remove
+remove
+All
+rename
+same
+File
+setenv
+start
+Process
+stat
+symlink
+syscall
+Error
+Type
+temp
+Dir
+timeout
+truncate
+unix
+Dirent
+unsetenv
+user
+Cache
+Dir
+user
+Config
+Dir
+user
+Home
+Dir
+write
+File
+Type Aliases
+_sGLkCJa
+_sk
+QrVEU
+_sw
+FbbKO

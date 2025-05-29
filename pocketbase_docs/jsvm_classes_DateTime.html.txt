@@ -1,0 +1,425 @@
+URL: https://pocketbase.io/jsvm/classes/DateTime.html
+
+PocketBase JSVM reference
+DateTime
+Class DateTime
+DateTime defines a single DateTime type instance.
+The returned date is always represented in UTC.
+Example:
+const
+dt0
+=
+new
+DateTime
+()
+// now
+// full datetime string
+const
+dt1
+=
+new
+DateTime
+(
+'2023-07-01 00:00:00.000Z'
+)
+// datetime string with default "parse in" timezone location
+//
+// similar to new DateTime('2023-07-01 00:00:00 +01:00') or new DateTime('2023-07-01 00:00:00 +02:00')
+// but accounts for the daylight saving time (DST)
+const
+dt2
+=
+new
+DateTime
+(
+'2023-07-01 00:00:00'
+,
+'Europe/Amsterdam'
+)
+Copy
+Hierarchy
+types
+.
+DateTime
+DateTime
+Implements
+types
+.
+DateTime
+Defined in
+types.d.ts:602
+Defined in
+types.d.ts:624
+Index
+Constructors
+constructor
+Methods
+add
+add
+Date
+after
+before
+compare
+equal
+is
+Zero
+marshalJSON
+scan
+string
+sub
+time
+unix
+unmarshalJSON
+value
+Constructors
+constructor
+new
+Date
+Time
+(
+date
+?
+,
+defaultParseInLocation
+?
+)
+:
+DateTime
+Parameters
+Optional
+date
+:
+string
+Optional
+defaultParseInLocation
+:
+string
+Returns
+DateTime
+Inherited from types.DateTime.constructor
+Defined in
+types.d.ts:625
+Methods
+add
+add
+(
+duration
+)
+:
+types
+.
+DateTime
+Add returns a new DateTime based on the current DateTime + the specified duration.
+Parameters
+duration
+:
+Duration
+Returns
+types
+.
+DateTime
+Inherited from
+DateTime
+.
+add
+Defined in
+types.d.ts:19056
+add
+Date
+add
+Date
+(
+years
+,
+months
+,
+days
+)
+:
+types
+.
+DateTime
+AddDate returns a new DateTime based on the current one + duration.
+It follows the same rules as [time.AddDate].
+Parameters
+years
+:
+number
+months
+:
+number
+days
+:
+number
+Returns
+types
+.
+DateTime
+Inherited from
+DateTime
+.
+addDate
+Defined in
+types.d.ts:19073
+after
+after
+(
+u
+)
+:
+boolean
+After reports whether the current DateTime instance is after u.
+Parameters
+u
+:
+types
+.
+DateTime
+Returns
+boolean
+Inherited from
+DateTime
+.
+after
+Defined in
+types.d.ts:19079
+before
+before
+(
+u
+)
+:
+boolean
+Before reports whether the current DateTime instance is before u.
+Parameters
+u
+:
+types
+.
+DateTime
+Returns
+boolean
+Inherited from
+DateTime
+.
+before
+Defined in
+types.d.ts:19085
+compare
+compare
+(
+u
+)
+:
+number
+Compare compares the current DateTime instance with u.
+If the current instance is before u, it returns -1.
+If the current instance is after u, it returns +1.
+If they're the same, it returns 0.
+Parameters
+u
+:
+types
+.
+DateTime
+Returns
+number
+Inherited from
+DateTime
+.
+compare
+Defined in
+types.d.ts:19094
+equal
+equal
+(
+u
+)
+:
+boolean
+Equal reports whether the current DateTime and u represent the same time instant.
+Two DateTime can be equal even if they are in different locations.
+For example, 6:00 +0200 and 4:00 UTC are Equal.
+Parameters
+u
+:
+types
+.
+DateTime
+Returns
+boolean
+Inherited from
+DateTime
+.
+equal
+Defined in
+types.d.ts:19102
+is
+Zero
+is
+Zero
+(
+)
+:
+boolean
+IsZero checks whether the current DateTime instance has zero time value.
+Returns
+boolean
+Inherited from
+DateTime
+.
+isZero
+Defined in
+types.d.ts:19115
+marshalJSON
+marshalJSON
+(
+)
+:
+string
+|
+number
+[]
+MarshalJSON implements the [json.Marshaler] interface.
+Returns
+string
+|
+number
+[]
+Inherited from
+DateTime
+.
+marshalJSON
+Defined in
+types.d.ts:19130
+scan
+scan
+(
+value
+)
+:
+void
+Scan implements [sql.Scanner] interface to scan the provided value
+into the current DateTime instance.
+Parameters
+value
+:
+any
+Returns
+void
+Inherited from
+DateTime
+.
+scan
+Defined in
+types.d.ts:19149
+string
+string
+(
+)
+:
+string
+String serializes the current DateTime instance into a formatted
+UTC date string.
+The zero value is serialized to an empty string.
+Returns
+string
+Inherited from
+DateTime
+.
+string
+Defined in
+types.d.ts:19124
+sub
+sub
+(
+u
+)
+:
+Duration
+Sub returns a [time.Duration] by subtracting the specified DateTime from the current one.
+If the result exceeds the maximum (or minimum) value that can be stored in a [time.Duration],
+the maximum (or minimum) duration will be returned.
+Parameters
+u
+:
+types
+.
+DateTime
+Returns
+Duration
+Inherited from
+DateTime
+.
+sub
+Defined in
+types.d.ts:19065
+time
+time
+(
+)
+:
+Time
+Time returns the internal [time.Time] instance.
+Returns
+Time
+Inherited from
+DateTime
+.
+time
+Defined in
+types.d.ts:19050
+unix
+unix
+(
+)
+:
+number
+Unix returns the current DateTime as a Unix time, aka.
+the number of seconds elapsed since January 1, 1970 UTC.
+Returns
+number
+Inherited from
+DateTime
+.
+unix
+Defined in
+types.d.ts:19109
+unmarshalJSON
+unmarshalJSON
+(
+b
+)
+:
+void
+UnmarshalJSON implements the [json.Unmarshaler] interface.
+Parameters
+b
+:
+string
+|
+number
+[]
+Returns
+void
+Inherited from
+DateTime
+.
+unmarshalJSON
+Defined in
+types.d.ts:19136
+value
+value
+(
+)
+:
+any
+Value implements the [driver.Valuer] interface.
+Returns
+any
+Inherited from
+DateTime
+.
+value
+Defined in
+types.d.ts:19142

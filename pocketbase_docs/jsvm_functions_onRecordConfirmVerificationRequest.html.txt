@@ -1,0 +1,49 @@
+URL: https://pocketbase.io/jsvm/functions/onRecordConfirmVerificationRequest.html
+
+PocketBase JSVM reference
+onRecordConfirmVerificationRequest
+Function onRecordConfirmVerificationRequest
+on
+Record
+Confirm
+Verification
+Request
+(
+handler
+,
+...
+tags
+)
+:
+void
+Parameters
+handler
+:
+(
+(
+e
+)
+=>
+void
+)
+(
+e
+)
+:
+void
+Parameters
+e
+:
+RecordConfirmVerificationRequestEvent
+Returns
+void
+Rest
+...
+tags
+:
+string
+[]
+Returns
+void
+Defined in
+types.d.ts:1182

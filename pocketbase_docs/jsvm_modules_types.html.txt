@@ -1,0 +1,20 @@
+URL: https://pocketbase.io/jsvm/modules/types.html
+
+PocketBase JSVM reference
+types
+Namespace types
+Package types implements some commonly used db serializable types
+like datetime, json, etc.
+Defined in
+types.d.ts:19039
+Defined in
+types.d.ts:22058
+Index
+Interfaces
+Date
+Time
+Geo
+Point
+JSONArray
+JSONMap
+JSONRaw

@@ -1,0 +1,311 @@
+URL: https://pocketbase.io/jsvm/classes/RecordUpsertForm.html
+
+PocketBase JSVM reference
+RecordUpsertForm
+Class RecordUpsertForm
+Inherit Doc
+Hierarchy
+RecordUpsert
+RecordUpsertForm
+Implements
+RecordUpsert
+Defined in
+types.d.ts:912
+Defined in
+types.d.ts:917
+Index
+Constructors
+constructor
+Methods
+dry
+Submit
+grant
+Manager
+Access
+grant
+Superuser
+Access
+has
+Manage
+Access
+load
+reset
+Access
+set
+App
+set
+Context
+set
+Record
+submit
+Constructors
+constructor
+new
+Record
+Upsert
+Form
+(
+app
+,
+record
+)
+:
+RecordUpsertForm
+Parameters
+app
+:
+excludeHooks
+<
+App
+>
+record
+:
+core
+.
+Record
+Returns
+RecordUpsertForm
+Inherited from forms.RecordUpsert.constructor
+Defined in
+types.d.ts:918
+Methods
+dry
+Submit
+dry
+Submit
+(
+callback
+)
+:
+void
+Deprecated: It was previously used as part of the record create action but it is not needed anymore and will be removed in the future.
+DrySubmit performs a temp form submit within a transaction and reverts it at the end.
+For actual record persistence, check the [RecordUpsert.Submit()] method.
+This method doesn't perform validations, handle file uploads/deletes or trigger app save events!
+Parameters
+callback
+:
+(
+(
+txApp
+,
+drySavedRecord
+)
+=>
+void
+)
+(
+txApp
+,
+drySavedRecord
+)
+:
+void
+Parameters
+txApp
+:
+excludeHooks
+<
+App
+>
+drySavedRecord
+:
+core
+.
+Record
+Returns
+void
+Returns
+void
+Inherited from
+RecordUpsert
+.
+drySubmit
+Defined in
+types.d.ts:13285
+grant
+Manager
+Access
+grant
+Manager
+Access
+(
+)
+:
+void
+GrantManagerAccess updates the form access level to "manager" allowing
+directly changing some system record fields (often used with auth collection records).
+Returns
+void
+Inherited from
+RecordUpsert
+.
+grantManagerAccess
+Defined in
+types.d.ts:13255
+grant
+Superuser
+Access
+grant
+Superuser
+Access
+(
+)
+:
+void
+GrantSuperuserAccess updates the form access level to "superuser" allowing
+directly changing all system record fields, including those marked as "Hidden".
+Returns
+void
+Inherited from
+RecordUpsert
+.
+grantSuperuserAccess
+Defined in
+types.d.ts:13262
+has
+Manage
+Access
+has
+Manage
+Access
+(
+)
+:
+boolean
+HasManageAccess reports whether the form has "manager" or "superuser" level access.
+Returns
+boolean
+Inherited from
+RecordUpsert
+.
+hasManageAccess
+Defined in
+types.d.ts:13268
+load
+load
+(
+data
+)
+:
+void
+Load loads the provided data into the form and the related record.
+Parameters
+data
+:
+_TygojaDict
+Returns
+void
+Inherited from
+RecordUpsert
+.
+load
+Defined in
+types.d.ts:13274
+reset
+Access
+reset
+Access
+(
+)
+:
+void
+ResetAccess resets the form access level to the accessLevelDefault.
+Returns
+void
+Inherited from
+RecordUpsert
+.
+resetAccess
+Defined in
+types.d.ts:13248
+set
+App
+set
+App
+(
+app
+)
+:
+void
+SetApp replaces the current form app instance.
+This could be used for example if you want to change at later stage
+before submission to change from regular -> transactional app instance.
+Parameters
+app
+:
+excludeHooks
+<
+App
+>
+Returns
+void
+Inherited from
+RecordUpsert
+.
+setApp
+Defined in
+types.d.ts:13236
+set
+Context
+set
+Context
+(
+ctx
+)
+:
+void
+SetContext assigns ctx as context of the current form.
+Parameters
+ctx
+:
+context
+.
+Context
+Returns
+void
+Inherited from
+RecordUpsert
+.
+setContext
+Defined in
+types.d.ts:13227
+set
+Record
+set
+Record
+(
+record
+)
+:
+void
+SetRecord replaces the current form record instance.
+Parameters
+record
+:
+core
+.
+Record
+Returns
+void
+Inherited from
+RecordUpsert
+.
+setRecord
+Defined in
+types.d.ts:13242
+submit
+submit
+(
+)
+:
+void
+Submit validates the form specific validations and attempts to save the form record.
+Returns
+void
+Inherited from
+RecordUpsert
+.
+submit
+Defined in
+types.d.ts:13291

@@ -1,0 +1,39 @@
+URL: https://pocketbase.io/jsvm/functions/_app.expandRecords.html
+
+PocketBase JSVM reference
+$app
+expandRecords
+Function expandRecords
+expand
+Records
+(
+records
+,
+expands
+,
+optFetchFunc
+)
+:
+_TygojaDict
+ExpandRecords expands the relations of the provided Record models list.
+If optFetchFunc is not set, then a default function will be used
+that returns all relation records.
+Returns a map with the failed expand parameters and their errors.
+Parameters
+records
+:
+core
+.
+Record
+[]
+expands
+:
+string
+[]
+optFetchFunc
+:
+ExpandFetchFunc
+Returns
+_TygojaDict
+Defined in
+types.d.ts:6253

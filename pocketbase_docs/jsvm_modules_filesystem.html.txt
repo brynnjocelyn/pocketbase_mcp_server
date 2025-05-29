@@ -1,0 +1,47 @@
+URL: https://pocketbase.io/jsvm/modules/filesystem.html
+
+PocketBase JSVM reference
+filesystem
+Namespace filesystem
+Defined in
+types.d.ts:5152
+Index
+Interfaces
+Bytes
+Reader
+File
+File
+Reader
+Multipart
+Reader
+Path
+Reader
+System
+bytes
+Read
+Seek
+Closer
+new
+File
+From
+Bytes
+new
+File
+From
+Multipart
+new
+File
+From
+Path
+new
+File
+FromURL
+new
+Local
+new
+S3
+Type Aliases
+_s
+Ly
+Nb
+Vv

@@ -1,0 +1,3 @@
+URL: https://pocketbase.io/jsvm/classes/BadRequestError.html/NotFoundError.html
+
+Content not found

@@ -1,0 +1,11 @@
+URL: https://pocketbase.io/jsvm/modules/ozzo_validation.html
+
+PocketBase JSVM reference
+ozzo_validation
+Namespace ozzo_validation
+Package validation provides configurable and extensible rules for validating data of various types.
+Defined in
+types.d.ts:2859
+Index
+Interfaces
+Error

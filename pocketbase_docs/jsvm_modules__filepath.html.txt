@@ -1,0 +1,32 @@
+URL: https://pocketbase.io/jsvm/modules/_filepath.html
+
+PocketBase JSVM reference
+$filepath
+Namespace $filepath
+$filepath
+defines common helpers for manipulating filename
+paths in a way compatible with the target operating system-defined file paths.
+Defined in
+types.d.ts:828
+Index
+Functions
+base
+clean
+dir
+ext
+from
+Slash
+glob
+is
+Abs
+join
+match
+rel
+split
+split
+List
+to
+Slash
+walk
+walk
+Dir

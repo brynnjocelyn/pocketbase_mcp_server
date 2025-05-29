@@ -1,0 +1,163 @@
+URL: https://pocketbase.io/jsvm/classes/ValidationError.html
+
+PocketBase JSVM reference
+ValidationError
+Class ValidationError
+ValidationError defines a single formatted data validation error,
+usually used as part of an error response.
+new
+ValidationError
+(
+"invalid_title"
+,
+"Title is not valid"
+)
+Copy
+Hierarchy
+Error
+ValidationError
+Implements
+Error
+Defined in
+types.d.ts:628
+Defined in
+types.d.ts:639
+Index
+Constructors
+constructor
+Methods
+code
+error
+message
+params
+set
+Message
+set
+Params
+Constructors
+constructor
+new
+Validation
+Error
+(
+code
+?
+,
+message
+?
+)
+:
+ValidationError
+Parameters
+Optional
+code
+:
+string
+Optional
+message
+:
+string
+Returns
+ValidationError
+Inherited from ozzo_validation.Error.constructor
+Defined in
+types.d.ts:640
+Methods
+code
+code
+(
+)
+:
+string
+Returns
+string
+Inherited from
+Error
+.
+code
+Defined in
+types.d.ts:2866
+error
+error
+(
+)
+:
+string
+Returns
+string
+Inherited from
+Error
+.
+error
+Defined in
+types.d.ts:2865
+message
+message
+(
+)
+:
+string
+Returns
+string
+Inherited from
+Error
+.
+message
+Defined in
+types.d.ts:2867
+params
+params
+(
+)
+:
+_TygojaDict
+Returns
+_TygojaDict
+Inherited from
+Error
+.
+params
+Defined in
+types.d.ts:2869
+set
+Message
+set
+Message
+(
+_arg0
+)
+:
+Error
+Parameters
+_arg0
+:
+string
+Returns
+Error
+Inherited from
+Error
+.
+setMessage
+Defined in
+types.d.ts:2868
+set
+Params
+set
+Params
+(
+_arg0
+)
+:
+Error
+Parameters
+_arg0
+:
+_TygojaDict
+Returns
+Error
+Inherited from
+Error
+.
+setParams
+Defined in
+types.d.ts:2870

@@ -1,0 +1,492 @@
+URL: https://pocketbase.io/jsvm/interfaces/slog.Logger.html
+
+PocketBase JSVM reference
+slog
+Logger
+Interface Logger
+A Logger records structured information about each call to its
+Log, Debug, Info, Warn, and Error methods.
+For each call, it creates a [Record] and passes it to a [Handler].
+To create a new Logger, call [New] or a Logger method
+that begins "With".
+Hierarchy
+Logger
+Defined in
+types.d.ts:20636
+Defined in
+types.d.ts:20638
+Defined in
+types.d.ts:20644
+Defined in
+types.d.ts:20652
+Defined in
+types.d.ts:20663
+Defined in
+types.d.ts:20669
+Defined in
+types.d.ts:20686
+Defined in
+types.d.ts:20692
+Defined in
+types.d.ts:20698
+Defined in
+types.d.ts:20704
+Defined in
+types.d.ts:20710
+Defined in
+types.d.ts:20716
+Defined in
+types.d.ts:20722
+Defined in
+types.d.ts:20728
+Defined in
+types.d.ts:20734
+Index
+Methods
+debug
+debug
+Context
+enabled
+error
+error
+Context
+handler
+info
+info
+Context
+log
+log
+Attrs
+warn
+warn
+Context
+with
+with
+Group
+Methods
+debug
+debug
+(
+msg
+,
+...
+args
+)
+:
+void
+Debug logs at [LevelDebug].
+Parameters
+msg
+:
+string
+Rest
+...
+args
+:
+any
+[]
+Returns
+void
+Defined in
+types.d.ts:20696
+debug
+Context
+debug
+Context
+(
+ctx
+,
+msg
+,
+...
+args
+)
+:
+void
+DebugContext logs at [LevelDebug] with the given context.
+Parameters
+ctx
+:
+context
+.
+Context
+msg
+:
+string
+Rest
+...
+args
+:
+any
+[]
+Returns
+void
+Defined in
+types.d.ts:20702
+enabled
+enabled
+(
+ctx
+,
+level
+)
+:
+boolean
+Enabled reports whether l emits log records at the given context and level.
+Parameters
+ctx
+:
+context
+.
+Context
+level
+:
+Level
+Returns
+boolean
+Defined in
+types.d.ts:20667
+error
+error
+(
+msg
+,
+...
+args
+)
+:
+void
+Error logs at [LevelError].
+Parameters
+msg
+:
+string
+Rest
+...
+args
+:
+any
+[]
+Returns
+void
+Defined in
+types.d.ts:20732
+error
+Context
+error
+Context
+(
+ctx
+,
+msg
+,
+...
+args
+)
+:
+void
+ErrorContext logs at [LevelError] with the given context.
+Parameters
+ctx
+:
+context
+.
+Context
+msg
+:
+string
+Rest
+...
+args
+:
+any
+[]
+Returns
+void
+Defined in
+types.d.ts:20738
+handler
+handler
+(
+)
+:
+slog
+.
+Handler
+Handler returns l's Handler.
+Returns
+slog
+.
+Handler
+Defined in
+types.d.ts:20642
+info
+info
+(
+msg
+,
+...
+args
+)
+:
+void
+Info logs at [LevelInfo].
+Parameters
+msg
+:
+string
+Rest
+...
+args
+:
+any
+[]
+Returns
+void
+Defined in
+types.d.ts:20708
+info
+Context
+info
+Context
+(
+ctx
+,
+msg
+,
+...
+args
+)
+:
+void
+InfoContext logs at [LevelInfo] with the given context.
+Parameters
+ctx
+:
+context
+.
+Context
+msg
+:
+string
+Rest
+...
+args
+:
+any
+[]
+Returns
+void
+Defined in
+types.d.ts:20714
+log
+log
+(
+ctx
+,
+level
+,
+msg
+,
+...
+args
+)
+:
+void
+Log emits a log record with the current time and the given level and message.
+The Record's Attrs consist of the Logger's attributes followed by
+the Attrs specified by args.
+The attribute arguments are processed as follows:
+-
+If an argument is an Attr, it is used
+as
+is
+.
+-
+If an argument is a string and
+this
+is not the last argument,
+the following argument is treated
+as
+the
+value
+and
+the
+two
+are
+combined
+into an Attr.
+-
+Otherwise, the argument is treated
+as
+a
+value
+with
+key
+"!BADKEY"
+.
+Copy
+Parameters
+ctx
+:
+context
+.
+Context
+level
+:
+Level
+msg
+:
+string
+Rest
+...
+args
+:
+any
+[]
+Returns
+void
+Defined in
+types.d.ts:20684
+log
+Attrs
+log
+Attrs
+(
+ctx
+,
+level
+,
+msg
+,
+...
+attrs
+)
+:
+void
+LogAttrs is a more efficient version of [Logger.Log] that accepts only Attrs.
+Parameters
+ctx
+:
+context
+.
+Context
+level
+:
+Level
+msg
+:
+string
+Rest
+...
+attrs
+:
+Attr
+[]
+Returns
+void
+Defined in
+types.d.ts:20690
+warn
+warn
+(
+msg
+,
+...
+args
+)
+:
+void
+Warn logs at [LevelWarn].
+Parameters
+msg
+:
+string
+Rest
+...
+args
+:
+any
+[]
+Returns
+void
+Defined in
+types.d.ts:20720
+warn
+Context
+warn
+Context
+(
+ctx
+,
+msg
+,
+...
+args
+)
+:
+void
+WarnContext logs at [LevelWarn] with the given context.
+Parameters
+ctx
+:
+context
+.
+Context
+msg
+:
+string
+Rest
+...
+args
+:
+any
+[]
+Returns
+void
+Defined in
+types.d.ts:20726
+with
+with
+(
+...
+args
+)
+:
+Logger
+With returns a Logger that includes the given attributes
+in each output operation. Arguments are converted to
+attributes as if by [Logger.Log].
+Parameters
+Rest
+...
+args
+:
+any
+[]
+Returns
+Logger
+Defined in
+types.d.ts:20650
+with
+Group
+with
+Group
+(
+name
+)
+:
+Logger
+WithGroup returns a Logger that starts a group, if name is non-empty.
+The keys of all attributes added to the Logger will be qualified by the given
+name. (How that qualification happens depends on the [Handler.WithGroup]
+method of the Logger's Handler.)
+If name is empty, WithGroup returns the receiver.
+Parameters
+name
+:
+string
+Returns
+Logger
+Defined in
+types.d.ts:20661

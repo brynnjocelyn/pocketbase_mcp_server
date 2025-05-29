@@ -1,0 +1,17 @@
+URL: https://pocketbase.io/jsvm/functions/_app.collectionQuery.html
+
+PocketBase JSVM reference
+$app
+collectionQuery
+Function collectionQuery
+collection
+Query
+(
+)
+:
+SelectQuery
+CollectionQuery returns a new Collection select query.
+Returns
+SelectQuery
+Defined in
+types.d.ts:5904

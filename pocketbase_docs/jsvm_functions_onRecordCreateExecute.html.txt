@@ -1,0 +1,48 @@
+URL: https://pocketbase.io/jsvm/functions/onRecordCreateExecute.html
+
+PocketBase JSVM reference
+onRecordCreateExecute
+Function onRecordCreateExecute
+on
+Record
+Create
+Execute
+(
+handler
+,
+...
+tags
+)
+:
+void
+Parameters
+handler
+:
+(
+(
+e
+)
+=>
+void
+)
+(
+e
+)
+:
+void
+Parameters
+e
+:
+RecordEvent
+Returns
+void
+Rest
+...
+tags
+:
+string
+[]
+Returns
+void
+Defined in
+types.d.ts:1184

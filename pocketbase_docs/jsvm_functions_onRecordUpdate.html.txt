@@ -1,0 +1,47 @@
+URL: https://pocketbase.io/jsvm/functions/onRecordUpdate.html
+
+PocketBase JSVM reference
+onRecordUpdate
+Function onRecordUpdate
+on
+Record
+Update
+(
+handler
+,
+...
+tags
+)
+:
+void
+Parameters
+handler
+:
+(
+(
+e
+)
+=>
+void
+)
+(
+e
+)
+:
+void
+Parameters
+e
+:
+RecordEvent
+Returns
+void
+Rest
+...
+tags
+:
+string
+[]
+Returns
+void
+Defined in
+types.d.ts:1194

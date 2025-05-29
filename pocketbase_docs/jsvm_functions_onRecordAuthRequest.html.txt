@@ -1,0 +1,48 @@
+URL: https://pocketbase.io/jsvm/functions/onRecordAuthRequest.html
+
+PocketBase JSVM reference
+onRecordAuthRequest
+Function onRecordAuthRequest
+on
+Record
+Auth
+Request
+(
+handler
+,
+...
+tags
+)
+:
+void
+Parameters
+handler
+:
+(
+(
+e
+)
+=>
+void
+)
+(
+e
+)
+:
+void
+Parameters
+e
+:
+RecordAuthRequestEvent
+Returns
+void
+Rest
+...
+tags
+:
+string
+[]
+Returns
+void
+Defined in
+types.d.ts:1176

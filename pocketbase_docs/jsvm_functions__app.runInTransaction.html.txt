@@ -1,0 +1,41 @@
+URL: https://pocketbase.io/jsvm/functions/_app.runInTransaction.html
+
+PocketBase JSVM reference
+$app
+runInTransaction
+Function runInTransaction
+run
+In
+Transaction
+(
+fn
+)
+:
+void
+RunInTransaction wraps fn into a transaction for the regular app database.
+It is safe to nest RunInTransaction calls as long as you use the callback's txApp.
+Parameters
+fn
+:
+(
+(
+txApp
+)
+=>
+void
+)
+(
+txApp
+)
+:
+void
+Parameters
+txApp
+:
+App
+Returns
+void
+Returns
+void
+Defined in
+types.d.ts:5878

@@ -1,0 +1,49 @@
+URL: https://pocketbase.io/jsvm/functions/onCollectionAfterCreateError.html
+
+PocketBase JSVM reference
+onCollectionAfterCreateError
+Function onCollectionAfterCreateError
+on
+Collection
+After
+Create
+Error
+(
+handler
+,
+...
+tags
+)
+:
+void
+Parameters
+handler
+:
+(
+(
+e
+)
+=>
+void
+)
+(
+e
+)
+:
+void
+Parameters
+e
+:
+CollectionErrorEvent
+Returns
+void
+Rest
+...
+tags
+:
+string
+[]
+Returns
+void
+Defined in
+types.d.ts:1126

@@ -1,0 +1,28 @@
+URL: https://pocketbase.io/jsvm/modules/mails.html
+
+PocketBase JSVM reference
+mails
+Namespace mails
+Package mails implements various helper methods for sending common
+emails like forgotten password, verification, etc.
+Defined in
+types.d.ts:13126
+Index
+Interfaces
+send
+Record
+Auth
+Alert
+send
+Record
+Change
+Email
+send
+RecordOTP
+send
+Record
+Password
+Reset
+send
+Record
+Verification

@@ -1,0 +1,47 @@
+URL: https://pocketbase.io/jsvm/functions/onCollectionValidate.html
+
+PocketBase JSVM reference
+onCollectionValidate
+Function onCollectionValidate
+on
+Collection
+Validate
+(
+handler
+,
+...
+tags
+)
+:
+void
+Parameters
+handler
+:
+(
+(
+e
+)
+=>
+void
+)
+(
+e
+)
+:
+void
+Parameters
+e
+:
+CollectionEvent
+Returns
+void
+Rest
+...
+tags
+:
+string
+[]
+Returns
+void
+Defined in
+types.d.ts:1141

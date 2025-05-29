@@ -1,0 +1,55 @@
+URL: https://pocketbase.io/jsvm/functions/routerUse.html
+
+PocketBase JSVM reference
+routerUse
+Function routerUse
+router
+Use
+(
+...
+middlewares
+)
+:
+void
+RouterUse registers one or more global middlewares that are executed
+along the handler middlewares after a matching route is found.
+Example:
+routerUse
+((
+e
+)
+=>
+{
+console.
+log
+(e.request.url.path)
+return
+e.
+next
+()
+})
+Copy
+Note that this method is available only in pb_hooks context.
+Parameters
+Rest
+...
+middlewares
+:
+(
+string
+|
+Middleware
+|
+(
+(
+e
+)
+=>
+void
+)
+)
+[]
+Returns
+void
+Defined in
+types.d.ts:91

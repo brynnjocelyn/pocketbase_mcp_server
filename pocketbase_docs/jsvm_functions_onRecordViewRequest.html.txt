@@ -1,0 +1,48 @@
+URL: https://pocketbase.io/jsvm/functions/onRecordViewRequest.html
+
+PocketBase JSVM reference
+onRecordViewRequest
+Function onRecordViewRequest
+on
+Record
+View
+Request
+(
+handler
+,
+...
+tags
+)
+:
+void
+Parameters
+handler
+:
+(
+(
+e
+)
+=>
+void
+)
+(
+e
+)
+:
+void
+Parameters
+e
+:
+RecordRequestEvent
+Returns
+void
+Rest
+...
+tags
+:
+string
+[]
+Returns
+void
+Defined in
+types.d.ts:1198

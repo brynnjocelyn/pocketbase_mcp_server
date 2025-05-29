@@ -1,0 +1,22 @@
+URL: https://pocketbase.io/jsvm/modules/hook.html
+
+PocketBase JSVM reference
+hook
+Namespace hook
+Defined in
+types.d.ts:17125
+Defined in
+types.d.ts:21565
+Index
+Interfaces
+Event
+Handler
+Hook
+Tagged
+Hook
+main
+Hook
+Type Aliases
+_s
+SdWBej
+_sgASblN

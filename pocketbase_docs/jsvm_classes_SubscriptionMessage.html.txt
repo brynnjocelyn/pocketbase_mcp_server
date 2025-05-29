@@ -1,0 +1,156 @@
+URL: https://pocketbase.io/jsvm/classes/SubscriptionMessage.html
+
+PocketBase JSVM reference
+SubscriptionMessage
+Class SubscriptionMessage
+SubscriptionMessage defines a realtime subscription payload.
+Example:
+onRealtimeConnectRequest
+((
+e
+)
+=>
+{
+e.client.
+send
+(
+new
+SubscriptionMessage
+({
+name:
+"example"
+,
+data:
+'{"greeting": "Hello world"}'
+}))
+})
+Copy
+Hierarchy
+subscriptions
+.
+Message
+SubscriptionMessage
+Implements
+subscriptions
+.
+Message
+Defined in
+types.d.ts:673
+Defined in
+types.d.ts:690
+Index
+Constructors
+constructor
+Methods
+writeSSE
+Properties
+data
+name
+Constructors
+constructor
+new
+Subscription
+Message
+(
+options
+?
+)
+:
+SubscriptionMessage
+Parameters
+Optional
+options
+:
+Partial
+<
+subscriptions
+.
+Message
+>
+Returns
+SubscriptionMessage
+Inherited from subscriptions.Message.constructor
+Defined in
+types.d.ts:691
+Methods
+writeSSE
+writeSSE
+(
+w
+,
+eventId
+)
+:
+void
+WriteSSE writes the current message in a SSE format into the provided writer.
+For example, writing to a router.Event:
+m
+:
+=
+Message{
+Name
+:
+"users/create"
+,
+Data
+: []byte{
+...
+}}
+m.
+Write
+(e.Response,
+"yourEventId"
+)
+e.
+Flush
+()
+Copy
+Parameters
+w
+:
+io
+.
+Writer
+eventId
+:
+string
+Returns
+void
+Inherited from
+Message
+.
+writeSSE
+Defined in
+types.d.ts:19942
+Properties
+data
+data
+:
+string
+|
+number
+[]
+Implementation of
+Message
+.
+data
+Inherited from
+Message
+.
+data
+Defined in
+types.d.ts:19928
+name
+name
+:
+string
+Implementation of
+Message
+.
+name
+Inherited from
+Message
+.
+name
+Defined in
+types.d.ts:19927

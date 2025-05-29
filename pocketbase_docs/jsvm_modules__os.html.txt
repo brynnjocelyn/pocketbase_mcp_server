@@ -1,0 +1,37 @@
+URL: https://pocketbase.io/jsvm/modules/_os.html
+
+PocketBase JSVM reference
+$os
+Namespace $os
+$os
+defines common helpers for working with the OS level primitives
+(eg. deleting directories, executing shell commands, etc.).
+Defined in
+types.d.ts:856
+Index
+Functions
+cmd
+dirFS
+exec
+exit
+getenv
+getwd
+mkdir
+mkdir
+All
+read
+Dir
+read
+File
+remove
+remove
+All
+rename
+stat
+temp
+Dir
+truncate
+write
+File
+Variables
+args

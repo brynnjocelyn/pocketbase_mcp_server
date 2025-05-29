@@ -1,0 +1,401 @@
+URL: https://pocketbase.io/jsvm/interfaces/filesystem.System.html
+
+PocketBase JSVM reference
+filesystem
+System
+Interface System
+Hierarchy
+System
+Defined in
+types.d.ts:5257
+Defined in
+types.d.ts:5275
+Defined in
+types.d.ts:5281
+Defined in
+types.d.ts:5287
+Defined in
+types.d.ts:5293
+Defined in
+types.d.ts:5301
+Defined in
+types.d.ts:5311
+Defined in
+types.d.ts:5321
+Defined in
+types.d.ts:5327
+Defined in
+types.d.ts:5333
+Defined in
+types.d.ts:5339
+Defined in
+types.d.ts:5345
+Defined in
+types.d.ts:5353
+Defined in
+types.d.ts:5361
+Defined in
+types.d.ts:5372
+Defined in
+types.d.ts:5384
+Index
+Methods
+attributes
+close
+copy
+create
+Thumb
+delete
+delete
+Prefix
+exists
+get
+File
+is
+Empty
+Dir
+list
+serve
+set
+Context
+upload
+upload
+File
+upload
+Multipart
+Methods
+attributes
+attributes
+(
+fileKey
+)
+:
+Attributes
+Attributes returns the attributes for the file with fileKey path.
+If the file doesn't exist it returns ErrNotFound.
+Parameters
+fileKey
+:
+string
+Returns
+Attributes
+Defined in
+types.d.ts:5299
+close
+close
+(
+)
+:
+void
+Close releases any resources used for the related filesystem.
+Returns
+void
+Defined in
+types.d.ts:5285
+copy
+copy
+(
+srcKey
+,
+dstKey
+)
+:
+void
+Copy copies the file stored at srcKey to dstKey.
+If srcKey file doesn't exist, it returns ErrNotFound.
+If dstKey file already exists, it is overwritten.
+Parameters
+srcKey
+:
+string
+dstKey
+:
+string
+Returns
+void
+Defined in
+types.d.ts:5319
+create
+Thumb
+create
+Thumb
+(
+originalKey
+,
+thumbKey
+,
+thumbSize
+)
+:
+void
+CreateThumb creates a new thumb image for the file at originalKey location.
+The new thumb file is stored at thumbKey location.
+thumbSize is in the format:
+0xH  (eg. 0x100)    - resize to H height preserving the aspect ratio
+Wx0  (eg. 300x0)    - resize to W width preserving the aspect ratio
+WxH  (eg. 300x100)  - resize and crop to WxH viewbox (from center)
+WxHt (eg. 300x100t) - resize and crop to WxH viewbox (from top)
+WxHb (eg. 300x100b) - resize and crop to WxH viewbox (from bottom)
+WxHf (eg. 300x100f) - fit inside a WxH viewbox (without cropping)
+Parameters
+originalKey
+:
+string
+thumbKey
+:
+string
+thumbSize
+:
+string
+Returns
+void
+Defined in
+types.d.ts:5397
+delete
+delete
+(
+fileKey
+)
+:
+void
+Delete deletes stored file at fileKey location.
+If the file doesn't exist returns ErrNotFound.
+Parameters
+fileKey
+:
+string
+Returns
+void
+Defined in
+types.d.ts:5351
+delete
+Prefix
+delete
+Prefix
+(
+prefix
+)
+:
+Error
+[]
+DeletePrefix deletes everything starting with the specified prefix.
+The prefix could be subpath (ex. "/a/b/") or filename prefix (ex. "/a/b/file_").
+Parameters
+prefix
+:
+string
+Returns
+Error
+[]
+Defined in
+types.d.ts:5359
+exists
+exists
+(
+fileKey
+)
+:
+boolean
+Exists checks if file with fileKey path exists or not.
+Parameters
+fileKey
+:
+string
+Returns
+boolean
+Defined in
+types.d.ts:5291
+get
+File
+get
+File
+(
+fileKey
+)
+:
+blob
+.
+Reader
+GetFile returns a file content reader for the given fileKey.
+NB! Make sure to call Close() on the file after you are done working with it.
+If the file doesn't exist returns ErrNotFound.
+Parameters
+fileKey
+:
+string
+Returns
+blob
+.
+Reader
+Defined in
+types.d.ts:5309
+is
+Empty
+Dir
+is
+Empty
+Dir
+(
+dir
+)
+:
+boolean
+Checks if the provided dir prefix doesn't have any files.
+A trailing slash will be appended to a non-empty dir string argument
+to ensure that the checked prefix is a "directory".
+Returns "false" in case the has at least one file, otherwise - "true".
+Parameters
+dir
+:
+string
+Returns
+boolean
+Defined in
+types.d.ts:5370
+list
+list
+(
+prefix
+)
+:
+ListObject
+[]
+List returns a flat list with info for all files under the specified prefix.
+Parameters
+prefix
+:
+string
+Returns
+ListObject
+[]
+Defined in
+types.d.ts:5325
+serve
+serve
+(
+res
+,
+req
+,
+fileKey
+,
+name
+)
+:
+void
+Serve serves the file at fileKey location to an HTTP response.
+If the
+download
+query parameter is used the file will be always served for
+download no matter of its type (aka. with "Content-Disposition: attachment").
+Internally this method uses [http.ServeContent] so Range requests,
+If-Match, If-Unmodified-Since, etc. headers are handled transparently.
+Parameters
+res
+:
+ResponseWriter
+req
+:
+Request
+fileKey
+:
+string
+name
+:
+string
+Returns
+void
+Defined in
+types.d.ts:5382
+set
+Context
+set
+Context
+(
+ctx
+)
+:
+void
+SetContext assigns the specified context to the current filesystem.
+Parameters
+ctx
+:
+context
+.
+Context
+Returns
+void
+Defined in
+types.d.ts:5279
+upload
+upload
+(
+content
+,
+fileKey
+)
+:
+void
+Upload writes content into the fileKey location.
+Parameters
+content
+:
+string
+|
+number
+[]
+fileKey
+:
+string
+Returns
+void
+Defined in
+types.d.ts:5331
+upload
+File
+upload
+File
+(
+file
+,
+fileKey
+)
+:
+void
+UploadFile uploads the provided File to the fileKey location.
+Parameters
+file
+:
+filesystem
+.
+File
+fileKey
+:
+string
+Returns
+void
+Defined in
+types.d.ts:5337
+upload
+Multipart
+upload
+Multipart
+(
+fh
+,
+fileKey
+)
+:
+void
+UploadMultipart uploads the provided multipart file to the fileKey location.
+Parameters
+fh
+:
+FileHeader
+fileKey
+:
+string
+Returns
+void
+Defined in
+types.d.ts:5343

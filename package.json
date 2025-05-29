@@ -1,0 +1,35 @@
+{
+  "name": "pocketbase-mcp-server",
+  "version": "1.0.0",
+  "description": "A Model Context Protocol server for managing PocketBase instances",
+  "main": "dist/mcp-server.js",
+  "type": "module",
+  "bin": {
+    "pocketbase-mcp": "./dist/mcp-server.js"
+  },
+  "scripts": {
+    "start": "node dist/mcp-server.js",
+    "dev": "ts-node --esm src/mcp-server.ts",
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "pocketbase",
+    "mcp",
+    "model-context-protocol",
+    "llm",
+    "ai"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.11.3",
+    "pocketbase": "^0.26.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.18",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  }
+}

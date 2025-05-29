@@ -1,0 +1,137 @@
+URL: https://pocketbase.io/jsvm/interfaces/subscriptions.Broker.html
+
+PocketBase JSVM reference
+subscriptions
+Broker
+Interface Broker
+Broker defines a struct for managing subscriptions clients.
+Hierarchy
+Broker
+Defined in
+types.d.ts:19808
+Defined in
+types.d.ts:19810
+Defined in
+types.d.ts:19817
+Defined in
+types.d.ts:19823
+Defined in
+types.d.ts:19829
+Defined in
+types.d.ts:19837
+Defined in
+types.d.ts:19843
+Index
+Methods
+chunked
+Clients
+client
+By
+Id
+clients
+register
+total
+Clients
+unregister
+Methods
+chunked
+Clients
+chunked
+Clients
+(
+chunkSize
+)
+:
+Client
+[]
+[]
+ChunkedClients splits the current clients into a chunked slice.
+Parameters
+chunkSize
+:
+number
+Returns
+Client
+[]
+[]
+Defined in
+types.d.ts:19821
+client
+By
+Id
+client
+By
+Id
+(
+clientId
+)
+:
+Client
+ClientById finds a registered client by its id.
+Returns non-nil error when client with clientId is not registered.
+Parameters
+clientId
+:
+string
+Returns
+Client
+Defined in
+types.d.ts:19835
+clients
+clients
+(
+)
+:
+_TygojaDict
+Clients returns a shallow copy of all registered clients indexed
+with their connection id.
+Returns
+_TygojaDict
+Defined in
+types.d.ts:19815
+register
+register
+(
+client
+)
+:
+void
+Register adds a new client to the broker instance.
+Parameters
+client
+:
+Client
+Returns
+void
+Defined in
+types.d.ts:19841
+total
+Clients
+total
+Clients
+(
+)
+:
+number
+TotalClients returns the total number of registered clients.
+Returns
+number
+Defined in
+types.d.ts:19827
+unregister
+unregister
+(
+clientId
+)
+:
+void
+Unregister removes a single client by its id and marks it as discarded.
+If client with clientId doesn't exist, this method does nothing.
+Parameters
+clientId
+:
+string
+Returns
+void
+Defined in
+types.d.ts:19849

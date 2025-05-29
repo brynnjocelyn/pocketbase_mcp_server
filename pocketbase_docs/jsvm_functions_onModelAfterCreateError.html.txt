@@ -1,0 +1,49 @@
+URL: https://pocketbase.io/jsvm/functions/onModelAfterCreateError.html
+
+PocketBase JSVM reference
+onModelAfterCreateError
+Function onModelAfterCreateError
+on
+Model
+After
+Create
+Error
+(
+handler
+,
+...
+tags
+)
+:
+void
+Parameters
+handler
+:
+(
+(
+e
+)
+=>
+void
+)
+(
+e
+)
+:
+void
+Parameters
+e
+:
+ModelErrorEvent
+Returns
+void
+Rest
+...
+tags
+:
+string
+[]
+Returns
+void
+Defined in
+types.d.ts:1153

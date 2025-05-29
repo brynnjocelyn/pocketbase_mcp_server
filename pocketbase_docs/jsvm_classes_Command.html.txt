@@ -1,0 +1,4819 @@
+URL: https://pocketbase.io/jsvm/classes/Command.html
+
+PocketBase JSVM reference
+Command
+Class Command
+Command defines a single console command.
+Example:
+const
+command
+=
+new
+Command
+({
+use:
+"hello"
+,
+run
+: (
+cmd
+,
+args
+)
+=>
+{ console.
+log
+(
+"Hello world!"
+) },
+})
+$app.rootCmd.
+addCommand
+(command);
+Copy
+Hierarchy
+cobra
+.
+Command
+Command
+Implements
+cobra
+.
+Command
+Defined in
+types.d.ts:503
+Defined in
+types.d.ts:520
+Index
+Constructors
+constructor
+Methods
+add
+Command
+add
+Group
+all
+Child
+Commands
+Have
+Group
+args
+Len
+At
+Dash
+called
+As
+command
+Path
+command
+Path
+Padding
+commands
+contains
+Group
+context
+debug
+Flags
+display
+Name
+err
+Or
+Stderr
+err
+Prefix
+execute
+executeC
+execute
+Context
+execute
+ContextC
+find
+flag
+flag
+Error
+Func
+flags
+gen
+Bash
+Completion
+gen
+Bash
+Completion
+File
+gen
+Bash
+Completion
+File
+V2
+gen
+Bash
+Completion
+V2
+gen
+Fish
+Completion
+gen
+Fish
+Completion
+File
+gen
+Power
+Shell
+Completion
+gen
+Power
+Shell
+Completion
+File
+gen
+Power
+Shell
+Completion
+File
+With
+Desc
+gen
+Power
+Shell
+Completion
+With
+Desc
+gen
+Zsh
+Completion
+gen
+Zsh
+Completion
+File
+gen
+Zsh
+Completion
+File
+No
+Desc
+gen
+Zsh
+Completion
+No
+Desc
+get
+Flag
+Completion
+Func
+global
+Normalization
+Func
+groups
+has
+Alias
+has
+Available
+Flags
+has
+Available
+Inherited
+Flags
+has
+Available
+Local
+Flags
+has
+Available
+Persistent
+Flags
+has
+Available
+Sub
+Commands
+has
+Example
+has
+Flags
+has
+Help
+Sub
+Commands
+has
+Inherited
+Flags
+has
+Local
+Flags
+has
+Parent
+has
+Persistent
+Flags
+has
+Sub
+Commands
+help
+help
+Func
+help
+Template
+in
+Or
+Stdin
+inherited
+Flags
+init
+Default
+Completion
+Cmd
+init
+Default
+Help
+Cmd
+init
+Default
+Help
+Flag
+init
+Default
+Version
+Flag
+is
+Additional
+Help
+Topic
+Command
+is
+Available
+Command
+local
+Flags
+local
+Non
+Persistent
+Flags
+mark
+Flag
+Custom
+mark
+Flag
+Dirname
+mark
+Flag
+Filename
+mark
+Flag
+Required
+mark
+Flags
+Mutually
+Exclusive
+mark
+Flags
+One
+Required
+mark
+Flags
+Required
+Together
+mark
+Persistent
+Flag
+Dirname
+mark
+Persistent
+Flag
+Filename
+mark
+Persistent
+Flag
+Required
+mark
+Zsh
+Comp
+Positional
+Argument
+File
+mark
+Zsh
+Comp
+Positional
+Argument
+Words
+name
+name
+And
+Aliases
+name
+Padding
+non
+Inherited
+Flags
+out
+Or
+Stderr
+out
+Or
+Stdout
+parent
+parse
+Flags
+persistent
+Flags
+print
+print
+Err
+print
+Errf
+print
+Errln
+printf
+println
+register
+Flag
+Completion
+Func
+remove
+Command
+reset
+Commands
+reset
+Flags
+root
+runnable
+set
+Args
+set
+Completion
+Command
+GroupID
+set
+Context
+set
+Err
+set
+Err
+Prefix
+set
+Flag
+Error
+Func
+set
+Global
+Normalization
+Func
+set
+Help
+Command
+set
+Help
+Command
+GroupID
+set
+Help
+Func
+set
+Help
+Template
+set
+In
+set
+Out
+set
+Output
+set
+Usage
+Func
+set
+Usage
+Template
+set
+Version
+Template
+suggestions
+For
+traverse
+usage
+usage
+Func
+usage
+Padding
+usage
+String
+usage
+Template
+use
+Line
+validate
+Args
+validate
+Flag
+Groups
+validate
+Required
+Flags
+version
+Template
+visit
+Parents
+Properties
+aliases
+annotations
+arg
+Aliases
+args
+bash
+Completion
+Function
+completion
+Options
+deprecated
+disable
+Auto
+Gen
+Tag
+disable
+Flag
+Parsing
+disable
+Flags
+In
+Use
+Line
+disable
+Suggestions
+example
+f
+Parse
+Err
+Whitelist
+groupID
+hidden
+long
+persistent
+Post
+Run
+persistent
+Post
+RunE
+persistent
+Pre
+Run
+persistent
+Pre
+RunE
+post
+Run
+post
+RunE
+pre
+Run
+pre
+RunE
+run
+runE
+short
+silence
+Errors
+silence
+Usage
+suggest
+For
+suggestions
+Minimum
+Distance
+traverse
+Children
+use
+valid
+Args
+valid
+Args
+Function
+version
+Constructors
+constructor
+new
+Command
+(
+cmd
+?
+)
+:
+Command
+Parameters
+Optional
+cmd
+:
+Partial
+<
+cobra
+.
+Command
+>
+Returns
+Command
+Inherited from cobra.Command.constructor
+Defined in
+types.d.ts:521
+Methods
+add
+Command
+add
+Command
+(
+...
+cmds
+)
+:
+void
+AddCommand adds one or more commands to this parent command.
+Parameters
+Rest
+...
+cmds
+:
+cobra
+.
+Command
+[]
+Returns
+void
+Inherited from
+Command
+.
+addCommand
+Defined in
+types.d.ts:16407
+add
+Group
+add
+Group
+(
+...
+groups
+)
+:
+void
+AddGroup adds one or more command groups to this parent command.
+Parameters
+Rest
+...
+groups
+:
+Group
+[]
+Returns
+void
+Inherited from
+Command
+.
+addGroup
+Defined in
+types.d.ts:16431
+all
+Child
+Commands
+Have
+Group
+all
+Child
+Commands
+Have
+Group
+(
+)
+:
+boolean
+AllChildCommandsHaveGroup returns if all subcommands are assigned to a group
+Returns
+boolean
+Inherited from
+Command
+.
+allChildCommandsHaveGroup
+Defined in
+types.d.ts:16419
+args
+Len
+At
+Dash
+args
+Len
+At
+Dash
+(
+)
+:
+number
+ArgsLenAtDash will return the length of c.Flags().Args at the moment
+when a -- was found during args parsing.
+Returns
+number
+Inherited from
+Command
+.
+argsLenAtDash
+Defined in
+types.d.ts:16325
+called
+As
+called
+As
+(
+)
+:
+string
+CalledAs returns the command name or alias that was used to invoke
+this command or an empty string if the command has not been called.
+Returns
+string
+Inherited from
+Command
+.
+calledAs
+Defined in
+types.d.ts:16524
+command
+Path
+command
+Path
+(
+)
+:
+string
+CommandPath returns the full path to this command.
+Returns
+string
+Inherited from
+Command
+.
+commandPath
+Defined in
+types.d.ts:16485
+command
+Path
+Padding
+command
+Path
+Padding
+(
+)
+:
+number
+CommandPathPadding return padding for the command path.
+Returns
+number
+Inherited from
+Command
+.
+commandPathPadding
+Defined in
+types.d.ts:16253
+commands
+commands
+(
+)
+:
+cobra
+.
+Command
+[]
+Commands returns a sorted slice of child commands.
+Returns
+cobra
+.
+Command
+[]
+Inherited from
+Command
+.
+commands
+Defined in
+types.d.ts:16401
+contains
+Group
+contains
+Group
+(
+groupID
+)
+:
+boolean
+ContainsGroup return if groupID exists in the list of command groups.
+Parameters
+groupID
+:
+string
+Returns
+boolean
+Inherited from
+Command
+.
+containsGroup
+Defined in
+types.d.ts:16425
+context
+context
+(
+)
+:
+context
+.
+Context
+Context returns underlying command context. If command was executed
+with ExecuteContext or the context was set with SetContext, the
+previously set context will be returned. Otherwise, nil is returned.
+Notice that a call to Execute and ExecuteC will replace a nil context of
+a command with a context.Background, so a background context will be
+returned by Context after one of these functions has been called.
+Returns
+context
+.
+Context
+Inherited from
+Command
+.
+context
+Defined in
+types.d.ts:16061
+debug
+Flags
+debug
+Flags
+(
+)
+:
+void
+DebugFlags used to determine which flags have been assigned to which commands
+and which persist.
+Returns
+void
+Inherited from
+Command
+.
+debugFlags
+Defined in
+types.d.ts:16505
+display
+Name
+display
+Name
+(
+)
+:
+string
+DisplayName returns the name to display in help text. Returns command Name()
+If CommandDisplayNameAnnoation is not set
+Returns
+string
+Inherited from
+Command
+.
+displayName
+Defined in
+types.d.ts:16492
+err
+Or
+Stderr
+err
+Or
+Stderr
+(
+)
+:
+io
+.
+Writer
+ErrOrStderr returns output to stderr
+Returns
+io
+.
+Writer
+Inherited from
+Command
+.
+errOrStderr
+Defined in
+types.d.ts:16191
+err
+Prefix
+err
+Prefix
+(
+)
+:
+string
+ErrPrefix return error message prefix for the command
+Returns
+string
+Inherited from
+Command
+.
+errPrefix
+Defined in
+types.d.ts:16286
+execute
+execute
+(
+)
+:
+void
+Execute uses the args (os.Args[1:] by default)
+and run through the command tree finding appropriate matches
+for commands and then corresponding flags.
+Returns
+void
+Inherited from
+Command
+.
+execute
+Defined in
+types.d.ts:16341
+executeC
+executeC
+(
+)
+:
+cobra
+.
+Command
+ExecuteC executes the command.
+Returns
+cobra
+.
+Command
+Inherited from
+Command
+.
+executeC
+Defined in
+types.d.ts:16355
+execute
+Context
+execute
+Context
+(
+ctx
+)
+:
+void
+ExecuteContext is the same as Execute(), but sets the ctx on the command.
+Retrieve ctx by calling cmd.Context() inside your *Run lifecycle or ValidArgs
+functions.
+Parameters
+ctx
+:
+context
+.
+Context
+Returns
+void
+Inherited from
+Command
+.
+executeContext
+Defined in
+types.d.ts:16333
+execute
+ContextC
+execute
+ContextC
+(
+ctx
+)
+:
+cobra
+.
+Command
+ExecuteContextC is the same as ExecuteC(), but sets the ctx on the command.
+Retrieve ctx by calling cmd.Context() inside your *Run lifecycle or ValidArgs
+functions.
+Parameters
+ctx
+:
+context
+.
+Context
+Returns
+cobra
+.
+Command
+Inherited from
+Command
+.
+executeContextC
+Defined in
+types.d.ts:16349
+find
+find
+(
+args
+)
+:
+[
+cobra
+.
+Command
+,
+string
+[]
+]
+Find the target command given the args and command tree
+Meant to be run on the highest node. Only searches down.
+Parameters
+args
+:
+string
+[]
+Returns
+[
+cobra
+.
+Command
+,
+string
+[]
+]
+Inherited from
+Command
+.
+find
+Defined in
+types.d.ts:16293
+flag
+flag
+(
+name
+)
+:
+any
+Flag climbs up the command tree looking for matching flag.
+Parameters
+name
+:
+string
+Returns
+any
+Inherited from
+Command
+.
+flag
+Defined in
+types.d.ts:16696
+flag
+Error
+Func
+flag
+Error
+Func
+(
+)
+:
+(
+(
+_arg0
+,
+_arg1
+)
+=>
+void
+)
+FlagErrorFunc returns either the function set by SetFlagErrorFunc for this
+command or a parent, or it returns a function which returns the original
+error.
+Returns
+(
+(
+_arg0
+,
+_arg1
+)
+=>
+void
+)
+(
+_arg0
+,
+_arg1
+)
+:
+void
+FlagErrorFunc returns either the function set by SetFlagErrorFunc for this
+command or a parent, or it returns a function which returns the original
+error.
+Parameters
+_arg0
+:
+cobra
+.
+Command
+_arg1
+:
+Error
+Returns
+void
+Inherited from
+Command
+.
+flagErrorFunc
+Defined in
+types.d.ts:16241
+flags
+flags
+(
+)
+:
+any
+Flags returns the complete FlagSet that applies
+to this command (local and persistent declared here and by all parents).
+Returns
+any
+Inherited from
+Command
+.
+flags
+Defined in
+types.d.ts:16599
+gen
+Bash
+Completion
+gen
+Bash
+Completion
+(
+w
+)
+:
+void
+GenBashCompletion generates bash completion file and writes to the passed writer.
+Parameters
+w
+:
+io
+.
+Writer
+Returns
+void
+Inherited from
+Command
+.
+genBashCompletion
+Defined in
+types.d.ts:15839
+gen
+Bash
+Completion
+File
+gen
+Bash
+Completion
+File
+(
+filename
+)
+:
+void
+GenBashCompletionFile generates bash completion file.
+Parameters
+filename
+:
+string
+Returns
+void
+Inherited from
+Command
+.
+genBashCompletionFile
+Defined in
+types.d.ts:15845
+gen
+Bash
+Completion
+File
+V2
+gen
+Bash
+Completion
+File
+V2
+(
+filename
+,
+includeDesc
+)
+:
+void
+GenBashCompletionFileV2 generates Bash completion version 2.
+Parameters
+filename
+:
+string
+includeDesc
+:
+boolean
+Returns
+void
+Inherited from
+Command
+.
+genBashCompletionFileV2
+Defined in
+types.d.ts:15851
+gen
+Bash
+Completion
+V2
+gen
+Bash
+Completion
+V2
+(
+w
+,
+includeDesc
+)
+:
+void
+GenBashCompletionV2 generates Bash completion file version 2
+and writes it to the passed writer.
+Parameters
+w
+:
+io
+.
+Writer
+includeDesc
+:
+boolean
+Returns
+void
+Inherited from
+Command
+.
+genBashCompletionV2
+Defined in
+types.d.ts:15858
+gen
+Fish
+Completion
+gen
+Fish
+Completion
+(
+w
+,
+includeDesc
+)
+:
+void
+GenFishCompletion generates fish completion file and writes to the passed writer.
+Parameters
+w
+:
+io
+.
+Writer
+includeDesc
+:
+boolean
+Returns
+void
+Inherited from
+Command
+.
+genFishCompletion
+Defined in
+types.d.ts:16739
+gen
+Fish
+Completion
+File
+gen
+Fish
+Completion
+File
+(
+filename
+,
+includeDesc
+)
+:
+void
+GenFishCompletionFile generates fish completion file.
+Parameters
+filename
+:
+string
+includeDesc
+:
+boolean
+Returns
+void
+Inherited from
+Command
+.
+genFishCompletionFile
+Defined in
+types.d.ts:16745
+gen
+Power
+Shell
+Completion
+gen
+Power
+Shell
+Completion
+(
+w
+)
+:
+void
+GenPowerShellCompletion generates powershell completion file without descriptions
+and writes it to the passed writer.
+Parameters
+w
+:
+io
+.
+Writer
+Returns
+void
+Inherited from
+Command
+.
+genPowerShellCompletion
+Defined in
+types.d.ts:16786
+gen
+Power
+Shell
+Completion
+File
+gen
+Power
+Shell
+Completion
+File
+(
+filename
+)
+:
+void
+GenPowerShellCompletionFile generates powershell completion file without descriptions.
+Parameters
+filename
+:
+string
+Returns
+void
+Inherited from
+Command
+.
+genPowerShellCompletionFile
+Defined in
+types.d.ts:16779
+gen
+Power
+Shell
+Completion
+File
+With
+Desc
+gen
+Power
+Shell
+Completion
+File
+With
+Desc
+(
+filename
+)
+:
+void
+GenPowerShellCompletionFileWithDesc generates powershell completion file with descriptions.
+Parameters
+filename
+:
+string
+Returns
+void
+Inherited from
+Command
+.
+genPowerShellCompletionFileWithDesc
+Defined in
+types.d.ts:16792
+gen
+Power
+Shell
+Completion
+With
+Desc
+gen
+Power
+Shell
+Completion
+With
+Desc
+(
+w
+)
+:
+void
+GenPowerShellCompletionWithDesc generates powershell completion file with descriptions
+and writes it to the passed writer.
+Parameters
+w
+:
+io
+.
+Writer
+Returns
+void
+Inherited from
+Command
+.
+genPowerShellCompletionWithDesc
+Defined in
+types.d.ts:16799
+gen
+Zsh
+Completion
+gen
+Zsh
+Completion
+(
+w
+)
+:
+void
+GenZshCompletion generates zsh completion file including descriptions
+and writes it to the passed writer.
+Parameters
+w
+:
+io
+.
+Writer
+Returns
+void
+Inherited from
+Command
+.
+genZshCompletion
+Defined in
+types.d.ts:16869
+gen
+Zsh
+Completion
+File
+gen
+Zsh
+Completion
+File
+(
+filename
+)
+:
+void
+GenZshCompletionFile generates zsh completion file including descriptions.
+Parameters
+filename
+:
+string
+Returns
+void
+Inherited from
+Command
+.
+genZshCompletionFile
+Defined in
+types.d.ts:16862
+gen
+Zsh
+Completion
+File
+No
+Desc
+gen
+Zsh
+Completion
+File
+No
+Desc
+(
+filename
+)
+:
+void
+GenZshCompletionFileNoDesc generates zsh completion file without descriptions.
+Parameters
+filename
+:
+string
+Returns
+void
+Inherited from
+Command
+.
+genZshCompletionFileNoDesc
+Defined in
+types.d.ts:16875
+gen
+Zsh
+Completion
+No
+Desc
+gen
+Zsh
+Completion
+No
+Desc
+(
+w
+)
+:
+void
+GenZshCompletionNoDesc generates zsh completion file without descriptions
+and writes it to the passed writer.
+Parameters
+w
+:
+io
+.
+Writer
+Returns
+void
+Inherited from
+Command
+.
+genZshCompletionNoDesc
+Defined in
+types.d.ts:16882
+get
+Flag
+Completion
+Func
+get
+Flag
+Completion
+Func
+(
+flagName
+)
+:
+[
+CompletionFunc
+,
+boolean
+]
+GetFlagCompletionFunc returns the completion function for the given flag of the command, if available.
+Parameters
+flagName
+:
+string
+Returns
+[
+CompletionFunc
+,
+boolean
+]
+Inherited from
+Command
+.
+getFlagCompletionFunc
+Defined in
+types.d.ts:16723
+global
+Normalization
+Func
+global
+Normalization
+Func
+(
+)
+:
+(
+(
+f
+,
+name
+)
+=>
+any
+)
+GlobalNormalizationFunc returns the global normalization function or nil if it doesn't exist.
+Returns
+(
+(
+f
+,
+name
+)
+=>
+any
+)
+(
+f
+,
+name
+)
+:
+any
+GlobalNormalizationFunc returns the global normalization function or nil if it doesn't exist.
+Parameters
+f
+:
+any
+name
+:
+string
+Returns
+any
+Inherited from
+Command
+.
+globalNormalizationFunc
+Defined in
+types.d.ts:16592
+groups
+groups
+(
+)
+:
+Group
+[]
+Groups returns a slice of child command groups.
+Returns
+Group
+[]
+Inherited from
+Command
+.
+groups
+Defined in
+types.d.ts:16413
+has
+Alias
+has
+Alias
+(
+s
+)
+:
+boolean
+HasAlias determines if a given string is an alias of the command.
+Parameters
+s
+:
+string
+Returns
+boolean
+Inherited from
+Command
+.
+hasAlias
+Defined in
+types.d.ts:16517
+has
+Available
+Flags
+has
+Available
+Flags
+(
+)
+:
+boolean
+HasAvailableFlags checks if the command contains any flags (local plus persistent from the entire
+structure) which are not hidden or deprecated.
+Returns
+boolean
+Inherited from
+Command
+.
+hasAvailableFlags
+Defined in
+types.d.ts:16670
+has
+Available
+Inherited
+Flags
+has
+Available
+Inherited
+Flags
+(
+)
+:
+boolean
+HasAvailableInheritedFlags checks if the command has flags inherited from its parent command which are
+not hidden or deprecated.
+Returns
+boolean
+Inherited from
+Command
+.
+hasAvailableInheritedFlags
+Defined in
+types.d.ts:16690
+has
+Available
+Local
+Flags
+has
+Available
+Local
+Flags
+(
+)
+:
+boolean
+HasAvailableLocalFlags checks if the command has flags specifically declared locally which are not hidden
+or deprecated.
+Returns
+boolean
+Inherited from
+Command
+.
+hasAvailableLocalFlags
+Defined in
+types.d.ts:16683
+has
+Available
+Persistent
+Flags
+has
+Available
+Persistent
+Flags
+(
+)
+:
+boolean
+HasAvailablePersistentFlags checks if the command contains persistent flags which are not hidden or deprecated.
+Returns
+boolean
+Inherited from
+Command
+.
+hasAvailablePersistentFlags
+Defined in
+types.d.ts:16676
+has
+Available
+Sub
+Commands
+has
+Available
+Sub
+Commands
+(
+)
+:
+boolean
+HasAvailableSubCommands determines if a command has available sub commands that
+need to be shown in the usage/help default template under 'available commands'.
+Returns
+boolean
+Inherited from
+Command
+.
+hasAvailableSubCommands
+Defined in
+types.d.ts:16580
+has
+Example
+has
+Example
+(
+)
+:
+boolean
+HasExample determines if the command has example.
+Returns
+boolean
+Inherited from
+Command
+.
+hasExample
+Defined in
+types.d.ts:16536
+has
+Flags
+has
+Flags
+(
+)
+:
+boolean
+HasFlags checks if the command contains any flags (local plus persistent from the entire structure).
+Returns
+boolean
+Inherited from
+Command
+.
+hasFlags
+Defined in
+types.d.ts:16645
+has
+Help
+Sub
+Commands
+has
+Help
+Sub
+Commands
+(
+)
+:
+boolean
+HasHelpSubCommands determines if a command has any available 'help' sub commands
+that need to be shown in the usage/help default template under 'additional help
+topics'.
+Returns
+boolean
+Inherited from
+Command
+.
+hasHelpSubCommands
+Defined in
+types.d.ts:16573
+has
+Inherited
+Flags
+has
+Inherited
+Flags
+(
+)
+:
+boolean
+HasInheritedFlags checks if the command has flags inherited from its parent command.
+Returns
+boolean
+Inherited from
+Command
+.
+hasInheritedFlags
+Defined in
+types.d.ts:16663
+has
+Local
+Flags
+has
+Local
+Flags
+(
+)
+:
+boolean
+HasLocalFlags checks if the command has flags specifically declared locally.
+Returns
+boolean
+Inherited from
+Command
+.
+hasLocalFlags
+Defined in
+types.d.ts:16657
+has
+Parent
+has
+Parent
+(
+)
+:
+boolean
+HasParent determines if the command is a child command.
+Returns
+boolean
+Inherited from
+Command
+.
+hasParent
+Defined in
+types.d.ts:16586
+has
+Persistent
+Flags
+has
+Persistent
+Flags
+(
+)
+:
+boolean
+HasPersistentFlags checks if the command contains persistent flags.
+Returns
+boolean
+Inherited from
+Command
+.
+hasPersistentFlags
+Defined in
+types.d.ts:16651
+has
+Sub
+Commands
+has
+Sub
+Commands
+(
+)
+:
+boolean
+HasSubCommands determines if the command has children commands.
+Returns
+boolean
+Inherited from
+Command
+.
+hasSubCommands
+Defined in
+types.d.ts:16548
+help
+help
+(
+)
+:
+void
+Help puts out the help for the command.
+Used when a user calls help [command].
+Can be defined by user by overriding HelpFunc.
+Returns
+void
+Inherited from
+Command
+.
+help
+Defined in
+types.d.ts:16227
+help
+Func
+help
+Func
+(
+)
+:
+(
+(
+_arg0
+,
+_arg1
+)
+=>
+void
+)
+HelpFunc returns either the function set by SetHelpFunc for this command
+or a parent, or it returns a function with default help behavior.
+Returns
+(
+(
+_arg0
+,
+_arg1
+)
+=>
+void
+)
+(
+_arg0
+,
+_arg1
+)
+:
+void
+HelpFunc returns either the function set by SetHelpFunc for this command
+or a parent, or it returns a function with default help behavior.
+Parameters
+_arg0
+:
+cobra
+.
+Command
+_arg1
+:
+string
+[]
+Returns
+void
+Inherited from
+Command
+.
+helpFunc
+Defined in
+types.d.ts:16219
+help
+Template
+help
+Template
+(
+)
+:
+string
+HelpTemplate return help template for the command.
+This function is kept for backwards-compatibility reasons.
+Returns
+string
+Inherited from
+Command
+.
+helpTemplate
+Defined in
+types.d.ts:16273
+in
+Or
+Stdin
+in
+Or
+Stdin
+(
+)
+:
+io
+.
+Reader
+InOrStdin returns input to stdin
+Returns
+io
+.
+Reader
+Inherited from
+Command
+.
+inOrStdin
+Defined in
+types.d.ts:16197
+inherited
+Flags
+inherited
+Flags
+(
+)
+:
+any
+InheritedFlags returns all flags which were inherited from parent commands.
+This function does not modify the flags of the current command, it's purpose is to return the current state.
+Returns
+any
+Inherited from
+Command
+.
+inheritedFlags
+Defined in
+types.d.ts:16620
+init
+Default
+Completion
+Cmd
+init
+Default
+Completion
+Cmd
+(
+...
+args
+)
+:
+void
+InitDefaultCompletionCmd adds a default 'completion' command to c.
+This function will do nothing if any of the following is true:
+1- the feature has been explicitly disabled by the program,
+2- c has no subcommands (to avoid creating one),
+3- c already has a 'completion' command provided by the program.
+Parameters
+Rest
+...
+args
+:
+string
+[]
+Returns
+void
+Inherited from
+Command
+.
+initDefaultCompletionCmd
+Defined in
+types.d.ts:16733
+init
+Default
+Help
+Cmd
+init
+Default
+Help
+Cmd
+(
+)
+:
+void
+InitDefaultHelpCmd adds default help command to c.
+It is called automatically by executing the c or by calling help and usage.
+If c already has help command or c has no subcommands, it will do nothing.
+Returns
+void
+Inherited from
+Command
+.
+initDefaultHelpCmd
+Defined in
+types.d.ts:16389
+init
+Default
+Help
+Flag
+init
+Default
+Help
+Flag
+(
+)
+:
+void
+InitDefaultHelpFlag adds default help flag to c.
+It is called automatically by executing the c or by calling help and usage.
+If c already has help flag, it will do nothing.
+Returns
+void
+Inherited from
+Command
+.
+initDefaultHelpFlag
+Defined in
+types.d.ts:16372
+init
+Default
+Version
+Flag
+init
+Default
+Version
+Flag
+(
+)
+:
+void
+InitDefaultVersionFlag adds default version flag to c.
+It is called automatically by executing the c.
+If c already has a version flag, it will do nothing.
+If c.Version is empty, it will do nothing.
+Returns
+void
+Inherited from
+Command
+.
+initDefaultVersionFlag
+Defined in
+types.d.ts:16381
+is
+Additional
+Help
+Topic
+Command
+is
+Additional
+Help
+Topic
+Command
+(
+)
+:
+boolean
+IsAdditionalHelpTopicCommand determines if a command is an additional
+help topic command; additional help topic command is determined by the
+fact that it is NOT runnable/hidden/deprecated, and has no sub commands that
+are runnable/hidden/deprecated.
+Concrete example:
+https://github.com/spf13/cobra/issues/393#issuecomment-282741924
+.
+Returns
+boolean
+Inherited from
+Command
+.
+isAdditionalHelpTopicCommand
+Defined in
+types.d.ts:16565
+is
+Available
+Command
+is
+Available
+Command
+(
+)
+:
+boolean
+IsAvailableCommand determines if a command is available as a non-help command
+(this includes all non deprecated/hidden commands).
+Returns
+boolean
+Inherited from
+Command
+.
+isAvailableCommand
+Defined in
+types.d.ts:16555
+local
+Flags
+local
+Flags
+(
+)
+:
+any
+LocalFlags returns the local FlagSet specifically set in the current command.
+This function does not modify the flags of the current command, it's purpose is to return the current state.
+Returns
+any
+Inherited from
+Command
+.
+localFlags
+Defined in
+types.d.ts:16613
+local
+Non
+Persistent
+Flags
+local
+Non
+Persistent
+Flags
+(
+)
+:
+any
+LocalNonPersistentFlags are flags specific to this command which will NOT persist to subcommands.
+This function does not modify the flags of the current command, it's purpose is to return the current state.
+Returns
+any
+Inherited from
+Command
+.
+localNonPersistentFlags
+Defined in
+types.d.ts:16606
+mark
+Flag
+Custom
+mark
+Flag
+Custom
+(
+name
+,
+f
+)
+:
+void
+MarkFlagCustom adds the BashCompCustom annotation to the named flag, if it exists.
+The bash completion script will call the bash function f for the flag.
+This will only work for bash completion.
+It is recommended to instead use c.RegisterFlagCompletionFunc(...) which allows
+to register a Go function which will work across all shells.
+Parameters
+name
+:
+string
+f
+:
+string
+Returns
+void
+Inherited from
+Command
+.
+markFlagCustom
+Defined in
+types.d.ts:16833
+mark
+Flag
+Dirname
+mark
+Flag
+Dirname
+(
+name
+)
+:
+void
+MarkFlagDirname instructs the various shell completion implementations to
+limit completions for the named flag to directory names.
+Parameters
+name
+:
+string
+Returns
+void
+Inherited from
+Command
+.
+markFlagDirname
+Defined in
+types.d.ts:16848
+mark
+Flag
+Filename
+mark
+Flag
+Filename
+(
+name
+,
+...
+extensions
+)
+:
+void
+MarkFlagFilename instructs the various shell completion implementations to
+limit completions for the named flag to the specified file extensions.
+Parameters
+name
+:
+string
+Rest
+...
+extensions
+:
+string
+[]
+Returns
+void
+Inherited from
+Command
+.
+markFlagFilename
+Defined in
+types.d.ts:16822
+mark
+Flag
+Required
+mark
+Flag
+Required
+(
+name
+)
+:
+void
+MarkFlagRequired instructs the various shell completion implementations to
+prioritize the named flag when performing completion,
+and causes your command to report an error if invoked without the flag.
+Parameters
+name
+:
+string
+Returns
+void
+Inherited from
+Command
+.
+markFlagRequired
+Defined in
+types.d.ts:16807
+mark
+Flags
+Mutually
+Exclusive
+mark
+Flags
+Mutually
+Exclusive
+(
+...
+flagNames
+)
+:
+void
+MarkFlagsMutuallyExclusive marks the given flags with annotations so that Cobra errors
+if the command is invoked with more than one flag from the given set of flags.
+Parameters
+Rest
+...
+flagNames
+:
+string
+[]
+Returns
+void
+Inherited from
+Command
+.
+markFlagsMutuallyExclusive
+Defined in
+types.d.ts:16766
+mark
+Flags
+One
+Required
+mark
+Flags
+One
+Required
+(
+...
+flagNames
+)
+:
+void
+MarkFlagsOneRequired marks the given flags with annotations so that Cobra errors
+if the command is invoked without at least one flag from the given set of flags.
+Parameters
+Rest
+...
+flagNames
+:
+string
+[]
+Returns
+void
+Inherited from
+Command
+.
+markFlagsOneRequired
+Defined in
+types.d.ts:16759
+mark
+Flags
+Required
+Together
+mark
+Flags
+Required
+Together
+(
+...
+flagNames
+)
+:
+void
+MarkFlagsRequiredTogether marks the given flags with annotations so that Cobra errors
+if the command is invoked with a subset (but not all) of the given flags.
+Parameters
+Rest
+...
+flagNames
+:
+string
+[]
+Returns
+void
+Inherited from
+Command
+.
+markFlagsRequiredTogether
+Defined in
+types.d.ts:16752
+mark
+Persistent
+Flag
+Dirname
+mark
+Persistent
+Flag
+Dirname
+(
+name
+)
+:
+void
+MarkPersistentFlagDirname instructs the various shell completion
+implementations to limit completions for the named persistent flag to
+directory names.
+Parameters
+name
+:
+string
+Returns
+void
+Inherited from
+Command
+.
+markPersistentFlagDirname
+Defined in
+types.d.ts:16856
+mark
+Persistent
+Flag
+Filename
+mark
+Persistent
+Flag
+Filename
+(
+name
+,
+...
+extensions
+)
+:
+void
+MarkPersistentFlagFilename instructs the various shell completion
+implementations to limit completions for the named persistent flag to the
+specified file extensions.
+Parameters
+name
+:
+string
+Rest
+...
+extensions
+:
+string
+[]
+Returns
+void
+Inherited from
+Command
+.
+markPersistentFlagFilename
+Defined in
+types.d.ts:16841
+mark
+Persistent
+Flag
+Required
+mark
+Persistent
+Flag
+Required
+(
+name
+)
+:
+void
+MarkPersistentFlagRequired instructs the various shell completion implementations to
+prioritize the named persistent flag when performing completion,
+and causes your command to report an error if invoked without the flag.
+Parameters
+name
+:
+string
+Returns
+void
+Inherited from
+Command
+.
+markPersistentFlagRequired
+Defined in
+types.d.ts:16815
+mark
+Zsh
+Comp
+Positional
+Argument
+File
+mark
+Zsh
+Comp
+Positional
+Argument
+File
+(
+argPosition
+,
+...
+patterns
+)
+:
+void
+MarkZshCompPositionalArgumentFile only worked for zsh and its behavior was
+not consistent with Bash completion. It has therefore been disabled.
+Instead, when no other completion is specified, file completion is done by
+default for every argument. One can disable file completion on a per-argument
+basis by using ValidArgsFunction and ShellCompDirectiveNoFileComp.
+To achieve file extension filtering, one can use ValidArgsFunction and
+ShellCompDirectiveFilterFileExt.
+Deprecated
+Parameters
+argPosition
+:
+number
+Rest
+...
+patterns
+:
+string
+[]
+Returns
+void
+Inherited from
+Command
+.
+markZshCompPositionalArgumentFile
+Defined in
+types.d.ts:16896
+mark
+Zsh
+Comp
+Positional
+Argument
+Words
+mark
+Zsh
+Comp
+Positional
+Argument
+Words
+(
+argPosition
+,
+...
+words
+)
+:
+void
+MarkZshCompPositionalArgumentWords only worked for zsh. It has therefore
+been disabled.
+To achieve the same behavior across all shells, one can use
+ValidArgs (for the first argument only) or ValidArgsFunction for
+any argument (can include the first one also).
+Deprecated
+Parameters
+argPosition
+:
+number
+Rest
+...
+words
+:
+string
+[]
+Returns
+void
+Inherited from
+Command
+.
+markZshCompPositionalArgumentWords
+Defined in
+types.d.ts:16908
+name
+name
+(
+)
+:
+string
+Name returns the command's name: the first word in the use line.
+Returns
+string
+Inherited from
+Command
+.
+name
+Defined in
+types.d.ts:16511
+name
+And
+Aliases
+name
+And
+Aliases
+(
+)
+:
+string
+NameAndAliases returns a list of the command name and all aliases
+Returns
+string
+Inherited from
+Command
+.
+nameAndAliases
+Defined in
+types.d.ts:16530
+name
+Padding
+name
+Padding
+(
+)
+:
+number
+NamePadding returns padding for the name.
+Returns
+number
+Inherited from
+Command
+.
+namePadding
+Defined in
+types.d.ts:16259
+non
+Inherited
+Flags
+non
+Inherited
+Flags
+(
+)
+:
+any
+NonInheritedFlags returns all flags which were not inherited from parent commands.
+This function does not modify the flags of the current command, it's purpose is to return the current state.
+Returns
+any
+Inherited from
+Command
+.
+nonInheritedFlags
+Defined in
+types.d.ts:16627
+out
+Or
+Stderr
+out
+Or
+Stderr
+(
+)
+:
+io
+.
+Writer
+OutOrStderr returns output to stderr
+Returns
+io
+.
+Writer
+Inherited from
+Command
+.
+outOrStderr
+Defined in
+types.d.ts:16185
+out
+Or
+Stdout
+out
+Or
+Stdout
+(
+)
+:
+io
+.
+Writer
+OutOrStdout returns output to stdout.
+Returns
+io
+.
+Writer
+Inherited from
+Command
+.
+outOrStdout
+Defined in
+types.d.ts:16179
+parent
+parent
+(
+)
+:
+cobra
+.
+Command
+Parent returns a commands parent command.
+Returns
+cobra
+.
+Command
+Inherited from
+Command
+.
+parent
+Defined in
+types.d.ts:16708
+parse
+Flags
+parse
+Flags
+(
+args
+)
+:
+void
+ParseFlags parses persistent flag tree and local flags.
+Parameters
+args
+:
+string
+[]
+Returns
+void
+Inherited from
+Command
+.
+parseFlags
+Defined in
+types.d.ts:16702
+persistent
+Flags
+persistent
+Flags
+(
+)
+:
+any
+PersistentFlags returns the persistent FlagSet specifically set in the current command.
+Returns
+any
+Inherited from
+Command
+.
+persistentFlags
+Defined in
+types.d.ts:16633
+print
+print
+(
+...
+i
+)
+:
+void
+Print is a convenience method to Print to the defined output, fallback to Stderr if not set.
+Parameters
+Rest
+...
+i
+:
+{}
+[]
+Returns
+void
+Inherited from
+Command
+.
+print
+Defined in
+types.d.ts:16443
+print
+Err
+print
+Err
+(
+...
+i
+)
+:
+void
+PrintErr is a convenience method to Print to the defined Err output, fallback to Stderr if not set.
+Parameters
+Rest
+...
+i
+:
+{}
+[]
+Returns
+void
+Inherited from
+Command
+.
+printErr
+Defined in
+types.d.ts:16464
+print
+Errf
+print
+Errf
+(
+format
+,
+...
+i
+)
+:
+void
+PrintErrf is a convenience method to Printf to the defined Err output, fallback to Stderr if not set.
+Parameters
+format
+:
+string
+Rest
+...
+i
+:
+{}
+[]
+Returns
+void
+Inherited from
+Command
+.
+printErrf
+Defined in
+types.d.ts:16478
+print
+Errln
+print
+Errln
+(
+...
+i
+)
+:
+void
+PrintErrln is a convenience method to Println to the defined Err output, fallback to Stderr if not set.
+Parameters
+Rest
+...
+i
+:
+{}
+[]
+Returns
+void
+Inherited from
+Command
+.
+printErrln
+Defined in
+types.d.ts:16471
+printf
+printf
+(
+format
+,
+...
+i
+)
+:
+void
+Printf is a convenience method to Printf to the defined output, fallback to Stderr if not set.
+Parameters
+format
+:
+string
+Rest
+...
+i
+:
+{}
+[]
+Returns
+void
+Inherited from
+Command
+.
+printf
+Defined in
+types.d.ts:16457
+println
+println
+(
+...
+i
+)
+:
+void
+Println is a convenience method to Println to the defined output, fallback to Stderr if not set.
+Parameters
+Rest
+...
+i
+:
+{}
+[]
+Returns
+void
+Inherited from
+Command
+.
+println
+Defined in
+types.d.ts:16450
+register
+Flag
+Completion
+Func
+register
+Flag
+Completion
+Func
+(
+flagName
+,
+f
+)
+:
+void
+RegisterFlagCompletionFunc should be called to register a function to provide completion for a flag.
+You can use pre-defined completion functions such as [FixedCompletions] or [NoFileCompletions],
+or you can define your own.
+Parameters
+flagName
+:
+string
+f
+:
+CompletionFunc
+Returns
+void
+Inherited from
+Command
+.
+registerFlagCompletionFunc
+Defined in
+types.d.ts:16717
+remove
+Command
+remove
+Command
+(
+...
+cmds
+)
+:
+void
+RemoveCommand removes one or more commands from a parent command.
+Parameters
+Rest
+...
+cmds
+:
+cobra
+.
+Command
+[]
+Returns
+void
+Inherited from
+Command
+.
+removeCommand
+Defined in
+types.d.ts:16437
+reset
+Commands
+reset
+Commands
+(
+)
+:
+void
+ResetCommands delete parent, subcommand and help command from c.
+Returns
+void
+Inherited from
+Command
+.
+resetCommands
+Defined in
+types.d.ts:16395
+reset
+Flags
+reset
+Flags
+(
+)
+:
+void
+ResetFlags deletes all flags from command.
+Returns
+void
+Inherited from
+Command
+.
+resetFlags
+Defined in
+types.d.ts:16639
+root
+root
+(
+)
+:
+cobra
+.
+Command
+Root finds root command.
+Returns
+cobra
+.
+Command
+Inherited from
+Command
+.
+root
+Defined in
+types.d.ts:16318
+runnable
+runnable
+(
+)
+:
+boolean
+Runnable determines if the command is itself runnable.
+Returns
+boolean
+Inherited from
+Command
+.
+runnable
+Defined in
+types.d.ts:16542
+set
+Args
+set
+Args
+(
+a
+)
+:
+void
+SetArgs sets arguments for the command. It is set to os.Args[1:] by default, if desired, can be overridden
+particularly useful when testing.
+Parameters
+a
+:
+string
+[]
+Returns
+void
+Inherited from
+Command
+.
+setArgs
+Defined in
+types.d.ts:16075
+set
+Completion
+Command
+GroupID
+set
+Completion
+Command
+GroupID
+(
+groupID
+)
+:
+void
+SetCompletionCommandGroupID sets the group id of the completion command.
+Parameters
+groupID
+:
+string
+Returns
+void
+Inherited from
+Command
+.
+setCompletionCommandGroupID
+Defined in
+types.d.ts:16148
+set
+Context
+set
+Context
+(
+ctx
+)
+:
+void
+SetContext sets context for the command. This context will be overwritten by
+Command.ExecuteContext or Command.ExecuteContextC.
+Parameters
+ctx
+:
+context
+.
+Context
+Returns
+void
+Inherited from
+Command
+.
+setContext
+Defined in
+types.d.ts:16068
+set
+Err
+set
+Err
+(
+newErr
+)
+:
+void
+SetErr sets the destination for error messages.
+If newErr is nil, os.Stderr is used.
+Parameters
+newErr
+:
+io
+.
+Writer
+Returns
+void
+Inherited from
+Command
+.
+setErr
+Defined in
+types.d.ts:16098
+set
+Err
+Prefix
+set
+Err
+Prefix
+(
+s
+)
+:
+void
+SetErrPrefix sets error message prefix to be used. Application can use it to set custom prefix.
+Parameters
+s
+:
+string
+Returns
+void
+Inherited from
+Command
+.
+setErrPrefix
+Defined in
+types.d.ts:16166
+set
+Flag
+Error
+Func
+set
+Flag
+Error
+Func
+(
+f
+)
+:
+void
+SetFlagErrorFunc sets a function to generate an error when flag parsing
+fails.
+Parameters
+f
+:
+(
+(
+_arg0
+,
+_arg1
+)
+=>
+void
+)
+(
+_arg0
+,
+_arg1
+)
+:
+void
+Parameters
+_arg0
+:
+cobra
+.
+Command
+_arg1
+:
+Error
+Returns
+void
+Returns
+void
+Inherited from
+Command
+.
+setFlagErrorFunc
+Defined in
+types.d.ts:16124
+set
+Global
+Normalization
+Func
+set
+Global
+Normalization
+Func
+(
+n
+)
+:
+void
+SetGlobalNormalizationFunc sets a normalization function to all flag sets and also to child commands.
+The user should not have a cyclic dependency on commands.
+Parameters
+n
+:
+(
+(
+f
+,
+name
+)
+=>
+any
+)
+(
+f
+,
+name
+)
+:
+any
+Parameters
+f
+:
+any
+name
+:
+string
+Returns
+any
+Returns
+void
+Inherited from
+Command
+.
+setGlobalNormalizationFunc
+Defined in
+types.d.ts:16173
+set
+Help
+Command
+set
+Help
+Command
+(
+cmd
+)
+:
+void
+SetHelpCommand sets help command.
+Parameters
+cmd
+:
+cobra
+.
+Command
+Returns
+void
+Inherited from
+Command
+.
+setHelpCommand
+Defined in
+types.d.ts:16136
+set
+Help
+Command
+GroupID
+set
+Help
+Command
+GroupID
+(
+groupID
+)
+:
+void
+SetHelpCommandGroupID sets the group id of the help command.
+Parameters
+groupID
+:
+string
+Returns
+void
+Inherited from
+Command
+.
+setHelpCommandGroupID
+Defined in
+types.d.ts:16142
+set
+Help
+Func
+set
+Help
+Func
+(
+f
+)
+:
+void
+SetHelpFunc sets help function. Can be defined by Application.
+Parameters
+f
+:
+(
+(
+_arg0
+,
+_arg1
+)
+=>
+void
+)
+(
+_arg0
+,
+_arg1
+)
+:
+void
+Parameters
+_arg0
+:
+cobra
+.
+Command
+_arg1
+:
+string
+[]
+Returns
+void
+Returns
+void
+Inherited from
+Command
+.
+setHelpFunc
+Defined in
+types.d.ts:16130
+set
+Help
+Template
+set
+Help
+Template
+(
+s
+)
+:
+void
+SetHelpTemplate sets help template to be used. Application can use it to set custom template.
+Parameters
+s
+:
+string
+Returns
+void
+Inherited from
+Command
+.
+setHelpTemplate
+Defined in
+types.d.ts:16154
+set
+In
+set
+In
+(
+newIn
+)
+:
+void
+SetIn sets the source for input data
+If newIn is nil, os.Stdin is used.
+Parameters
+newIn
+:
+io
+.
+Reader
+Returns
+void
+Inherited from
+Command
+.
+setIn
+Defined in
+types.d.ts:16105
+set
+Out
+set
+Out
+(
+newOut
+)
+:
+void
+SetOut sets the destination for usage messages.
+If newOut is nil, os.Stdout is used.
+Parameters
+newOut
+:
+io
+.
+Writer
+Returns
+void
+Inherited from
+Command
+.
+setOut
+Defined in
+types.d.ts:16091
+set
+Output
+set
+Output
+(
+output
+)
+:
+void
+SetOutput sets the destination for usage and error messages.
+If output is nil, os.Stderr is used.
+Deprecated: Use SetOut and/or SetErr instead
+Parameters
+output
+:
+io
+.
+Writer
+Returns
+void
+Inherited from
+Command
+.
+setOutput
+Defined in
+types.d.ts:16084
+set
+Usage
+Func
+set
+Usage
+Func
+(
+f
+)
+:
+void
+SetUsageFunc sets usage function. Usage can be defined by application.
+Parameters
+f
+:
+(
+(
+_arg0
+)
+=>
+void
+)
+(
+_arg0
+)
+:
+void
+Parameters
+_arg0
+:
+cobra
+.
+Command
+Returns
+void
+Returns
+void
+Inherited from
+Command
+.
+setUsageFunc
+Defined in
+types.d.ts:16111
+set
+Usage
+Template
+set
+Usage
+Template
+(
+s
+)
+:
+void
+SetUsageTemplate sets usage template. Can be defined by Application.
+Parameters
+s
+:
+string
+Returns
+void
+Inherited from
+Command
+.
+setUsageTemplate
+Defined in
+types.d.ts:16117
+set
+Version
+Template
+set
+Version
+Template
+(
+s
+)
+:
+void
+SetVersionTemplate sets version template to be used. Application can use it to set custom template.
+Parameters
+s
+:
+string
+Returns
+void
+Inherited from
+Command
+.
+setVersionTemplate
+Defined in
+types.d.ts:16160
+suggestions
+For
+suggestions
+For
+(
+typedName
+)
+:
+string
+[]
+SuggestionsFor provides suggestions for the typedName.
+Parameters
+typedName
+:
+string
+Returns
+string
+[]
+Inherited from
+Command
+.
+suggestionsFor
+Defined in
+types.d.ts:16306
+traverse
+traverse
+(
+args
+)
+:
+[
+cobra
+.
+Command
+,
+string
+[]
+]
+Traverse the command tree to find the command, and parse args for
+each parent.
+Parameters
+args
+:
+string
+[]
+Returns
+[
+cobra
+.
+Command
+,
+string
+[]
+]
+Inherited from
+Command
+.
+traverse
+Defined in
+types.d.ts:16300
+usage
+usage
+(
+)
+:
+void
+Usage puts out the usage for the command.
+Used when a user provides invalid input.
+Can be defined by user by overriding UsageFunc.
+Returns
+void
+Inherited from
+Command
+.
+usage
+Defined in
+types.d.ts:16212
+usage
+Func
+usage
+Func
+(
+)
+:
+(
+(
+_arg0
+)
+=>
+void
+)
+UsageFunc returns either the function set by SetUsageFunc for this command
+or a parent, or it returns a default usage function.
+Returns
+(
+(
+_arg0
+)
+=>
+void
+)
+(
+_arg0
+)
+:
+void
+UsageFunc returns either the function set by SetUsageFunc for this command
+or a parent, or it returns a default usage function.
+Parameters
+_arg0
+:
+cobra
+.
+Command
+Returns
+void
+Inherited from
+Command
+.
+usageFunc
+Defined in
+types.d.ts:16204
+usage
+Padding
+usage
+Padding
+(
+)
+:
+number
+UsagePadding return padding for the usage.
+Returns
+number
+Inherited from
+Command
+.
+usagePadding
+Defined in
+types.d.ts:16247
+usage
+String
+usage
+String
+(
+)
+:
+string
+UsageString returns usage string.
+Returns
+string
+Inherited from
+Command
+.
+usageString
+Defined in
+types.d.ts:16233
+usage
+Template
+usage
+Template
+(
+)
+:
+string
+UsageTemplate returns usage template for the command.
+This function is kept for backwards-compatibility reasons.
+Returns
+string
+Inherited from
+Command
+.
+usageTemplate
+Defined in
+types.d.ts:16266
+use
+Line
+use
+Line
+(
+)
+:
+string
+UseLine puts out the full usage for a given command (including parents).
+Returns
+string
+Inherited from
+Command
+.
+useLine
+Defined in
+types.d.ts:16498
+validate
+Args
+validate
+Args
+(
+args
+)
+:
+void
+Parameters
+args
+:
+string
+[]
+Returns
+void
+Inherited from
+Command
+.
+validateArgs
+Defined in
+types.d.ts:16358
+validate
+Flag
+Groups
+validate
+Flag
+Groups
+(
+)
+:
+void
+ValidateFlagGroups validates the mutuallyExclusive/oneRequired/requiredAsGroup logic and returns the
+first error encountered.
+Returns
+void
+Inherited from
+Command
+.
+validateFlagGroups
+Defined in
+types.d.ts:16773
+validate
+Required
+Flags
+validate
+Required
+Flags
+(
+)
+:
+void
+ValidateRequiredFlags validates all required flags are present and returns an error otherwise
+Returns
+void
+Inherited from
+Command
+.
+validateRequiredFlags
+Defined in
+types.d.ts:16364
+version
+Template
+version
+Template
+(
+)
+:
+string
+VersionTemplate return version template for the command.
+This function is kept for backwards-compatibility reasons.
+Returns
+string
+Inherited from
+Command
+.
+versionTemplate
+Defined in
+types.d.ts:16280
+visit
+Parents
+visit
+Parents
+(
+fn
+)
+:
+void
+VisitParents visits all parents of the command and invokes fn on each parent.
+Parameters
+fn
+:
+(
+(
+_arg0
+)
+=>
+void
+)
+(
+_arg0
+)
+:
+void
+Parameters
+_arg0
+:
+cobra
+.
+Command
+Returns
+void
+Returns
+void
+Inherited from
+Command
+.
+visitParents
+Defined in
+types.d.ts:16312
+Properties
+aliases
+aliases
+:
+string
+[]
+Aliases is an array of aliases that can be used instead of the first word in Use.
+Implementation of
+Command
+.
+aliases
+Inherited from
+Command
+.
+aliases
+Defined in
+types.d.ts:15886
+annotations
+annotations
+:
+_TygojaDict
+Annotations are key/value pairs that can be used by applications to identify or
+group commands or set special options.
+Implementation of
+Command
+.
+annotations
+Inherited from
+Command
+.
+annotations
+Defined in
+types.d.ts:15941
+arg
+Aliases
+arg
+Aliases
+:
+string
+[]
+ArgAliases is List of aliases for ValidArgs.
+These are not suggested to the user in the shell completion,
+but accepted if entered manually.
+Implementation of
+Command
+.
+argAliases
+Inherited from
+Command
+.
+argAliases
+Defined in
+types.d.ts:15927
+args
+args
+:
+PositionalArgs
+Expected arguments
+Implementation of
+Command
+.
+args
+Inherited from
+Command
+.
+args
+Defined in
+types.d.ts:15921
+bash
+Completion
+Function
+bash
+Completion
+Function
+:
+string
+BashCompletionFunction is custom bash functions used by the legacy bash autocompletion generator.
+For portability with other shells, it is recommended to instead use ValidArgsFunction
+Implementation of
+Command
+.
+bashCompletionFunction
+Inherited from
+Command
+.
+bashCompletionFunction
+Defined in
+types.d.ts:15932
+completion
+Options
+completion
+Options
+:
+CompletionOptions
+CompletionOptions is a set of options to control the handling of shell completion
+Implementation of
+Command
+.
+completionOptions
+Inherited from
+Command
+.
+completionOptions
+Defined in
+types.d.ts:16008
+deprecated
+deprecated
+:
+string
+Deprecated defines, if this command is deprecated and should print this string when used.
+Implementation of
+Command
+.
+deprecated
+Inherited from
+Command
+.
+deprecated
+Defined in
+types.d.ts:15936
+disable
+Auto
+Gen
+Tag
+disable
+Auto
+Gen
+Tag
+:
+boolean
+DisableAutoGenTag defines, if gen tag ("Auto generated by spf13/cobra...")
+will be printed by generating docs for this command.
+Implementation of
+Command
+.
+disableAutoGenTag
+Inherited from
+Command
+.
+disableAutoGenTag
+Defined in
+types.d.ts:16034
+disable
+Flag
+Parsing
+disable
+Flag
+Parsing
+:
+boolean
+DisableFlagParsing disables the flag parsing.
+If this is true all flags will be passed to the command as arguments.
+Implementation of
+Command
+.
+disableFlagParsing
+Inherited from
+Command
+.
+disableFlagParsing
+Defined in
+types.d.ts:16029
+disable
+Flags
+In
+Use
+Line
+disable
+Flags
+In
+Use
+Line
+:
+boolean
+DisableFlagsInUseLine will disable the addition of [flags] to the usage
+line of a command when printing help or generating docs
+Implementation of
+Command
+.
+disableFlagsInUseLine
+Inherited from
+Command
+.
+disableFlagsInUseLine
+Defined in
+types.d.ts:16039
+disable
+Suggestions
+disable
+Suggestions
+:
+boolean
+DisableSuggestions disables the suggestions based on Levenshtein distance
+that go along with 'unknown command' messages.
+Implementation of
+Command
+.
+disableSuggestions
+Inherited from
+Command
+.
+disableSuggestions
+Defined in
+types.d.ts:16044
+example
+example
+:
+string
+Example is examples of how to use the command.
+Implementation of
+Command
+.
+example
+Inherited from
+Command
+.
+example
+Defined in
+types.d.ts:15907
+f
+Parse
+Err
+Whitelist
+f
+Parse
+Err
+Whitelist
+:
+FParseErrWhitelist
+FParseErrWhitelist flag parse errors to be ignored
+Implementation of
+Command
+.
+fParseErrWhitelist
+Inherited from
+Command
+.
+fParseErrWhitelist
+Defined in
+types.d.ts:16004
+groupID
+groupID
+:
+string
+The group id under which this subcommand is grouped in the 'help' output of its parent.
+Implementation of
+Command
+.
+groupID
+Inherited from
+Command
+.
+groupID
+Defined in
+types.d.ts:15899
+hidden
+hidden
+:
+boolean
+Hidden defines, if this command is hidden and should NOT show up in the list of available commands.
+Implementation of
+Command
+.
+hidden
+Inherited from
+Command
+.
+hidden
+Defined in
+types.d.ts:16016
+long
+long
+:
+string
+Long is the long message shown in the 'help
+' output.
+Implementation of
+Command
+.
+long
+Inherited from
+Command
+.
+long
+Defined in
+types.d.ts:15903
+persistent
+Post
+Run
+persistent
+Post
+Run
+:
+(
+(
+cmd
+,
+args
+)
+=>
+void
+)
+Type declaration
+(
+cmd
+,
+args
+)
+:
+void
+PersistentPostRun: children of this command will inherit and execute after PostRun.
+Parameters
+cmd
+:
+cobra
+.
+Command
+args
+:
+string
+[]
+Returns
+void
+Implementation of
+Command
+.
+persistentPostRun
+Inherited from
+Command
+.
+persistentPostRun
+Defined in
+types.d.ts:15996
+persistent
+Post
+RunE
+persistent
+Post
+RunE
+:
+(
+(
+cmd
+,
+args
+)
+=>
+void
+)
+Type declaration
+(
+cmd
+,
+args
+)
+:
+void
+PersistentPostRunE: PersistentPostRun but returns an error.
+Parameters
+cmd
+:
+cobra
+.
+Command
+args
+:
+string
+[]
+Returns
+void
+Implementation of
+Command
+.
+persistentPostRunE
+Inherited from
+Command
+.
+persistentPostRunE
+Defined in
+types.d.ts:16000
+persistent
+Pre
+Run
+persistent
+Pre
+Run
+:
+(
+(
+cmd
+,
+args
+)
+=>
+void
+)
+Type declaration
+(
+cmd
+,
+args
+)
+:
+void
+The *Run functions are executed in the following order:
+*
+PersistentPreRun
+()
+*
+PreRun
+()
+*
+Run
+()
+*
+PostRun
+()
+*
+PersistentPostRun
+()
+Copy
+All functions get the same args, the arguments after the command name.
+The *PreRun and *PostRun functions will only be executed if the Run function of the current
+command has been declared.
+PersistentPreRun: children of this command will inherit and execute.
+Parameters
+cmd
+:
+cobra
+.
+Command
+args
+:
+string
+[]
+Returns
+void
+Implementation of
+Command
+.
+persistentPreRun
+Inherited from
+Command
+.
+persistentPreRun
+Defined in
+types.d.ts:15964
+persistent
+Pre
+RunE
+persistent
+Pre
+RunE
+:
+(
+(
+cmd
+,
+args
+)
+=>
+void
+)
+Type declaration
+(
+cmd
+,
+args
+)
+:
+void
+PersistentPreRunE: PersistentPreRun but returns an error.
+Parameters
+cmd
+:
+cobra
+.
+Command
+args
+:
+string
+[]
+Returns
+void
+Implementation of
+Command
+.
+persistentPreRunE
+Inherited from
+Command
+.
+persistentPreRunE
+Defined in
+types.d.ts:15968
+post
+Run
+post
+Run
+:
+(
+(
+cmd
+,
+args
+)
+=>
+void
+)
+Type declaration
+(
+cmd
+,
+args
+)
+:
+void
+PostRun: run after the Run command.
+Parameters
+cmd
+:
+cobra
+.
+Command
+args
+:
+string
+[]
+Returns
+void
+Implementation of
+Command
+.
+postRun
+Inherited from
+Command
+.
+postRun
+Defined in
+types.d.ts:15988
+post
+RunE
+post
+RunE
+:
+(
+(
+cmd
+,
+args
+)
+=>
+void
+)
+Type declaration
+(
+cmd
+,
+args
+)
+:
+void
+PostRunE: PostRun but returns an error.
+Parameters
+cmd
+:
+cobra
+.
+Command
+args
+:
+string
+[]
+Returns
+void
+Implementation of
+Command
+.
+postRunE
+Inherited from
+Command
+.
+postRunE
+Defined in
+types.d.ts:15992
+pre
+Run
+pre
+Run
+:
+(
+(
+cmd
+,
+args
+)
+=>
+void
+)
+Type declaration
+(
+cmd
+,
+args
+)
+:
+void
+PreRun: children of this command will not inherit.
+Parameters
+cmd
+:
+cobra
+.
+Command
+args
+:
+string
+[]
+Returns
+void
+Implementation of
+Command
+.
+preRun
+Inherited from
+Command
+.
+preRun
+Defined in
+types.d.ts:15972
+pre
+RunE
+pre
+RunE
+:
+(
+(
+cmd
+,
+args
+)
+=>
+void
+)
+Type declaration
+(
+cmd
+,
+args
+)
+:
+void
+PreRunE: PreRun but returns an error.
+Parameters
+cmd
+:
+cobra
+.
+Command
+args
+:
+string
+[]
+Returns
+void
+Implementation of
+Command
+.
+preRunE
+Inherited from
+Command
+.
+preRunE
+Defined in
+types.d.ts:15976
+run
+run
+:
+(
+(
+cmd
+,
+args
+)
+=>
+void
+)
+Type declaration
+(
+cmd
+,
+args
+)
+:
+void
+Run: Typically the actual work function. Most commands will only implement this.
+Parameters
+cmd
+:
+cobra
+.
+Command
+args
+:
+string
+[]
+Returns
+void
+Implementation of
+Command
+.
+run
+Inherited from
+Command
+.
+run
+Defined in
+types.d.ts:15980
+runE
+runE
+:
+(
+(
+cmd
+,
+args
+)
+=>
+void
+)
+Type declaration
+(
+cmd
+,
+args
+)
+:
+void
+RunE: Run but returns an error.
+Parameters
+cmd
+:
+cobra
+.
+Command
+args
+:
+string
+[]
+Returns
+void
+Implementation of
+Command
+.
+runE
+Inherited from
+Command
+.
+runE
+Defined in
+types.d.ts:15984
+short
+short
+:
+string
+Short is the short description shown in the 'help' output.
+Implementation of
+Command
+.
+short
+Inherited from
+Command
+.
+short
+Defined in
+types.d.ts:15895
+silence
+Errors
+silence
+Errors
+:
+boolean
+SilenceErrors is an option to quiet errors down stream.
+Implementation of
+Command
+.
+silenceErrors
+Inherited from
+Command
+.
+silenceErrors
+Defined in
+types.d.ts:16020
+silence
+Usage
+silence
+Usage
+:
+boolean
+SilenceUsage is an option to silence usage when an error occurs.
+Implementation of
+Command
+.
+silenceUsage
+Inherited from
+Command
+.
+silenceUsage
+Defined in
+types.d.ts:16024
+suggest
+For
+suggest
+For
+:
+string
+[]
+SuggestFor is an array of command names for which this command will be suggested -
+similar to aliases but only suggests.
+Implementation of
+Command
+.
+suggestFor
+Inherited from
+Command
+.
+suggestFor
+Defined in
+types.d.ts:15891
+suggestions
+Minimum
+Distance
+suggestions
+Minimum
+Distance
+:
+number
+SuggestionsMinimumDistance defines minimum levenshtein distance to display suggestions.
+Must be > 0.
+Implementation of
+Command
+.
+suggestionsMinimumDistance
+Inherited from
+Command
+.
+suggestionsMinimumDistance
+Defined in
+types.d.ts:16049
+traverse
+Children
+traverse
+Children
+:
+boolean
+TraverseChildren parses flags on all parents before executing child command.
+Implementation of
+Command
+.
+traverseChildren
+Inherited from
+Command
+.
+traverseChildren
+Defined in
+types.d.ts:16012
+use
+use
+:
+string
+Use is the one-line usage message.
+Recommended syntax is as follows:
+[ ] identifies an optional argument. Arguments that are not enclosed
+in
+brackets are required.
+...
+indicates that you can specify multiple values for the previous argument.
+|
+indicates mutually exclusive information. You can use the argument to the left
+of
+the separator or the
+argument to the right
+of
+the separator. You cannot use both
+arguments
+in
+a single use
+of
+the command.
+{ } delimits a set
+of
+mutually exclusive
+arguments
+when one
+of
+the
+arguments
+is required. If the
+arguments
+are
+optional, they are enclosed
+in
+brackets
+([ ]).
+Copy
+Example: add [-F file | -D dir]... [-f format] profile
+Implementation of
+Command
+.
+use
+Inherited from
+Command
+.
+use
+Defined in
+types.d.ts:15882
+valid
+Args
+valid
+Args
+:
+Completion
+[]
+ValidArgs is list of all valid non-flag arguments that are accepted in shell completions
+Implementation of
+Command
+.
+validArgs
+Inherited from
+Command
+.
+validArgs
+Defined in
+types.d.ts:15911
+valid
+Args
+Function
+valid
+Args
+Function
+:
+CompletionFunc
+ValidArgsFunction is an optional function that provides valid non-flag arguments for shell completion.
+It is a dynamic version of using ValidArgs.
+Only one of ValidArgs and ValidArgsFunction can be used for a command.
+Implementation of
+Command
+.
+validArgsFunction
+Inherited from
+Command
+.
+validArgsFunction
+Defined in
+types.d.ts:15917
+version
+version
+:
+string
+Version defines the version for this command. If this value is non-empty and the command does not
+define a "version" flag, a "version" boolean flag will be added to the command and, if specified,
+will print content of the "Version" variable. A shorthand "v" flag will also be added if the
+command does not define one.
+Implementation of
+Command
+.
+version
+Inherited from
+Command
+.
+version
+Defined in
+types.d.ts:15948

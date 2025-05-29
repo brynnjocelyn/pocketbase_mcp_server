@@ -1,0 +1,38 @@
+URL: https://pocketbase.io/jsvm/functions/onBackupRestore.html
+
+PocketBase JSVM reference
+onBackupRestore
+Function onBackupRestore
+on
+Backup
+Restore
+(
+handler
+)
+:
+void
+Parameters
+handler
+:
+(
+(
+e
+)
+=>
+void
+)
+(
+e
+)
+:
+void
+Parameters
+e
+:
+BackupEvent
+Returns
+void
+Returns
+void
+Defined in
+types.d.ts:1123

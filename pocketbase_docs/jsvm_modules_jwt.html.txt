@@ -1,0 +1,23 @@
+URL: https://pocketbase.io/jsvm/modules/jwt.html
+
+PocketBase JSVM reference
+jwt
+Namespace jwt
+Package jwt is a Go implementation of JSON Web Tokens:
+http://self-issued.info/docs/draft-jones-json-web-token.html
+See README.md for more info.
+Defined in
+types.d.ts:17081
+Defined in
+types.d.ts:21527
+Index
+Interfaces
+Claim
+Strings
+Map
+Claims
+Numeric
+Date
+Type Aliases
+_s
+Eeskws

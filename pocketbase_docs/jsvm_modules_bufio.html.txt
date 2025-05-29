@@ -1,0 +1,21 @@
+URL: https://pocketbase.io/jsvm/modules/bufio.html
+
+PocketBase JSVM reference
+bufio
+Namespace bufio
+Package bufio implements buffered I/O. It wraps an io.Reader or io.Writer
+object, creating another object (Reader or Writer) that also implements
+the interface but provides buffering and some help for textual I/O.
+Defined in
+types.d.ts:15491
+Defined in
+types.d.ts:20762
+Index
+Interfaces
+Read
+Writer
+Reader
+Writer
+Type Aliases
+_s
+GpwNFe

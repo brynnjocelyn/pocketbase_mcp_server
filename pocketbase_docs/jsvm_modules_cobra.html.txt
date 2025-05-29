@@ -1,0 +1,30 @@
+URL: https://pocketbase.io/jsvm/modules/cobra.html
+
+PocketBase JSVM reference
+cobra
+Namespace cobra
+Package cobra is a commander providing a simple interface to create powerful modern CLI interfaces.
+In addition to providing an interface, Cobra simultaneously provides a controller to organize your application code.
+Defined in
+types.d.ts:15834
+Defined in
+types.d.ts:22113
+Defined in
+types.d.ts:22470
+Index
+Interfaces
+Command
+Completion
+Completion
+Func
+Completion
+Options
+FParse
+Err
+Whitelist
+Group
+Positional
+Args
+Shell
+Comp
+Directive

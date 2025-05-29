@@ -1,0 +1,39 @@
+URL: https://pocketbase.io/jsvm/modules/security.html
+
+PocketBase JSVM reference
+security
+Namespace security
+Defined in
+types.d.ts:4904
+Index
+Interfaces
+decrypt
+encrypt
+equal
+hs256
+hs512
+md5
+newJWT
+parseJWT
+parse
+UnverifiedJWT
+pseudorandom
+String
+pseudorandom
+String
+With
+Alphabet
+random
+String
+random
+String
+By
+Regex
+random
+String
+With
+Alphabet
+s256
+Challenge
+sha256
+sha512

@@ -1,0 +1,47 @@
+URL: https://pocketbase.io/jsvm/functions/onRecordValidate.html
+
+PocketBase JSVM reference
+onRecordValidate
+Function onRecordValidate
+on
+Record
+Validate
+(
+handler
+,
+...
+tags
+)
+:
+void
+Parameters
+handler
+:
+(
+(
+e
+)
+=>
+void
+)
+(
+e
+)
+:
+void
+Parameters
+e
+:
+RecordEvent
+Returns
+void
+Rest
+...
+tags
+:
+string
+[]
+Returns
+void
+Defined in
+types.d.ts:1197

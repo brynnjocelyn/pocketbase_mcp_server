@@ -1,0 +1,68 @@
+URL: https://pocketbase.io/jsvm/functions/migrate.html
+
+PocketBase JSVM reference
+migrate
+Function migrate
+migrate
+(
+up
+,
+down
+?
+)
+:
+void
+Migrate defines a single migration upgrade/downgrade action.
+Note that this method is available only in pb_migrations context.
+Parameters
+up
+:
+(
+(
+txApp
+)
+=>
+void
+)
+(
+txApp
+)
+:
+void
+Parameters
+txApp
+:
+excludeHooks
+<
+App
+>
+Returns
+void
+Optional
+down
+:
+(
+(
+txApp
+)
+=>
+void
+)
+(
+txApp
+)
+:
+void
+Parameters
+txApp
+:
+excludeHooks
+<
+App
+>
+Returns
+void
+Returns
+void
+Defined in
+types.d.ts:1118

@@ -1,0 +1,50 @@
+URL: https://pocketbase.io/jsvm/functions/onMailerRecordEmailChangeSend.html
+
+PocketBase JSVM reference
+onMailerRecordEmailChangeSend
+Function onMailerRecordEmailChangeSend
+on
+Mailer
+Record
+Email
+Change
+Send
+(
+handler
+,
+...
+tags
+)
+:
+void
+Parameters
+handler
+:
+(
+(
+e
+)
+=>
+void
+)
+(
+e
+)
+:
+void
+Parameters
+e
+:
+MailerRecordEvent
+Returns
+void
+Rest
+...
+tags
+:
+string
+[]
+Returns
+void
+Defined in
+types.d.ts:1148
