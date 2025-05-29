@@ -3,3 +3,4 @@ dist/
 .pocketbase-mcp.json
 pb_data/
 *.log
+pocketbase_docs/

@@ -1,3 +1,0 @@
-URL: https://pocketbase.io/jsvm/functions/onCollectionAfterCreateSuccess.html/onFileTokenRequest.html
-
-Content not found

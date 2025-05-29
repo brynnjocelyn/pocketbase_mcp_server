@@ -1,3 +1,0 @@
-URL: https://pocketbase.io/jsvm/variables/classes/ForbiddenError.html
-
-Content not found

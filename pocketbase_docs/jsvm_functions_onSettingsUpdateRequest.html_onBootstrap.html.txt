@@ -1,3 +1,0 @@
-URL: https://pocketbase.io/jsvm/functions/onSettingsUpdateRequest.html/onBootstrap.html
-
-Content not found

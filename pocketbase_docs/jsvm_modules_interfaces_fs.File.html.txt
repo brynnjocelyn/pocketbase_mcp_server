@@ -1,3 +1,0 @@
-URL: https://pocketbase.io/jsvm/modules/interfaces/fs.File.html
-
-Content not found
