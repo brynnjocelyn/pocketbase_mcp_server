@@ -8,14 +8,12 @@ import {
 } from '@modelcontextprotocol/sdk/types.js';
 import PocketBase from 'pocketbase';
 import { z } from 'zod';
-import { loadPocketBaseUrl } from './config-loader.js';
-import * as fs from 'fs/promises';
-import * as path from 'path';
-import { existsSync } from 'fs';
+import { promises as fs } from 'fs';
+import path from 'path';
 
 /**
  * PocketBase MCP Server
- * Provides tools for managing PocketBase instances through the Model Context Protocol
+ * Provides comprehensive tools for managing PocketBase instances through the Model Context Protocol
  */
 class PocketBaseMCPServer {
   private server: Server;
@@ -25,7 +23,7 @@ class PocketBaseMCPServer {
     this.server = new Server(
       {
         name: 'pocketbase-mcp',
-        version: '1.0.0',
+        version: '2.1.0',
       },
       {
         capabilities: {
@@ -34,8 +32,8 @@ class PocketBaseMCPServer {
       }
     );
 
-    // Initialize PocketBase client using config loader
-    const pbUrl = loadPocketBaseUrl();
+    // Initialize PocketBase client
+    const pbUrl = process.env.POCKETBASE_URL || 'http://127.0.0.1:8090';
     this.pb = new PocketBase(pbUrl);
 
     this.setupToolHandlers();
@@ -49,7 +47,7 @@ class PocketBaseMCPServer {
       // Collection Management Tools
       {
         name: 'list_collections',
-        description: 'List all collections in PocketBase',
+        description: 'List all collections with pagination and filtering',
         inputSchema: {
           type: 'object',
           properties: {
@@ -57,6 +55,7 @@ class PocketBaseMCPServer {
             perPage: { type: 'number', description: 'Records per page (default: 30)' },
             filter: { type: 'string', description: 'Filter expression' },
             sort: { type: 'string', description: 'Sort expression' },
+            skipTotal: { type: 'boolean', description: 'Skip total count for performance' },
           },
         },
       },
@@ -136,10 +135,26 @@ class PocketBaseMCPServer {
           required: ['idOrName'],
         },
       },
+      {
+        name: 'import_collections',
+        description: 'Import multiple collections at once',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            collections: { 
+              type: 'array', 
+              description: 'Array of collection definitions',
+              items: { type: 'object' }
+            },
+            deleteMissing: { type: 'boolean', description: 'Delete collections not in the import' },
+          },
+          required: ['collections'],
+        },
+      },
       // Record Management Tools
       {
         name: 'list_records',
-        description: 'List records from a collection',
+        description: 'List records from a collection with pagination',
         inputSchema: {
           type: 'object',
           properties: {
@@ -149,8 +164,40 @@ class PocketBaseMCPServer {
             filter: { type: 'string', description: 'Filter expression' },
             sort: { type: 'string', description: 'Sort expression' },
             expand: { type: 'string', description: 'Relations to expand' },
+            fields: { type: 'string', description: 'Specific fields to return' },
+            skipTotal: { type: 'boolean', description: 'Skip total count for performance' },
           },
           required: ['collection'],
+        },
+      },
+      {
+        name: 'get_full_list',
+        description: 'Get all records from a collection without pagination',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            collection: { type: 'string', description: 'Collection name' },
+            batch: { type: 'number', description: 'Batch size (default: 500)' },
+            filter: { type: 'string', description: 'Filter expression' },
+            sort: { type: 'string', description: 'Sort expression' },
+            expand: { type: 'string', description: 'Relations to expand' },
+            fields: { type: 'string', description: 'Specific fields to return' },
+          },
+          required: ['collection'],
+        },
+      },
+      {
+        name: 'get_first_list_item',
+        description: 'Get the first record matching a filter',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            collection: { type: 'string', description: 'Collection name' },
+            filter: { type: 'string', description: 'Filter expression' },
+            expand: { type: 'string', description: 'Relations to expand' },
+            fields: { type: 'string', description: 'Specific fields to return' },
+          },
+          required: ['collection', 'filter'],
         },
       },
       {
@@ -162,6 +209,7 @@ class PocketBaseMCPServer {
             collection: { type: 'string', description: 'Collection name' },
             id: { type: 'string', description: 'Record ID' },
             expand: { type: 'string', description: 'Relations to expand' },
+            fields: { type: 'string', description: 'Specific fields to return' },
           },
           required: ['collection', 'id'],
         },
@@ -174,6 +222,8 @@ class PocketBaseMCPServer {
           properties: {
             collection: { type: 'string', description: 'Collection name' },
             data: { type: 'object', description: 'Record data' },
+            expand: { type: 'string', description: 'Relations to expand in response' },
+            fields: { type: 'string', description: 'Specific fields to return' },
           },
           required: ['collection', 'data'],
         },
@@ -187,6 +237,8 @@ class PocketBaseMCPServer {
             collection: { type: 'string', description: 'Collection name' },
             id: { type: 'string', description: 'Record ID' },
             data: { type: 'object', description: 'Update data' },
+            expand: { type: 'string', description: 'Relations to expand in response' },
+            fields: { type: 'string', description: 'Specific fields to return' },
           },
           required: ['collection', 'id', 'data'],
         },
@@ -203,7 +255,104 @@ class PocketBaseMCPServer {
           required: ['collection', 'id'],
         },
       },
+      // Batch Operations
+      {
+        name: 'batch_create',
+        description: 'Create multiple records in a single transaction',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            requests: {
+              type: 'array',
+              description: 'Array of create requests',
+              items: {
+                type: 'object',
+                properties: {
+                  collection: { type: 'string' },
+                  data: { type: 'object' },
+                },
+              },
+            },
+          },
+          required: ['requests'],
+        },
+      },
+      {
+        name: 'batch_update',
+        description: 'Update multiple records in a single transaction',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            requests: {
+              type: 'array',
+              description: 'Array of update requests',
+              items: {
+                type: 'object',
+                properties: {
+                  collection: { type: 'string' },
+                  id: { type: 'string' },
+                  data: { type: 'object' },
+                },
+              },
+            },
+          },
+          required: ['requests'],
+        },
+      },
+      {
+        name: 'batch_delete',
+        description: 'Delete multiple records in a single transaction',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            requests: {
+              type: 'array',
+              description: 'Array of delete requests',
+              items: {
+                type: 'object',
+                properties: {
+                  collection: { type: 'string' },
+                  id: { type: 'string' },
+                },
+              },
+            },
+          },
+          required: ['requests'],
+        },
+      },
+      {
+        name: 'batch_upsert',
+        description: 'Upsert (create or update) multiple records in a single transaction',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            requests: {
+              type: 'array',
+              description: 'Array of upsert requests',
+              items: {
+                type: 'object',
+                properties: {
+                  collection: { type: 'string' },
+                  data: { type: 'object' },
+                },
+              },
+            },
+          },
+          required: ['requests'],
+        },
+      },
       // Authentication Tools
+      {
+        name: 'list_auth_methods',
+        description: 'Get available authentication methods for a collection',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            collection: { type: 'string', description: 'Auth collection name' },
+          },
+          required: ['collection'],
+        },
+      },
       {
         name: 'auth_with_password',
         description: 'Authenticate with email/username and password',
@@ -218,18 +367,207 @@ class PocketBaseMCPServer {
         },
       },
       {
-        name: 'create_user',
-        description: 'Create a new user in an auth collection',
+        name: 'auth_with_oauth2',
+        description: 'Get OAuth2 authentication URL',
         inputSchema: {
           type: 'object',
           properties: {
-            collection: { type: 'string', description: 'Auth collection name (default: users)' },
-            email: { type: 'string', description: 'User email' },
-            password: { type: 'string', description: 'User password' },
-            passwordConfirm: { type: 'string', description: 'Password confirmation' },
-            data: { type: 'object', description: 'Additional user data' },
+            collection: { type: 'string', description: 'Auth collection name' },
+            provider: { type: 'string', description: 'OAuth2 provider name' },
+            redirectURL: { type: 'string', description: 'Redirect URL after auth' },
+            createData: { type: 'object', description: 'Optional data for new users' },
           },
-          required: ['email', 'password', 'passwordConfirm'],
+          required: ['collection', 'provider'],
+        },
+      },
+      {
+        name: 'auth_refresh',
+        description: 'Refresh authentication token',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            collection: { type: 'string', description: 'Auth collection name' },
+          },
+          required: ['collection'],
+        },
+      },
+      {
+        name: 'request_otp',
+        description: 'Request OTP for email authentication',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            collection: { type: 'string', description: 'Auth collection name' },
+            email: { type: 'string', description: 'Email address' },
+          },
+          required: ['collection', 'email'],
+        },
+      },
+      {
+        name: 'auth_with_otp',
+        description: 'Authenticate with OTP',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            collection: { type: 'string', description: 'Auth collection name' },
+            otpId: { type: 'string', description: 'OTP ID from request_otp' },
+            password: { type: 'string', description: 'OTP code' },
+          },
+          required: ['collection', 'otpId', 'password'],
+        },
+      },
+      {
+        name: 'request_password_reset',
+        description: 'Send password reset email',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            collection: { type: 'string', description: 'Auth collection name' },
+            email: { type: 'string', description: 'User email' },
+          },
+          required: ['collection', 'email'],
+        },
+      },
+      {
+        name: 'confirm_password_reset',
+        description: 'Confirm password reset with token',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            collection: { type: 'string', description: 'Auth collection name' },
+            token: { type: 'string', description: 'Reset token' },
+            password: { type: 'string', description: 'New password' },
+            passwordConfirm: { type: 'string', description: 'Password confirmation' },
+          },
+          required: ['collection', 'token', 'password', 'passwordConfirm'],
+        },
+      },
+      {
+        name: 'request_verification',
+        description: 'Send verification email',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            collection: { type: 'string', description: 'Auth collection name' },
+            email: { type: 'string', description: 'User email' },
+          },
+          required: ['collection', 'email'],
+        },
+      },
+      {
+        name: 'confirm_verification',
+        description: 'Confirm email verification',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            collection: { type: 'string', description: 'Auth collection name' },
+            token: { type: 'string', description: 'Verification token' },
+          },
+          required: ['collection', 'token'],
+        },
+      },
+      {
+        name: 'request_email_change',
+        description: 'Request email change',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            collection: { type: 'string', description: 'Auth collection name' },
+            newEmail: { type: 'string', description: 'New email address' },
+          },
+          required: ['collection', 'newEmail'],
+        },
+      },
+      {
+        name: 'confirm_email_change',
+        description: 'Confirm email change',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            collection: { type: 'string', description: 'Auth collection name' },
+            token: { type: 'string', description: 'Email change token' },
+            password: { type: 'string', description: 'User password' },
+          },
+          required: ['collection', 'token', 'password'],
+        },
+      },
+      // File Management
+      {
+        name: 'get_file_url',
+        description: 'Generate URL for accessing a file',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            collection: { type: 'string', description: 'Collection name' },
+            recordId: { type: 'string', description: 'Record ID' },
+            filename: { type: 'string', description: 'File name' },
+            thumb: { type: 'string', description: 'Thumbnail size (e.g., 100x100)' },
+            download: { type: 'boolean', description: 'Force download' },
+          },
+          required: ['collection', 'recordId', 'filename'],
+        },
+      },
+      {
+        name: 'get_file_token',
+        description: 'Get private file access token',
+        inputSchema: {
+          type: 'object',
+          properties: {},
+        },
+      },
+      // Log Management
+      {
+        name: 'list_logs',
+        description: 'List system logs',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            page: { type: 'number', description: 'Page number' },
+            perPage: { type: 'number', description: 'Logs per page' },
+            filter: { type: 'string', description: 'Filter expression' },
+            sort: { type: 'string', description: 'Sort expression' },
+          },
+        },
+      },
+      {
+        name: 'get_log',
+        description: 'Get a specific log entry',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            id: { type: 'string', description: 'Log ID' },
+          },
+          required: ['id'],
+        },
+      },
+      {
+        name: 'get_log_stats',
+        description: 'Get log statistics',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            filter: { type: 'string', description: 'Filter expression' },
+          },
+        },
+      },
+      // Cron Jobs
+      {
+        name: 'list_cron_jobs',
+        description: 'List all cron jobs',
+        inputSchema: {
+          type: 'object',
+          properties: {},
+        },
+      },
+      {
+        name: 'run_cron_job',
+        description: 'Manually run a cron job',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            jobId: { type: 'string', description: 'Cron job ID' },
+          },
+          required: ['jobId'],
         },
       },
       // Settings and Health
@@ -247,6 +585,17 @@ class PocketBaseMCPServer {
         inputSchema: {
           type: 'object',
           properties: {},
+        },
+      },
+      {
+        name: 'update_settings',
+        description: 'Update PocketBase settings (requires admin auth)',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            settings: { type: 'object', description: 'Settings to update' },
+          },
+          required: ['settings'],
         },
       },
       // Backup Tools
@@ -268,25 +617,66 @@ class PocketBaseMCPServer {
           properties: {},
         },
       },
+      {
+        name: 'upload_backup',
+        description: 'Upload a backup file (requires admin auth)',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            key: { type: 'string', description: 'Backup key/name' },
+          },
+          required: ['key'],
+        },
+      },
+      {
+        name: 'download_backup',
+        description: 'Download a backup file (requires admin auth)',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            key: { type: 'string', description: 'Backup key' },
+          },
+          required: ['key'],
+        },
+      },
+      {
+        name: 'delete_backup',
+        description: 'Delete a backup file (requires admin auth)',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            key: { type: 'string', description: 'Backup key' },
+          },
+          required: ['key'],
+        },
+      },
+      {
+        name: 'restore_backup',
+        description: 'Restore from a backup (requires admin auth)',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            key: { type: 'string', description: 'Backup key' },
+          },
+          required: ['key'],
+        },
+      },
       // Hook Management Tools
       {
         name: 'list_hooks',
         description: 'List JavaScript hook files in the pb_hooks directory',
         inputSchema: {
           type: 'object',
-          properties: {
-            pbDataPath: { type: 'string', description: 'Path to PocketBase data directory (optional)' },
-          },
+          properties: {},
         },
       },
       {
         name: 'read_hook',
-        description: 'Read the contents of a JavaScript hook file',
+        description: 'Read the contents of a hook file',
         inputSchema: {
           type: 'object',
           properties: {
-            filename: { type: 'string', description: 'Hook filename (e.g., main.pb.js)' },
-            pbDataPath: { type: 'string', description: 'Path to PocketBase data directory (optional)' },
+            filename: { type: 'string', description: 'Hook file name' },
           },
           required: ['filename'],
         },
@@ -297,38 +687,35 @@ class PocketBaseMCPServer {
         inputSchema: {
           type: 'object',
           properties: {
-            filename: { type: 'string', description: 'Hook filename (must end with .pb.js)' },
-            content: { type: 'string', description: 'JavaScript code for the hook' },
-            pbDataPath: { type: 'string', description: 'Path to PocketBase data directory (optional)' },
+            filename: { type: 'string', description: 'Hook file name' },
+            content: { type: 'string', description: 'Hook file content' },
           },
           required: ['filename', 'content'],
         },
       },
       {
         name: 'delete_hook',
-        description: 'Delete a JavaScript hook file',
+        description: 'Delete a hook file',
         inputSchema: {
           type: 'object',
           properties: {
-            filename: { type: 'string', description: 'Hook filename to delete' },
-            pbDataPath: { type: 'string', description: 'Path to PocketBase data directory (optional)' },
+            filename: { type: 'string', description: 'Hook file name' },
           },
           required: ['filename'],
         },
       },
       {
         name: 'create_hook_template',
-        description: 'Generate a hook template for common patterns',
+        description: 'Generate hook templates for common patterns',
         inputSchema: {
           type: 'object',
           properties: {
             type: { 
               type: 'string', 
               enum: ['record-validation', 'record-auth', 'custom-route', 'file-upload', 'scheduled-task'],
-              description: 'Type of hook template to generate' 
+              description: 'Template type' 
             },
-            collection: { type: 'string', description: 'Collection name (for record hooks)' },
-            route: { type: 'string', description: 'Route path (for custom routes)' },
+            collection: { type: 'string', description: 'Collection name (for collection-specific templates)' },
           },
           required: ['type'],
         },
@@ -362,10 +749,16 @@ class PocketBaseMCPServer {
             return await this.updateCollection(args);
           case 'delete_collection':
             return await this.deleteCollection(args);
+          case 'import_collections':
+            return await this.importCollections(args);
 
           // Record Management
           case 'list_records':
             return await this.listRecords(args);
+          case 'get_full_list':
+            return await this.getFullList(args);
+          case 'get_first_list_item':
+            return await this.getFirstListItem(args);
           case 'get_record':
             return await this.getRecord(args);
           case 'create_record':
@@ -375,27 +768,87 @@ class PocketBaseMCPServer {
           case 'delete_record':
             return await this.deleteRecord(args);
 
+          // Batch Operations
+          case 'batch_create':
+            return await this.batchCreate(args);
+          case 'batch_update':
+            return await this.batchUpdate(args);
+          case 'batch_delete':
+            return await this.batchDelete(args);
+          case 'batch_upsert':
+            return await this.batchUpsert(args);
+
           // Authentication
+          case 'list_auth_methods':
+            return await this.listAuthMethods(args);
           case 'auth_with_password':
             return await this.authWithPassword(args);
-          case 'create_user':
-            return await this.createUser(args);
+          case 'auth_with_oauth2':
+            return await this.authWithOAuth2(args);
+          case 'auth_refresh':
+            return await this.authRefresh(args);
+          case 'request_otp':
+            return await this.requestOTP(args);
+          case 'auth_with_otp':
+            return await this.authWithOTP(args);
+          case 'request_password_reset':
+            return await this.requestPasswordReset(args);
+          case 'confirm_password_reset':
+            return await this.confirmPasswordReset(args);
+          case 'request_verification':
+            return await this.requestVerification(args);
+          case 'confirm_verification':
+            return await this.confirmVerification(args);
+          case 'request_email_change':
+            return await this.requestEmailChange(args);
+          case 'confirm_email_change':
+            return await this.confirmEmailChange(args);
+
+          // File Management
+          case 'get_file_url':
+            return await this.getFileUrl(args);
+          case 'get_file_token':
+            return await this.getFileToken();
+
+          // Log Management
+          case 'list_logs':
+            return await this.listLogs(args);
+          case 'get_log':
+            return await this.getLog(args);
+          case 'get_log_stats':
+            return await this.getLogStats(args);
+
+          // Cron Jobs
+          case 'list_cron_jobs':
+            return await this.listCronJobs();
+          case 'run_cron_job':
+            return await this.runCronJob(args);
 
           // Settings and Health
           case 'get_health':
             return await this.getHealth();
           case 'get_settings':
             return await this.getSettings();
+          case 'update_settings':
+            return await this.updateSettings(args);
 
           // Backup
           case 'create_backup':
             return await this.createBackup(args);
           case 'list_backups':
             return await this.listBackups();
+          case 'upload_backup':
+            return await this.uploadBackup(args);
+          case 'download_backup':
+            return await this.downloadBackup(args);
+          case 'delete_backup':
+            return await this.deleteBackup(args);
+          case 'restore_backup':
+            return await this.restoreBackup(args);
 
           // Hook Management
           case 'list_hooks':
-            return await this.listHooks(args);
+            return await this.listHooks();
           case 'read_hook':
             return await this.readHook(args);
           case 'create_hook':
@@ -427,10 +880,11 @@ class PocketBaseMCPServer {
    * List all collections
    */
   private async listCollections(args: any) {
-    const { page = 1, perPage = 30, filter, sort } = args;
+    const { page = 1, perPage = 30, filter, sort, skipTotal } = args;
     const result = await this.pb.collections.getList(page, perPage, {
       filter,
       sort,
+      skipTotal,
     });
     
     return {
@@ -511,14 +965,33 @@ class PocketBaseMCPServer {
   }
 
   /**
+   * Import collections
+   */
+  private async importCollections(args: any) {
+    const { collections, deleteMissing = false } = args;
+    await this.pb.collections.import(collections, deleteMissing);
+    
+    return {
+      content: [
+        {
+          type: 'text',
+          text: `Successfully imported ${collections.length} collections`,
+        },
+      ],
+    };
+  }
+
+  /**
    * List records from a collection
    */
   private async listRecords(args: any) {
-    const { collection, page = 1, perPage = 30, filter, sort, expand } = args;
+    const { collection, page = 1, perPage = 30, filter, sort, expand, fields, skipTotal } = args;
     const result = await this.pb.collection(collection).getList(page, perPage, {
       filter,
       sort,
       expand,
+      fields,
+      skipTotal,
     });
     
     return {
@@ -532,12 +1005,56 @@ class PocketBaseMCPServer {
   }
 
   /**
+   * Get all records without pagination
+   */
+  private async getFullList(args: any) {
+    const { collection, batch = 500, filter, sort, expand, fields } = args;
+    const records = await this.pb.collection(collection).getFullList({
+      batch,
+      filter,
+      sort,
+      expand,
+      fields,
+    });
+    
+    return {
+      content: [
+        {
+          type: 'text',
+          text: JSON.stringify(records, null, 2),
+        },
+      ],
+    };
+  }
+
+  /**
+   * Get first record matching filter
+   */
+  private async getFirstListItem(args: any) {
+    const { collection, filter, expand, fields } = args;
+    const record = await this.pb.collection(collection).getFirstListItem(filter, {
+      expand,
+      fields,
+    });
+    
+    return {
+      content: [
+        {
+          type: 'text',
+          text: JSON.stringify(record, null, 2),
+        },
+      ],
+    };
+  }
+
+  /**
    * Get a specific record
    */
   private async getRecord(args: any) {
-    const { collection, id, expand } = args;
+    const { collection, id, expand, fields } = args;
     const record = await this.pb.collection(collection).getOne(id, {
       expand,
+      fields,
     });
     
     return {
@@ -554,8 +1071,11 @@ class PocketBaseMCPServer {
    * Create a record
    */
   private async createRecord(args: any) {
-    const { collection, data } = args;
-    const record = await this.pb.collection(collection).create(data);
+    const { collection, data, expand, fields } = args;
+    const record = await this.pb.collection(collection).create(data, {
+      expand,
+      fields,
+    });
     
     return {
       content: [
@@ -571,8 +1091,11 @@ class PocketBaseMCPServer {
    * Update a record
    */
   private async updateRecord(args: any) {
-    const { collection, id, data } = args;
-    const record = await this.pb.collection(collection).update(id, data);
+    const { collection, id, data, expand, fields } = args;
+    const record = await this.pb.collection(collection).update(id, data, {
+      expand,
+      fields,
+    });
     
     return {
       content: [
@@ -602,6 +1125,115 @@ class PocketBaseMCPServer {
   }
 
   /**
+   * Batch create records
+   */
+  private async batchCreate(args: any) {
+    const { requests } = args;
+    const batch = this.pb.createBatch();
+    
+    for (const req of requests) {
+      batch.collection(req.collection).create(req.data);
+    }
+    
+    const results = await batch.send();
+    
+    return {
+      content: [
+        {
+          type: 'text',
+          text: JSON.stringify(results, null, 2),
+        },
+      ],
+    };
+  }
+
+  /**
+   * Batch update records
+   */
+  private async batchUpdate(args: any) {
+    const { requests } = args;
+    const batch = this.pb.createBatch();
+    
+    for (const req of requests) {
+      batch.collection(req.collection).update(req.id, req.data);
+    }
+    
+    const results = await batch.send();
+    
+    return {
+      content: [
+        {
+          type: 'text',
+          text: JSON.stringify(results, null, 2),
+        },
+      ],
+    };
+  }
+
+  /**
+   * Batch delete records
+   */
+  private async batchDelete(args: any) {
+    const { requests } = args;
+    const batch = this.pb.createBatch();
+    
+    for (const req of requests) {
+      batch.collection(req.collection).delete(req.id);
+    }
+    
+    const results = await batch.send();
+    
+    return {
+      content: [
+        {
+          type: 'text',
+          text: JSON.stringify(results, null, 2),
+        },
+      ],
+    };
+  }
+
+  /**
+   * Batch upsert records
+   */
+  private async batchUpsert(args: any) {
+    const { requests } = args;
+    const batch = this.pb.createBatch();
+    
+    for (const req of requests) {
+      batch.collection(req.collection).upsert(req.data);
+    }
+    
+    const results = await batch.send();
+    
+    return {
+      content: [
+        {
+          type: 'text',
+          text: JSON.stringify(results, null, 2),
+        },
+      ],
+    };
+  }
+
+  /**
+   * List authentication methods
+   */
+  private async listAuthMethods(args: any) {
+    const { collection } = args;
+    const methods = await this.pb.collection(collection).listAuthMethods();
+    
+    return {
+      content: [
+        {
+          type: 'text',
+          text: JSON.stringify(methods, null, 2),
+        },
+      ],
+    };
+  }
+
+  /**
    * Authenticate with password
    */
   private async authWithPassword(args: any) {
@@ -622,24 +1254,305 @@ class PocketBaseMCPServer {
   }
 
   /**
-   * Create a new user
+   * Get OAuth2 auth URL
    */
-  private async createUser(args: any) {
-    const { collection = 'users', email, password, passwordConfirm, data = {} } = args;
-    const userData = {
-      email,
-      password,
-      passwordConfirm,
-      ...data,
-    };
+  private async authWithOAuth2(args: any) {
+    const { collection, provider, redirectURL, createData } = args;
+    const authMethods = await this.pb.collection(collection).listAuthMethods();
     
-    const user = await this.pb.collection(collection).create(userData);
+    const providerData = authMethods.oauth2?.providers?.find(p => p.name === provider);
+    if (!providerData) {
+      throw new Error(`OAuth2 provider ${provider} not found`);
+    }
     
     return {
       content: [
         {
           type: 'text',
-          text: JSON.stringify(user, null, 2),
+          text: JSON.stringify({
+            authURL: providerData.authURL,
+            state: providerData.state,
+            codeVerifier: providerData.codeVerifier,
+            codeChallenge: providerData.codeChallenge,
+            codeChallengeMethod: providerData.codeChallengeMethod,
+          }, null, 2),
+        },
+      ],
+    };
+  }
+
+  /**
+   * Refresh authentication
+   */
+  private async authRefresh(args: any) {
+    const { collection } = args;
+    const authData = await this.pb.collection(collection).authRefresh();
+    
+    return {
+      content: [
+        {
+          type: 'text',
+          text: JSON.stringify({
+            token: authData.token,
+            user: authData.record,
+          }, null, 2),
+        },
+      ],
+    };
+  }
+
+  /**
+   * Request OTP
+   */
+  private async requestOTP(args: any) {
+    const { collection, email } = args;
+    const result = await this.pb.collection(collection).requestOTP(email);
+    
+    return {
+      content: [
+        {
+          type: 'text',
+          text: JSON.stringify(result, null, 2),
+        },
+      ],
+    };
+  }
+
+  /**
+   * Authenticate with OTP
+   */
+  private async authWithOTP(args: any) {
+    const { collection, otpId, password } = args;
+    const authData = await this.pb.collection(collection).authWithOTP(otpId, password);
+    
+    return {
+      content: [
+        {
+          type: 'text',
+          text: JSON.stringify({
+            token: authData.token,
+            user: authData.record,
+          }, null, 2),
+        },
+      ],
+    };
+  }
+
+  /**
+   * Request password reset
+   */
+  private async requestPasswordReset(args: any) {
+    const { collection, email } = args;
+    await this.pb.collection(collection).requestPasswordReset(email);
+    
+    return {
+      content: [
+        {
+          type: 'text',
+          text: `Password reset email sent to ${email}`,
+        },
+      ],
+    };
+  }
+
+  /**
+   * Confirm password reset
+   */
+  private async confirmPasswordReset(args: any) {
+    const { collection, token, password, passwordConfirm } = args;
+    await this.pb.collection(collection).confirmPasswordReset(token, password, passwordConfirm);
+    
+    return {
+      content: [
+        {
+          type: 'text',
+          text: 'Password reset successfully',
+        },
+      ],
+    };
+  }
+
+  /**
+   * Request verification
+   */
+  private async requestVerification(args: any) {
+    const { collection, email } = args;
+    await this.pb.collection(collection).requestVerification(email);
+    
+    return {
+      content: [
+        {
+          type: 'text',
+          text: `Verification email sent to ${email}`,
+        },
+      ],
+    };
+  }
+
+  /**
+   * Confirm verification
+   */
+  private async confirmVerification(args: any) {
+    const { collection, token } = args;
+    await this.pb.collection(collection).confirmVerification(token);
+    
+    return {
+      content: [
+        {
+          type: 'text',
+          text: 'Email verified successfully',
+        },
+      ],
+    };
+  }
+
+  /**
+   * Request email change
+   */
+  private async requestEmailChange(args: any) {
+    const { collection, newEmail } = args;
+    await this.pb.collection(collection).requestEmailChange(newEmail);
+    
+    return {
+      content: [
+        {
+          type: 'text',
+          text: `Email change requested. Confirmation sent to ${newEmail}`,
+        },
+      ],
+    };
+  }
+
+  /**
+   * Confirm email change
+   */
+  private async confirmEmailChange(args: any) {
+    const { collection, token, password } = args;
+    await this.pb.collection(collection).confirmEmailChange(token, password);
+    
+    return {
+      content: [
+        {
+          type: 'text',
+          text: 'Email changed successfully',
+        },
+      ],
+    };
+  }
+
+  /**
+   * Get file URL
+   */
+  private async getFileUrl(args: any) {
+    const { collection, recordId, filename, thumb, download } = args;
+    const record = { id: recordId, collectionName: collection };
+    const url = this.pb.files.getURL(record, filename, { thumb, download });
+    
+    return {
+      content: [
+        {
+          type: 'text',
+          text: url,
+        },
+      ],
+    };
+  }
+
+  /**
+   * Get file token
+   */
+  private async getFileToken() {
+    const token = await this.pb.files.getToken();
+    
+    return {
+      content: [
+        {
+          type: 'text',
+          text: JSON.stringify({ token }, null, 2),
+        },
+      ],
+    };
+  }
+
+  /**
+   * List logs
+   */
+  private async listLogs(args: any) {
+    const { page = 1, perPage = 30, filter, sort } = args;
+    const logs = await this.pb.logs.getList(page, perPage, { filter, sort });
+    
+    return {
+      content: [
+        {
+          type: 'text',
+          text: JSON.stringify(logs, null, 2),
+        },
+      ],
+    };
+  }
+
+  /**
+   * Get a specific log
+   */
+  private async getLog(args: any) {
+    const { id } = args;
+    const log = await this.pb.logs.getOne(id);
+    
+    return {
+      content: [
+        {
+          type: 'text',
+          text: JSON.stringify(log, null, 2),
+        },
+      ],
+    };
+  }
+
+  /**
+   * Get log statistics
+   */
+  private async getLogStats(args: any) {
+    const { filter } = args;
+    const stats = await this.pb.logs.getStats({ filter });
+    
+    return {
+      content: [
+        {
+          type: 'text',
+          text: JSON.stringify(stats, null, 2),
+        },
+      ],
+    };
+  }
+
+  /**
+   * List cron jobs
+   */
+  private async listCronJobs() {
+    const jobs = await this.pb.crons.getFullList();
+    
+    return {
+      content: [
+        {
+          type: 'text',
+          text: JSON.stringify(jobs, null, 2),
+        },
+      ],
+    };
+  }
+
+  /**
+   * Run a cron job
+   */
+  private async runCronJob(args: any) {
+    const { jobId } = args;
+    await this.pb.crons.run(jobId);
+    
+    return {
+      content: [
+        {
+          type: 'text',
+          text: `Cron job ${jobId} executed successfully`,
         },
       ],
     };
@@ -649,7 +1562,7 @@ class PocketBaseMCPServer {
    * Get health status
    */
   private async getHealth() {
-    const response = await fetch(`${this.pb.baseUrl}/api/health`);
+    const response = await fetch(`${this.pb.baseURL}/api/health`);
     const health = await response.json();
     
     return {
@@ -673,6 +1586,23 @@ class PocketBaseMCPServer {
         {
           type: 'text',
           text: JSON.stringify(settings, null, 2),
+        },
+      ],
+    };
+  }
+
+  /**
+   * Update settings
+   */
+  private async updateSettings(args: any) {
+    const { settings } = args;
+    const updated = await this.pb.settings.update(settings);
+    
+    return {
+      content: [
+        {
+          type: 'text',
+          text: JSON.stringify(updated, null, 2),
         },
       ],
     };
@@ -711,59 +1641,116 @@ class PocketBaseMCPServer {
     };
   }
 
-  // Hook Management Methods
-
   /**
-   * Get the pb_hooks directory path
+   * Upload backup
    */
-  private getHooksPath(pbDataPath?: string): string {
-    // If specific path provided, use it
-    if (pbDataPath) {
-      return path.join(pbDataPath, 'pb_hooks');
-    }
-    
-    // Try to infer from PocketBase URL
-    const pbUrl = new URL(this.pb.baseUrl);
-    if (pbUrl.hostname === 'localhost' || pbUrl.hostname === '127.0.0.1') {
-      // Assume local installation next to current directory
-      return path.join(process.cwd(), 'pb_hooks');
-    }
-    
-    // Default to current directory
-    return path.join(process.cwd(), 'pb_hooks');
+  private async uploadBackup(args: any) {
+    const { key } = args;
+    // Note: This would need actual file handling implementation
+    return {
+      content: [
+        {
+          type: 'text',
+          text: `Backup upload for ${key} would require file handling implementation`,
+        },
+      ],
+    };
   }
 
   /**
-   * List all hook files
+   * Download backup
    */
-  private async listHooks(args: any) {
-    const hooksPath = this.getHooksPath(args.pbDataPath);
+  private async downloadBackup(args: any) {
+    const { key } = args;
+    // Get file token first
+    const token = await this.pb.files.getToken();
+    const url = this.pb.backups.getDownloadURL(token, key);
     
-    try {
-      if (!existsSync(hooksPath)) {
-        return {
-          content: [{
-            type: 'text',
-            text: `No pb_hooks directory found at ${hooksPath}. Create it next to your PocketBase executable.`,
-          }],
-        };
-      }
+    return {
+      content: [
+        {
+          type: 'text',
+          text: JSON.stringify({ downloadURL: url }, null, 2),
+        },
+      ],
+    };
+  }
 
-      const files = await fs.readdir(hooksPath);
-      const hookFiles = files.filter(f => f.endsWith('.pb.js'));
+  /**
+   * Delete backup
+   */
+  private async deleteBackup(args: any) {
+    const { key } = args;
+    await this.pb.backups.delete(key);
+    
+    return {
+      content: [
+        {
+          type: 'text',
+          text: `Backup ${key} deleted successfully`,
+        },
+      ],
+    };
+  }
+
+  /**
+   * Restore backup
+   */
+  private async restoreBackup(args: any) {
+    const { key } = args;
+    await this.pb.backups.restore(key);
+    
+    return {
+      content: [
+        {
+          type: 'text',
+          text: `Backup ${key} restored successfully`,
+        },
+      ],
+    };
+  }
+
+  /**
+   * List hook files
+   */
+  private async listHooks() {
+    try {
+      // PocketBase looks for hooks in the pb_hooks directory
+      const hooksDir = path.join(process.cwd(), 'pb_hooks');
+      const files = await fs.readdir(hooksDir);
+      const jsFiles = files.filter(f => f.endsWith('.js'));
+      
+      const hooks = await Promise.all(
+        jsFiles.map(async (file) => {
+          const stats = await fs.stat(path.join(hooksDir, file));
+          return {
+            filename: file,
+            size: stats.size,
+            modified: stats.mtime.toISOString(),
+          };
+        })
+      );
       
       return {
-        content: [{
-          type: 'text',
-          text: JSON.stringify({
-            path: hooksPath,
-            hooks: hookFiles,
-            count: hookFiles.length,
-          }, null, 2),
-        }],
+        content: [
+          {
+            type: 'text',
+            text: JSON.stringify(hooks, null, 2),
+          },
+        ],
       };
-    } catch (error) {
-      throw new Error(`Failed to list hooks: ${error}`);
+    } catch (error: any) {
+      if (error.code === 'ENOENT') {
+        return {
+          content: [
+            {
+              type: 'text',
+              text: JSON.stringify({ error: 'pb_hooks directory not found' }, null, 2),
+            },
+          ],
+        };
+      }
+      throw error;
     }
   }
 
@@ -771,21 +1758,25 @@ class PocketBaseMCPServer {
    * Read a hook file
    */
   private async readHook(args: any) {
-    const { filename, pbDataPath } = args;
-    const hooksPath = this.getHooksPath(pbDataPath);
-    const filePath = path.join(hooksPath, filename);
+    const { filename } = args;
+    const hookPath = path.join(process.cwd(), 'pb_hooks', filename);
     
     try {
-      const content = await fs.readFile(filePath, 'utf-8');
+      const content = await fs.readFile(hookPath, 'utf-8');
       
       return {
-        content: [{
-          type: 'text',
-          text: content,
-        }],
+        content: [
+          {
+            type: 'text',
+            text: content,
+          },
+        ],
       };
-    } catch (error) {
-      throw new Error(`Failed to read hook ${filename}: ${error}`);
+    } catch (error: any) {
+      if (error.code === 'ENOENT') {
+        throw new Error(`Hook file ${filename} not found`);
+      }
+      throw error;
     }
   }
 
@@ -793,280 +1784,322 @@ class PocketBaseMCPServer {
    * Create or update a hook file
    */
   private async createHook(args: any) {
-    const { filename, content, pbDataPath } = args;
+    const { filename, content } = args;
     
-    // Validate filename
-    if (!filename.endsWith('.pb.js')) {
-      throw new Error('Hook filename must end with .pb.js');
-    }
+    // Ensure filename ends with .js
+    const hookFilename = filename.endsWith('.js') ? filename : `${filename}.js`;
+    const hooksDir = path.join(process.cwd(), 'pb_hooks');
+    const hookPath = path.join(hooksDir, hookFilename);
     
-    const hooksPath = this.getHooksPath(pbDataPath);
-    const filePath = path.join(hooksPath, filename);
+    // Create pb_hooks directory if it doesn't exist
+    await fs.mkdir(hooksDir, { recursive: true });
     
-    try {
-      // Create directory if it doesn't exist
-      await fs.mkdir(hooksPath, { recursive: true });
-      
-      // Write the hook file
-      await fs.writeFile(filePath, content, 'utf-8');
-      
-      return {
-        content: [{
+    // Write the hook file
+    await fs.writeFile(hookPath, content, 'utf-8');
+    
+    return {
+      content: [
+        {
           type: 'text',
-          text: `Hook ${filename} created/updated successfully at ${filePath}`,
-        }],
-      };
-    } catch (error) {
-      throw new Error(`Failed to create hook ${filename}: ${error}`);
-    }
+          text: `Hook ${hookFilename} created/updated successfully`,
+        },
+      ],
+    };
   }
 
   /**
    * Delete a hook file
    */
   private async deleteHook(args: any) {
-    const { filename, pbDataPath } = args;
-    const hooksPath = this.getHooksPath(pbDataPath);
-    const filePath = path.join(hooksPath, filename);
+    const { filename } = args;
+    const hookPath = path.join(process.cwd(), 'pb_hooks', filename);
     
     try {
-      await fs.unlink(filePath);
+      await fs.unlink(hookPath);
       
       return {
-        content: [{
-          type: 'text',
-          text: `Hook ${filename} deleted successfully`,
-        }],
+        content: [
+          {
+            type: 'text',
+            text: `Hook ${filename} deleted successfully`,
+          },
+        ],
       };
-    } catch (error) {
-      throw new Error(`Failed to delete hook ${filename}: ${error}`);
+    } catch (error: any) {
+      if (error.code === 'ENOENT') {
+        throw new Error(`Hook file ${filename} not found`);
+      }
+      throw error;
     }
   }
 
   /**
-   * Generate hook templates
+   * Create a hook template
    */
   private async createHookTemplate(args: any) {
-    const { type, collection, route } = args;
+    const { type, collection } = args;
     let template = '';
+    let filename = '';
     
     switch (type) {
       case 'record-validation':
-        template = `/// <reference path="../pb_data/types.d.ts" />
-
-// Validate records before create/update for ${collection || 'COLLECTION_NAME'}
+        filename = `${collection || 'collection'}_validation.pb.js`;
+        template = `// Hook for ${collection || 'collection'} record validation
 onRecordCreateRequest((e) => {
-    // Add validation logic here
-    if (!e.record.get('title') || e.record.get('title').length < 3) {
-        throw new Error('Title must be at least 3 characters long');
+    // Get the record data
+    const data = e.record.originalCopy || e.record;
+    
+    // Example: Validate a required field
+    if (!data.title || data.title.trim() === '') {
+        throw new Error('Title is required');
     }
     
-    // Set default values
-    if (!e.record.get('status')) {
-        e.record.set('status', 'draft');
+    // Example: Validate field length
+    if (data.title && data.title.length > 100) {
+        throw new Error('Title must be less than 100 characters');
     }
     
-    e.next();
-}, '${collection || 'COLLECTION_NAME'}');
-
-onRecordUpdateRequest((e) => {
-    // Add validation logic here
-    if (e.record.get('status') === 'published' && !e.record.get('publishedAt')) {
-        e.record.set('publishedAt', new Date().toISOString());
-    }
-    
-    // Prevent status change after publish
-    if (e.record.originalCopy().get('status') === 'published' && 
-        e.record.get('status') !== 'published') {
-        throw new Error('Cannot change status after publishing');
-    }
-    
-    e.next();
-}, '${collection || 'COLLECTION_NAME'}');`;
-        break;
-        
-      case 'record-auth':
-        template = `/// <reference path="../pb_data/types.d.ts" />
-
-// Custom authentication logic for ${collection || 'users'}
-onRecordAuthRequest((e) => {
-    // Triggered on each successful auth request (sign-in, token refresh, etc.)
-    console.log('User authenticated:', e.record.get('email'));
-    
-    // Add custom logic here
-    // e.record - the authenticated record
-    // e.token - the auth token
-    // e.meta - auth meta data
-    // e.authMethod - the auth method used
-    
-    // Example: Add custom claims to token
-    e.meta.lastLogin = new Date().toISOString();
-    
-    e.next();
-}, '${collection || 'users'}');
-
-// Handle password authentication
-onRecordAuthWithPasswordRequest((e) => {
-    // e.identity - submitted email/username
-    // e.password - submitted password
-    // e.record - found record (could be null)
-    
-    if (e.record) {
-        // Log login attempt
-        console.log('Password auth attempt for:', e.identity);
-        
-        // Update last login
-        e.record.set('lastLoginAt', new Date().toISOString());
-        $app.save(e.record);
-    }
-    
-    e.next();
-}, '${collection || 'users'}');`;
-        break;
-        
-      case 'custom-route':
-        template = `/// <reference path="../pb_data/types.d.ts" />
-
-// Custom API endpoint
-routerAdd('GET', '${route || '/api/custom/:id'}', (e) => {
-    // Get path parameters
-    const id = e.request.pathValue('id');
-    
-    // Get query parameters
-    const filter = e.request.url.searchParams.get('filter');
-    
-    // Example: fetch data
-    try {
-        const record = $app.findRecordById('COLLECTION_NAME', id);
-        
-        return e.json(200, {
-            success: true,
-            data: record,
-        });
-    } catch (error) {
-        return e.json(404, {
-            success: false,
-            error: 'Record not found',
-        });
-    }
-});
-
-// Protected route with auth
-routerAdd('POST', '${route || '/api/protected'}', (e) => {
-    // Require authentication
-    const auth = e.requestInfo.auth;
-    if (!auth) {
-        return e.json(401, { error: 'Unauthorized' });
-    }
-    
-    // Get JSON body
-    const data = e.requestInfo.body;
-    
-    // Process request...
-    
-    return e.json(200, { success: true });
-}, $apis.requireAuth());`;
-        break;
-        
-      case 'file-upload':
-        template = `/// <reference path="../pb_data/types.d.ts" />
-
-// Handle file uploads for ${collection || 'COLLECTION_NAME'}
-onRecordCreateRequest((e) => {
-    // Get uploaded files from request
-    const uploadedFiles = e.files();
-    
-    // Process each file field
-    for (const [fieldName, files] of Object.entries(uploadedFiles)) {
-        for (const file of files) {
-            // Get file extension
-            const ext = file.originalFilename.split('.').pop().toLowerCase();
-            const allowedTypes = ['jpg', 'jpeg', 'png', 'gif', 'pdf'];
-            
-            if (!allowedTypes.includes(ext)) {
-                throw new Error(\`File type .\${ext} not allowed for field \${fieldName}\`);
-            }
-            
-            // Check file size (5MB limit)
-            if (file.size > 5 * 1024 * 1024) {
-                throw new Error(\`File size must be less than 5MB for field \${fieldName}\`);
-            }
-        }
-    }
-    
-    e.next();
-}, '${collection || 'COLLECTION_NAME'}');
+    // Example: Custom validation logic
+    // if (data.price && data.price < 0) {
+    //     throw new Error('Price must be positive');
+    // }
+}, "${collection || 'collection'}");
 
 onRecordUpdateRequest((e) => {
     // Same validation for updates
-    const uploadedFiles = e.files();
+    const data = e.record.originalCopy || e.record;
     
-    for (const [fieldName, files] of Object.entries(uploadedFiles)) {
-        for (const file of files) {
-            const ext = file.originalFilename.split('.').pop().toLowerCase();
-            const allowedTypes = ['jpg', 'jpeg', 'png', 'gif', 'pdf'];
-            
-            if (!allowedTypes.includes(ext)) {
-                throw new Error(\`File type .\${ext} not allowed for field \${fieldName}\`);
+    if (!data.title || data.title.trim() === '') {
+        throw new Error('Title is required');
+    }
+    
+    if (data.title && data.title.length > 100) {
+        throw new Error('Title must be less than 100 characters');
+    }
+}, "${collection || 'collection'}");
+`;
+        break;
+        
+      case 'record-auth':
+        filename = `${collection || 'users'}_auth.pb.js`;
+        template = `// Custom authentication logic for ${collection || 'users'}
+onRecordAuthRequest((e) => {
+    // Example: Log authentication attempts
+    console.log(\`Authentication attempt for: \${e.identity}\`);
+    
+    // Example: Add custom validation
+    // if (e.identity.includes('blocked')) {
+    //     throw new Error('This account has been blocked');
+    // }
+    
+    // Example: Add rate limiting logic
+    // You could implement rate limiting by tracking attempts in a custom collection
+}, "${collection || 'users'}");
+
+// Hook for after successful authentication
+onRecordAfterAuthWithPasswordRequest((e) => {
+    // Example: Update last login time
+    const record = e.record;
+    record.set('lastLogin', new Date().toISOString());
+    
+    // Save without triggering hooks
+    app.dao().saveRecord(record);
+    
+    // Example: Log successful login
+    console.log(\`User \${record.get('email')} logged in successfully\`);
+}, "${collection || 'users'}");
+`;
+        break;
+        
+      case 'custom-route':
+        filename = 'custom_routes.pb.js';
+        template = `// Custom API routes
+routerAdd("GET", "/api/custom/hello", (e) => {
+    // Example: Simple JSON response
+    return e.json(200, {
+        message: "Hello from custom route!",
+        timestamp: new Date().toISOString()
+    });
+});
+
+// Example: Route with authentication
+routerAdd("GET", "/api/custom/user-data", (e) => {
+    // Get authenticated user
+    const user = e.auth;
+    
+    if (!user) {
+        return e.json(401, { error: "Unauthorized" });
+    }
+    
+    return e.json(200, {
+        id: user.id,
+        email: user.email,
+        created: user.created
+    });
+}, /* optional middleware */ $apis.requireAuth());
+
+// Example: Route with parameters
+routerAdd("GET", "/api/custom/items/:id", (e) => {
+    const id = e.request.pathValue("id");
+    
+    try {
+        // Fetch record from database
+        const record = app.dao().findRecordById("items", id);
+        
+        return e.json(200, {
+            id: record.id,
+            data: record.publicExport()
+        });
+    } catch (err) {
+        return e.json(404, { error: "Item not found" });
+    }
+});
+
+// Example: POST route with body parsing
+routerAdd("POST", "/api/custom/submit", async (e) => {
+    // Parse JSON body
+    const data = await e.request.json();
+    
+    // Validate input
+    if (!data.name || !data.email) {
+        return e.json(400, { error: "Name and email are required" });
+    }
+    
+    // Process the data...
+    return e.json(200, { success: true });
+});
+`;
+        break;
+        
+      case 'file-upload':
+        filename = `${collection || 'collection'}_file_upload.pb.js`;
+        template = `// File upload validation for ${collection || 'collection'}
+onRecordCreateRequest((e) => {
+    // Get uploaded files
+    const files = e.uploadedFiles;
+    
+    // Example: Validate file types
+    const allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+    
+    for (const [fieldName, filesList] of Object.entries(files)) {
+        for (const file of filesList) {
+            // Check file type
+            if (!allowedTypes.includes(file.type)) {
+                throw new Error(\`Invalid file type for \${fieldName}: \${file.type}\`);
             }
             
-            if (file.size > 5 * 1024 * 1024) {
-                throw new Error(\`File size must be less than 5MB for field \${fieldName}\`);
+            // Check file size (5MB limit)
+            const maxSize = 5 * 1024 * 1024; // 5MB
+            if (file.size > maxSize) {
+                throw new Error(\`File too large for \${fieldName}: \${file.name}\`);
             }
         }
     }
     
-    e.next();
-}, '${collection || 'COLLECTION_NAME'}');`;
+    // Example: Ensure at least one image is uploaded
+    // if (!files.image || files.image.length === 0) {
+    //     throw new Error('At least one image is required');
+    // }
+}, "${collection || 'collection'}");
+
+// Process files after upload
+onRecordAfterCreateRequest((e) => {
+    const record = e.record;
+    
+    // Example: Generate thumbnails or process images
+    // This would require additional libraries or external services
+    console.log(\`Files uploaded for record \${record.id}\`);
+    
+    // Example: Update a field based on uploaded files
+    // if (record.get('images') && record.get('images').length > 0) {
+    //     record.set('hasImages', true);
+    //     app.dao().saveRecord(record);
+    // }
+}, "${collection || 'collection'}");
+`;
         break;
         
       case 'scheduled-task':
-        template = `/// <reference path="../pb_data/types.d.ts" />
-
-// Scheduled task - runs every hour
-cronAdd('hourly-task', '0 * * * *', () => {
-    console.log('Running hourly task...');
+        filename = 'scheduled_tasks.pb.js';
+        template = `// Scheduled tasks using cron
+// This runs every hour at minute 0
+cronAdd("0 * * * *", "hourly-cleanup", () => {
+    // Example: Clean up old sessions or temporary data
+    const dao = app.dao();
     
     try {
-        // Example: Clean up old records
-        const thirtyDaysAgo = new Date();
-        thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+        // Delete records older than 24 hours
+        const yesterday = new Date();
+        yesterday.setDate(yesterday.getDate() - 1);
         
-        const oldRecords = $app.findRecordsByFilter(
-            'COLLECTION_NAME',
-            \`created < "\${thirtyDaysAgo.toISOString()}" && status = "expired"\`
-        );
-        
-        for (const record of oldRecords) {
-            $app.delete(record);
-        }
-        
-        console.log(\`Cleaned up \${oldRecords.length} expired records\`);
-    } catch (error) {
-        console.error('Scheduled task error:', error);
+        dao.db()
+            .newQuery("DELETE FROM temp_data WHERE created < {:date}")
+            .bind({ date: yesterday.toISOString() })
+            .execute();
+            
+        console.log("Hourly cleanup completed");
+    } catch (err) {
+        console.error("Cleanup error:", err);
     }
 });
 
 // Daily task at 2 AM
-cronAdd('daily-backup', '0 2 * * *', () => {
+cronAdd("0 2 * * *", "daily-report", () => {
+    // Example: Generate daily statistics
+    const dao = app.dao();
+    
     try {
-        $app.createBackup(\`scheduled-backup-\${new Date().toISOString().split('T')[0]}.zip\`);
-        console.log('Daily backup created');
-    } catch (error) {
-        console.error('Backup failed:', error);
-    }
-});`;
-        break;
+        // Count new users from yesterday
+        const yesterday = new Date();
+        yesterday.setDate(yesterday.getDate() - 1);
+        const today = new Date();
         
-      default:
-        throw new Error(`Unknown template type: ${type}`);
+        const result = dao.db()
+            .newQuery("SELECT COUNT(*) as count FROM users WHERE created >= {:start} AND created < {:end}")
+            .bind({ 
+                start: yesterday.toISOString().split('T')[0],
+                end: today.toISOString().split('T')[0]
+            })
+            .one();
+            
+        console.log(\`New users yesterday: \${result.count}\`);
+        
+        // You could save this to a statistics collection
+        // const collection = dao.findCollectionByNameOrId("daily_stats");
+        // const record = new Record(collection);
+        // record.set("date", yesterday.toISOString().split('T')[0]);
+        // record.set("newUsers", result.count);
+        // dao.saveRecord(record);
+        
+    } catch (err) {
+        console.error("Daily report error:", err);
+    }
+});
+
+// Weekly task on Sundays at 3 AM
+cronAdd("0 3 * * 0", "weekly-backup-reminder", () => {
+    // Example: Send backup reminder
+    console.log("Time to create a weekly backup!");
+    
+    // You could trigger an actual backup here
+    // app.createBackup(\`weekly_backup_\${new Date().toISOString().split('T')[0]}.zip\`);
+});
+`;
+        break;
     }
     
+    // Create the hook file
+    const hooksDir = path.join(process.cwd(), 'pb_hooks');
+    await fs.mkdir(hooksDir, { recursive: true });
+    await fs.writeFile(path.join(hooksDir, filename), template, 'utf-8');
+    
     return {
-      content: [{
-        type: 'text',
-        text: template,
-      }],
+      content: [
+        {
+          type: 'text',
+          text: `Hook template '${filename}' created with ${type} template`,
+        },
+      ],
     };
   }
 
@@ -1076,7 +2109,7 @@ cronAdd('daily-backup', '0 2 * * *', () => {
   async run(): Promise<void> {
     const transport = new StdioServerTransport();
     await this.server.connect(transport);
-    console.error('PocketBase MCP server running...');
+    console.error('PocketBase MCP server v2.1.0 running...');
   }
 }
 

@@ -1,7 +1,7 @@
 {
   "name": "pocketbase-mcp-server",
-  "version": "1.0.0",
-  "description": "A Model Context Protocol server for managing PocketBase instances",
+  "version": "2.1.0",
+  "description": "A comprehensive Model Context Protocol server for managing PocketBase instances",
   "main": "dist/mcp-server.js",
   "type": "module",
   "bin": {
